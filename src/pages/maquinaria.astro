@@ -34,12 +34,14 @@ import Layout from '../layouts/Layout.astro';
     <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
       <div class="md:col-span-5 relative">
         <div class="absolute -inset-4 bg-surface-container rounded-lg -z-10 transform -rotate-1"></div>
-        <img
-          alt="Retropala pesada en operación de movimiento de tierras"
-          class="w-full h-auto object-cover rounded sharp-shadow"
-          src="/images/maquinaria/versatilidad-operativa.webp"
-          loading="lazy"
-        />
+        <div class="relative aspect-[4/3] rounded overflow-hidden sharp-shadow">
+          <img
+            alt="Retropala pesada en operación de movimiento de tierras"
+            class="w-full h-full object-cover object-center"
+            src="/images/maquinaria/versatilidad-operativa.webp"
+            loading="lazy"
+          />
+        </div>
       </div>
       <div class="md:col-span-6 md:col-start-7 mt-8 md:mt-0">
         <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-6 border-l-4 border-primary pl-4">
@@ -80,10 +82,10 @@ import Layout from '../layouts/Layout.astro';
       <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
         <!-- Fendt Card -->
         <div class="bg-surface border border-outline-variant/20 rounded overflow-hidden flex flex-col sharp-shadow transition-transform sharp-shadow-hover">
-          <div class="h-64 overflow-hidden relative bg-surface-container-lowest">
+          <div class="aspect-[16/10] sm:aspect-[16/9] overflow-hidden relative bg-surface-container-lowest">
             <img
               alt="Tractor Fendt de alta potencia"
-              class="w-full h-full object-cover"
+              class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
               src="/images/maquinaria/tractor-fendt-vario.webp"
               loading="lazy"
             />
@@ -111,10 +113,10 @@ import Layout from '../layouts/Layout.astro';
 
         <!-- John Deere Card -->
         <div class="bg-surface border border-outline-variant/20 rounded overflow-hidden flex flex-col sharp-shadow transition-transform sharp-shadow-hover">
-          <div class="h-64 overflow-hidden relative bg-surface-container-lowest">
+          <div class="aspect-[16/10] sm:aspect-[16/9] overflow-hidden relative bg-surface-container-lowest">
             <img
               alt="Tractor John Deere"
-              class="w-full h-full object-cover"
+              class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
               src="/images/maquinaria/tractor-john-deere.webp"
               loading="lazy"
             />
@@ -152,10 +154,10 @@ import Layout from '../layouts/Layout.astro';
       </h2>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter bg-surface-container-lowest border border-outline-variant/30 rounded-lg overflow-hidden sharp-shadow">
-      <div class="lg:col-span-7 h-64 lg:h-auto relative">
+      <div class="lg:col-span-7 relative aspect-[16/10] md:aspect-[16/9] lg:aspect-auto min-h-[300px] lg:min-h-full overflow-hidden bg-surface-container-low">
         <img
           alt="Retropala Mixta en operación de excavación"
-          class="w-full h-full object-cover"
+          class="w-full h-full object-cover object-center"
           src="/images/maquinaria/retropala-trinity.webp"
           loading="lazy"
         />
@@ -208,10 +210,10 @@ import Layout from '../layouts/Layout.astro';
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <!-- Implement 1 -->
         <div class="bg-surface rounded border border-outline-variant/20 p-1 flex flex-col group hover:border-primary/50 transition-colors sharp-shadow">
-          <div class="h-48 overflow-hidden rounded-t mb-4 bg-surface-container">
+          <div class="aspect-[16/10] overflow-hidden rounded-t mb-4 bg-surface-container relative">
             <img
               alt="Fresadora FI-IVAN"
-              class="w-full h-full object-cover mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
+              class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
               src="/images/maquinaria/fresadora-fiivan.webp"
               loading="lazy"
             />
@@ -227,7 +229,7 @@ import Layout from '../layouts/Layout.astro';
 
         <!-- Implement 2 -->
         <div class="bg-surface rounded border border-outline-variant/20 p-1 flex flex-col group hover:border-primary/50 transition-colors sharp-shadow">
-          <div class="h-48 overflow-hidden rounded-t mb-4 bg-surface-container flex items-center justify-center relative">
+          <div class="aspect-[16/10] overflow-hidden rounded-t mb-4 bg-surface-container flex items-center justify-center relative">
             <div class="absolute inset-0 bg-secondary/10"></div>
             <span class="material-symbols-outlined text-6xl text-secondary opacity-50">forest</span>
           </div>
@@ -242,10 +244,10 @@ import Layout from '../layouts/Layout.astro';
 
         <!-- Implement 3 -->
         <div class="bg-surface rounded border border-outline-variant/20 p-1 flex flex-col group hover:border-primary/50 transition-colors sharp-shadow">
-          <div class="h-48 overflow-hidden rounded-t mb-4 bg-surface-container">
+          <div class="aspect-[16/10] overflow-hidden rounded-t mb-4 bg-surface-container relative">
             <img
               alt="Guiado satelital GPS Topcon en cabina"
-              class="w-full h-full object-cover mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
+              class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
               src="/images/maquinaria/guiado-gps-topcon.webp"
               loading="lazy"
             />
