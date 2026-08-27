@@ -210,10 +210,10 @@ import Layout from '../layouts/Layout.astro';
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <!-- Implement 1 -->
         <div class="bg-surface rounded border border-outline-variant/20 p-1 flex flex-col group hover:border-primary/50 transition-colors sharp-shadow">
-          <div class="aspect-[16/10] overflow-hidden rounded-t mb-4 bg-surface-container relative">
+          <div class="aspect-[16/10] overflow-hidden rounded-t mb-4 bg-surface-container-lowest flex items-center justify-center p-3 relative">
             <img
               alt="Fresadora FI-IVAN"
-              class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+              class="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
               src="/images/maquinaria/fresadora-fiivan.webp"
               loading="lazy"
             />
@@ -227,11 +227,15 @@ import Layout from '../layouts/Layout.astro';
           </div>
         </div>
 
-        <!-- Implement 2 -->
+        <!-- Implement 2: TFT Cancela -->
         <div class="bg-surface rounded border border-outline-variant/20 p-1 flex flex-col group hover:border-primary/50 transition-colors sharp-shadow">
-          <div class="aspect-[16/10] overflow-hidden rounded-t mb-4 bg-surface-container flex items-center justify-center relative">
-            <div class="absolute inset-0 bg-secondary/10"></div>
-            <span class="material-symbols-outlined text-6xl text-secondary opacity-50">forest</span>
+          <div class="aspect-[16/10] overflow-hidden rounded-t mb-4 bg-surface-container-lowest flex items-center justify-center p-3 relative">
+            <img
+              alt="Trituradora Forestal TFT Cancela"
+              class="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
+              src="/images/maquinaria/trituradora-forestal.webp"
+              loading="lazy"
+            />
           </div>
           <div class="px-4 pb-6 flex-grow">
             <span class="text-tertiary font-label-caps text-[10px] mb-2 block font-bold">DESBROCE PESADO</span>
@@ -244,7 +248,7 @@ import Layout from '../layouts/Layout.astro';
 
         <!-- Implement 3 -->
         <div class="bg-surface rounded border border-outline-variant/20 p-1 flex flex-col group hover:border-primary/50 transition-colors sharp-shadow">
-          <div class="aspect-[16/10] overflow-hidden rounded-t mb-4 bg-surface-container relative">
+          <div class="aspect-[16/10] overflow-hidden rounded-t mb-4 bg-surface-container-lowest relative">
             <img
               alt="Guiado satelital GPS Topcon en cabina"
               class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
