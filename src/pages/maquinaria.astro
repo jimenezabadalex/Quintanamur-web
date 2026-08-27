@@ -8,13 +8,16 @@ import Layout from '../layouts/Layout.astro';
   activePage="maquinaria"
 >
   <!-- Hero Section -->
-  <header class="bg-inverse-surface text-on-primary py-24 px-margin-mobile md:px-margin-desktop relative overflow-hidden">
+  <header class="bg-inverse-surface text-on-primary py-24 md:py-32 px-margin-mobile md:px-margin-desktop relative overflow-hidden">
     <div
-      class="absolute inset-0 opacity-20 pointer-events-none bg-cover bg-center"
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none"
       style="background-image: url('/images/maquinaria/hero-flota-bg.webp');"
-    ></div>
+    >
+      <!-- Gradient overlay: strong dark tone on text side, desaturated/open on machinery side -->
+      <div class="absolute inset-0 bg-gradient-to-r from-inverse-surface via-inverse-surface/85 to-inverse-surface/50 md:to-inverse-surface/30"></div>
+    </div>
     <div class="max-w-max-width mx-auto relative z-10 flex flex-col md:flex-row gap-gutter items-center">
-      <div class="md:w-2/3">
+      <div class="md:w-3/4 lg:w-2/3">
         <span class="font-label-caps text-label-caps text-secondary-fixed-dim uppercase tracking-widest block mb-4">
           Parque de Maquinaria Propio
         </span>
