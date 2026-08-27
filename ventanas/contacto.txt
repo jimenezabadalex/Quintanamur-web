@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contacto - Quintanamur S.L.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700;800&amp;family=Work+Sans:wght@400;500&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#fff1e9",
+                        "surface-tint": "#366b0f",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#9bd771",
+                        "primary-fixed": "#b6f48a",
+                        "inverse-surface": "#3a2e26",
+                        "on-secondary-fixed-variant": "#633f11",
+                        "tertiary-fixed-dim": "#ffb68e",
+                        "on-tertiary-fixed-variant": "#763300",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#bd5706",
+                        "outline-variant": "#c2c9b7",
+                        "secondary-fixed-dim": "#f1bd84",
+                        "background": "#fff8f5",
+                        "on-surface": "#241912",
+                        "surface-container-highest": "#f3dfd2",
+                        "tertiary": "#974300",
+                        "outline": "#727a6a",
+                        "surface-container-high": "#f9e4d8",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#fff8f5",
+                        "primary": "#34680c",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#241912",
+                        "on-error-container": "#93000a",
+                        "surface-dim": "#ead6ca",
+                        "surface-container": "#ffeade",
+                        "on-primary-fixed": "#0a2100",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#ffdbc9",
+                        "on-secondary-container": "#785223",
+                        "on-secondary-fixed": "#2b1700",
+                        "secondary": "#7e5627",
+                        "inverse-on-surface": "#ffede3",
+                        "primary-container": "#4c8226",
+                        "secondary-fixed": "#ffddba",
+                        "on-tertiary-container": "#fffbff",
+                        "on-surface-variant": "#42493b",
+                        "inverse-primary": "#9bd771",
+                        "surface-variant": "#f3dfd2",
+                        "on-primary-container": "#f9ffed",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#235100",
+                        "on-tertiary-fixed": "#331200",
+                        "secondary-container": "#fdc88e",
+                        "surface": "#fff8f5",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "max-width": "1280px",
+                        "unit": "8px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-md": ["Work Sans"],
+                        "label-caps": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "body-lg": ["Work Sans"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["28px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "display-lg": ["56px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .sharp-shadow {
+            box-shadow: 4px 4px 0px rgba(58, 46, 38, 0.15);
+        }
+        .btn-active:active {
+            transform: translateY(2px);
+            box-shadow: 2px 2px 0px rgba(58, 46, 38, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="bg-surface dark:bg-surface-container w-full top-0 sticky border-b border-outline-variant/10 shadow-[2px_2px_0px_rgba(58,46,38,0.05)] z-50">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-max-width mx-auto">
+<a class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed tracking-tight" href="#">
+                Quintanamur S.L.
+            </a>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-on-surface-variant dark:text-outline-variant font-medium hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Maquinaria</a>
+<a class="text-on-surface-variant dark:text-outline-variant font-medium hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Servicios</a>
+<a class="text-on-surface-variant dark:text-outline-variant font-medium hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Sobre Nosotros</a>
+<a class="text-on-surface-variant dark:text-outline-variant font-medium hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Proyectos</a>
+<a class="text-primary dark:text-primary-fixed border-b-2 border-primary pb-1 font-bold" href="#">Contacto</a>
+</div>
+<div class="hidden md:flex items-center gap-4">
+<button class="bg-primary text-on-primary font-body-md font-bold py-2 px-4 rounded hover:bg-primary-container transition-colors active:translate-y-0.5 btn-active sharp-shadow">
+                    Solicitar Presupuesto
+                </button>
+</div>
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col">
+<!-- Hero Section -->
+<section class="bg-inverse-surface text-surface py-16 md:py-24 relative overflow-hidden">
+<div class="absolute inset-0 opacity-20 pointer-events-none" data-alt="A macro shot of heavy tractor tire treads resting on rich, dark agricultural soil. The lighting is low and moody, emphasizing the deep textures of the earth and the robust rubber of the machinery, hinting at industrial strength and agricultural heritage." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDwWachlBO-RTWVAhAuUh6I28CdiqgzyfJm9ki_szlpJJULJX7xnAJcELbNnFG4JvOwo9fZs2GNkGI6Ul_4pq7hQPnBTjqwgo7EphaBMw728y1BVC1cQcFuFdp_43pc1ZxNvSZLNPRa0I_ZPxR533lc5DyXapUnjtgo29wMjIUGM1rVkXI1OzApGNeTg5WyZbkshG4wXgEdmgDVI2BHZAL0ZMcGgumMjH273ScYiad8695mFZEX1-zW')"></div>
+<div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop relative z-10 flex flex-col items-center text-center">
+<div class="inline-flex items-center gap-2 mb-6 text-primary-fixed-dim font-label-caps text-label-caps border border-primary-fixed-dim/30 px-3 py-1 rounded-full">
+<span class="material-symbols-outlined text-sm" data-icon="handshake" data-weight="fill" style="font-variation-settings: 'FILL' 1;">handshake</span>
+<span>ATENCIÓN PERSONALIZADA</span>
+</div>
+<h1 class="font-display-lg text-headline-lg-mobile md:text-display-lg font-extrabold text-surface-bright mb-6 max-w-4xl tracking-tight">
+                    Hablemos de tu Proyecto
+                </h1>
+<p class="font-body-lg text-body-lg text-surface-variant/90 max-w-2xl mx-auto leading-relaxed">
+                    No importa si es una parcela agrícola de 50 hectáreas o la cimentación de una nave industrial. Tenemos la máquina exacta para el trabajo. Estamos en Yecla y trabajamos en toda la comarca, Altiplano, Alicante y Albacete.
+                </p>
+</div>
+</section>
+<!-- Two Column Layout -->
+<section class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-20 w-full">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Column Left (Contacto Directo y Base Operativa) -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<div class="bg-surface-variant border border-outline-variant/20 rounded-xl p-8 flex flex-col gap-8 sharp-shadow h-full">
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface mb-6">Contacto Directo</h2>
+<div class="flex flex-col gap-6">
+<a class="flex items-center gap-4 group p-4 bg-surface rounded-lg border border-outline-variant/30 hover:border-primary/50 transition-colors" href="tel:+34600000000">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="call" data-weight="fill" style="font-variation-settings: 'FILL' 1;">call</span>
+</div>
+<div>
+<div class="font-label-caps text-label-caps text-outline mb-1">LLÁMANOS DIRECTAMENTE</div>
+<div class="font-body-lg text-body-lg font-medium text-on-surface">+34 600 00 00 00</div>
+</div>
+</a>
+<a class="w-full bg-[#25D366] text-white font-body-lg font-bold py-4 px-6 rounded-lg hover:bg-[#20bd5a] transition-colors flex items-center justify-center gap-3 btn-active sharp-shadow" href="#">
+<svg class="w-6 h-6 fill-current" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"></path></svg>
+                                    Contactar por WhatsApp
+                                </a>
+</div>
+</div>
+<div class="mt-4">
+<h3 class="font-headline-md text-body-lg font-bold text-on-surface mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="location_on" data-weight="fill" style="font-variation-settings: 'FILL' 1;">location_on</span>
+                                Nuestra Base
+                            </h3>
+<p class="font-body-md text-on-surface-variant mb-4">Yecla, Región de Murcia. Prestando servicio al Altiplano, Alicante y Albacete.</p>
+<!-- Stylized Map Placeholder -->
+<div class="w-full h-48 bg-surface-container rounded-lg border border-outline-variant/30 overflow-hidden relative group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A highly stylized, minimal graphic map showing the region of Yecla, Spain, highlighting connections to Alicante and Albacete. Designed in a modern, flat vector style using Earth Brown and Sand colors, with a prominent Fendt Green location marker pinpointing Yecla." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCo4wNAorLecutY4ICTj3JhD5jhl7fXpPOR7Owx4R5y4PZXt8Wc3bDBbZHkhe7fL7jCFZXl0QJVNRKgI2XHV58DGSO2ogjdMethpImdgD0P6YNULnZJtxR9FQ25XfBFA5KEYWc1ik7L2Jlpxj4C0xaGoVR5FBsd-srGsj0Ff1QuuesE0UWSzqsjwEfV-aeHSH7k7EX5gVzzbnhcWYuwhiR_yl4sxD87twh0OyljHA0sxxPZG3o-9xmV')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/60 to-transparent flex items-end p-4">
+<span class="text-surface font-label-caps text-label-caps tracking-widest bg-primary/80 px-2 py-1 rounded backdrop-blur-sm">YECLA 38.61° N, 1.11° W</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Column Right (Formulario Inteligente de Presupuesto) -->
+<div class="lg:col-span-7 flex flex-col">
+<div class="bg-surface border border-outline-variant/20 rounded-xl p-8 md:p-10 sharp-shadow h-full relative overflow-hidden">
+<!-- Decorative element -->
+<div class="absolute -top-12 -right-12 w-40 h-40 bg-surface-container-high rounded-full opacity-50 pointer-events-none"></div>
+<div class="relative z-10">
+<h2 class="font-headline-md text-headline-lg-mobile md:text-headline-md font-bold text-on-surface mb-2">Solicita Valoración Sin Compromiso</h2>
+<p class="font-body-md text-on-surface-variant mb-8">Rellena los detalles a continuación y te contactaremos en menos de 24 horas laborables.</p>
+<form class="flex flex-col gap-6">
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase" for="sector">Sector de Actuación</label>
+<div class="relative">
+<select class="w-full bg-surface-bright border border-outline-variant rounded-lg px-4 py-3 font-body-md text-on-surface focus:ring-2 focus:ring-primary focus:border-primary appearance-none outline-none transition-all shadow-sm" id="sector" name="sector">
+<option disabled="" selected="" value="">Selecciona un sector...</option>
+<option value="agricola">Servicios Agrícolas</option>
+<option value="civil">Obra Civil / Excavación</option>
+<option value="otro">Otro</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-outline">
+<span class="material-symbols-outlined" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase" for="name">Tu Nombre o Empresa</label>
+<input class="w-full bg-surface-bright border border-outline-variant rounded-lg px-4 py-3 font-body-md text-on-surface placeholder:text-outline/50 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all shadow-sm" id="name" name="name" placeholder="Ej. Finca San José" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase" for="phone">Teléfono de Contacto</label>
+<input class="w-full bg-surface-bright border border-outline-variant rounded-lg px-4 py-3 font-body-md text-on-surface placeholder:text-outline/50 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all shadow-sm" id="phone" name="phone" placeholder="+34 600 00 00 00" type="tel"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase" for="location">Población / Finca (Ubicación)</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 flex items-center pl-4 text-outline/60 pointer-events-none">
+<span class="material-symbols-outlined text-sm" data-icon="pin_drop">pin_drop</span>
+</div>
+<input class="w-full bg-surface-bright border border-outline-variant rounded-lg pl-10 pr-4 py-3 font-body-md text-on-surface placeholder:text-outline/50 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all shadow-sm" id="location" name="location" placeholder="Indica dónde se realizará el trabajo" type="text"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant uppercase" for="message">Cuéntanos qué necesitas (Breve)</label>
+<textarea class="w-full bg-surface-bright border border-outline-variant rounded-lg px-4 py-3 font-body-md text-on-surface placeholder:text-outline/50 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all shadow-sm resize-none" id="message" name="message" placeholder="Desbroce de 20 hectáreas, zanjeo para tuberías..." rows="4"></textarea>
+</div>
+<div class="mt-4">
+<button class="w-full bg-primary text-on-primary font-body-lg font-bold py-4 px-6 rounded-lg hover:bg-primary-container transition-colors flex items-center justify-center gap-2 btn-active sharp-shadow group" type="button">
+<span>Enviar Solicitud</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<p class="font-body-md text-xs text-outline text-center mt-4">Al enviar este formulario, aceptas nuestra política de privacidad con respecto al tratamiento de datos.</p>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-inverse-surface dark:bg-surface-container-lowest w-full mt-auto border-t border-outline-variant/20 z-10 relative">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-12 max-w-max-width mx-auto gap-8 md:gap-0">
+<div class="font-headline-md text-headline-md font-bold text-surface dark:text-on-surface">
+                Quintanamur S.L.
+            </div>
+<div class="flex flex-wrap justify-center gap-6 md:gap-8">
+<a class="font-body-md text-body-md text-surface-variant/80 dark:text-on-surface-variant hover:text-primary-fixed transition-colors focus:ring-2 focus:ring-primary-fixed outline-none rounded" href="#">Aviso Legal</a>
+<a class="font-body-md text-body-md text-surface-variant/80 dark:text-on-surface-variant hover:text-primary-fixed transition-colors focus:ring-2 focus:ring-primary-fixed outline-none rounded" href="#">Política de Privacidad</a>
+<a class="font-body-md text-body-md text-surface-variant/80 dark:text-on-surface-variant hover:text-primary-fixed transition-colors focus:ring-2 focus:ring-primary-fixed outline-none rounded" href="#">Sostenibilidad</a>
+<a class="font-body-md text-body-md text-surface-variant/80 dark:text-on-surface-variant hover:text-primary-fixed transition-colors focus:ring-2 focus:ring-primary-fixed outline-none rounded" href="#">Certificaciones</a>
+</div>
+<div class="font-body-md text-body-md text-surface-variant/60 text-center md:text-right text-sm">
+                © 2024 Quintanamur S.L. Engineering &amp; Agriculture Heritage.
+            </div>
+</div>
+</footer>
+</body></html>

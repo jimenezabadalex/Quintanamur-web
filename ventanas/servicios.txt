@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Servicios - Quintanamur S.L.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Work+Sans:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error-container": "#ffdad6",
+                      "outline-variant": "#c2c9b7",
+                      "on-primary-fixed": "#0a2100",
+                      "tertiary-container": "#bd5706",
+                      "secondary-container": "#fdc88e",
+                      "inverse-surface": "#3a2e26",
+                      "tertiary-fixed-dim": "#ffb68e",
+                      "surface-bright": "#fff8f5",
+                      "secondary": "#7e5627",
+                      "surface-container-low": "#fff1e9",
+                      "surface": "#fff8f5",
+                      "on-tertiary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-container": "#785223",
+                      "tertiary": "#974300",
+                      "primary-fixed-dim": "#9bd771",
+                      "background": "#fff8f5",
+                      "on-surface": "#241912",
+                      "error": "#ba1a1a",
+                      "inverse-on-surface": "#ffede3",
+                      "primary-fixed": "#b6f48a",
+                      "surface-tint": "#366b0f",
+                      "on-tertiary-fixed": "#331200",
+                      "secondary-fixed": "#ffddba",
+                      "on-secondary-fixed-variant": "#633f11",
+                      "surface-container-high": "#f9e4d8",
+                      "on-secondary-fixed": "#2b1700",
+                      "on-primary-container": "#f9ffed",
+                      "surface-container-highest": "#f3dfd2",
+                      "on-secondary": "#ffffff",
+                      "primary-container": "#4c8226",
+                      "on-error": "#ffffff",
+                      "surface-dim": "#ead6ca",
+                      "primary": "#34680c",
+                      "tertiary-fixed": "#ffdbc9",
+                      "on-primary": "#ffffff",
+                      "on-primary-fixed-variant": "#235100",
+                      "secondary-fixed-dim": "#f1bd84",
+                      "on-tertiary-fixed-variant": "#763300",
+                      "on-background": "#241912",
+                      "on-surface-variant": "#42493b",
+                      "inverse-primary": "#9bd771",
+                      "surface-variant": "#f3dfd2",
+                      "outline": "#727a6a",
+                      "on-tertiary-container": "#fffbff",
+                      "surface-container": "#ffeade"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "max-width": "1280px",
+                      "gutter": "24px",
+                      "unit": "8px",
+                      "margin-desktop": "64px",
+                      "margin-mobile": "20px"
+              },
+              "fontFamily": {
+                      "headline-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-lg": [
+                              "Work Sans"
+                      ],
+                      "display-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-lg-mobile": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-md": [
+                              "Work Sans"
+                      ],
+                      "headline-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "label-caps": [
+                              "JetBrains Mono"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg": [
+                              "40px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "56px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "28px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .sharp-shadow {
+            box-shadow: 2px 2px 0px rgba(58, 46, 38, 0.1);
+        }
+        .sharp-shadow-hover:hover {
+            box-shadow: 4px 4px 0px rgba(58, 46, 38, 0.15);
+            transform: translateY(-2px);
+        }
+      </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="bg-surface dark:bg-surface-container w-full top-0 sticky border-b border-outline-variant/10 shadow-sm z-50 transition-colors duration-300">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-max-width mx-auto">
+<a class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed focus:outline-none focus:ring-2 focus:ring-primary-fixed rounded-sm" href="#">
+                Quintanamur S.L.
+            </a>
+<div class="hidden md:flex space-x-8 items-center">
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant font-medium hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Maquinaria</a>
+<a class="font-body-md text-body-md text-primary dark:text-primary-fixed border-b-2 border-primary pb-1 font-bold active:translate-y-0.5 transition-transform" href="#">Servicios</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant font-medium hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Sobre Nosotros</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant font-medium hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Proyectos</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant font-medium hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="#">Contacto</a>
+</div>
+<button class="hidden md:flex bg-tertiary text-on-tertiary font-body-md font-bold py-2 px-6 rounded-DEFAULT hover:bg-tertiary-container transition-colors duration-200 sharp-shadow sharp-shadow-hover focus:outline-none focus:ring-2 focus:ring-tertiary-fixed-dim">
+                Solicitar Presupuesto
+            </button>
+<!-- Mobile menu button -->
+<button class="md:hidden text-on-surface focus:outline-none">
+<span class="material-symbols-outlined text-2xl">menu</span>
+</button>
+</div>
+</nav>
+<!-- Header -->
+<header class="bg-inverse-surface text-surface py-20 px-margin-mobile md:px-margin-desktop relative overflow-hidden">
+<div class="max-w-max-width mx-auto relative z-10 grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-8 flex flex-col justify-center">
+<h1 class="font-display-lg text-display-lg text-surface-bright mb-6">Nuestro Catálogo de Servicios</h1>
+<p class="font-headline-md text-headline-md font-medium text-surface-container-high mb-4">De la preparación agrícola más extrema al movimiento de tierras más pesado.</p>
+<p class="font-body-lg text-body-lg text-surface-container mb-10 max-w-2xl">En Quintanamur S.L. centralizamos todas las fases de tu proyecto con maquinaria propia de última generación. Elige tu sector para descubrir cómo podemos ayudarte.</p>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="inline-flex items-center justify-center bg-surface text-inverse-surface font-body-md font-bold py-3 px-6 rounded-DEFAULT hover:bg-surface-dim transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-surface-bright" href="#servicios-agricolas">
+<span class="material-symbols-outlined mr-2">arrow_downward</span>
+                        VER SERVICIOS AGRÍCOLAS
+                    </a>
+<a class="inline-flex items-center justify-center border-2 border-surface text-surface font-body-md font-bold py-3 px-6 rounded-DEFAULT hover:bg-surface/10 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-surface-bright" href="#obra-civil">
+<span class="material-symbols-outlined mr-2">arrow_downward</span>
+                        VER OBRA CIVIL Y EXCAVACIONES
+                    </a>
+</div>
+</div>
+<!-- Decorative Elements -->
+<div class="hidden md:block md:col-span-4 relative opacity-20">
+<span class="material-symbols-outlined text-[200px] absolute right-0 top-1/2 transform -translate-y-1/2 text-surface">agriculture</span>
+</div>
+</div>
+</header>
+<main class="flex-grow">
+<!-- Section 1: SERVICIOS AGRÍCOLAS -->
+<section class="bg-surface py-24 px-margin-mobile md:px-margin-desktop" id="servicios-agricolas">
+<div class="max-w-max-width mx-auto">
+<div class="mb-16">
+<span class="font-label-caps text-label-caps text-primary tracking-widest uppercase mb-2 block">Sector Primario</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">SERVICIOS AGRÍCOLAS</h2>
+<div class="w-24 h-1 bg-primary mt-4"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter mb-gutter">
+<!-- Service Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg overflow-hidden sharp-shadow hover:sharp-shadow-hover transition-all duration-300 flex flex-col group">
+<div class="h-64 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A massive Fendt tractor pulling a heavy-duty stone crushing machine through a dry, rocky agricultural field. Dust billows up as the machine pulverizes large stones. The lighting is bright and sunny, highlighting the rugged terrain and the power of the modern agricultural equipment. High-end industrial photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXQtf_j4EDG-BaIDYHfW8iHFM0ZhyX-GUJb1x_cP3qBLwK4JtKctRu-I7h5ENuEZtlgLxw7_dakdf47dRqW9kWzVThh0N3CRcwEY1tthwy8of9izq6eLaQ1VMXC-7Wbr0wPxSm27v8EZHKfaek-8kv10Lm-7tsZ8z8ZMrdsGvajm0rWifOmXFS_GentL2QtyRyw-jHanZfHqSbRtGk5jtli7ZTxPqR4ZJP_WqHUV7rCr_tt9qXACP8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+<div class="absolute bottom-4 left-4 bg-primary text-on-primary font-label-caps text-label-caps px-3 py-1 rounded-full uppercase">Preparación de Suelo</div>
+</div>
+<div class="p-8 flex flex-col flex-grow">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-3">Despedregado de Fincas y Trituración de Piedra</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">Transformamos terrenos pedregosos en tierras fértiles y seguras para la siembra. Nuestra maquinaria especializada tritura roca in situ hasta 35cm de profundidad, mejorando la estructura del suelo sin necesidad de retirar material.</p>
+<div class="bg-surface-container p-4 rounded-md mb-6 border border-outline-variant/20 flex items-center">
+<span class="material-symbols-outlined text-secondary mr-3">precision_manufacturing</span>
+<div>
+<span class="font-label-caps text-label-caps text-secondary uppercase block mb-1">Tecnología empleada</span>
+<span class="font-body-md text-body-md font-medium text-on-surface">Fresadora FI-IVAN + Tractor Fendt Alta Potencia</span>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary font-body-md font-bold py-3 px-4 rounded-DEFAULT hover:bg-primary-container transition-colors duration-200 mt-auto flex justify-center items-center">
+                                Solicitar presupuesto para triturar piedra
+                                <span class="material-symbols-outlined ml-2 text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Service Card 4 -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg overflow-hidden sharp-shadow hover:sharp-shadow-hover transition-all duration-300 flex flex-col group">
+<div class="h-64 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A high-tech planting machine operating in a vast, prepared field, planting rows of saplings or vines with precise GPS guidance. The soil is rich brown, and the sky is a clear blue. The machinery looks advanced and modern, emphasizing precision agriculture and efficient planting techniques." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcZRIiuDu4joh3qiF3Spgjongz8mXGSaAUe8Ds_q-xDE13poy5jChZqq5tDP_Wk1CiPHoD1Zi6tTlUp6zn8oW8k1lWDcyHzPN9Wq19CMpEtJsu5EzoUhqJagDLUJzN6tLCN7oQQx1DBo6zWA2GyK7bTGfsvt71fJK1JGjLCEPl9r9Z8V7szL2yMh9XuHHwgbbQ047txL8aifGAEyedAfU7yGNhKi34aixP_S8Afzkz2aqnJp31am87"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+<div class="absolute bottom-4 left-4 bg-primary text-on-primary font-label-caps text-label-caps px-3 py-1 rounded-full uppercase">Plantación de Precisión</div>
+</div>
+<div class="p-8 flex flex-col flex-grow">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-3">Plantación de Viñedo y Almendros con GPS</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">Establecimiento de nuevos cultivos leñosos con precisión milimétrica. Utilizamos sistemas de guiado GPS RTK para garantizar una alineación perfecta, optimizando el espacio y facilitando futuras labores mecanizadas.</p>
+<div class="bg-surface-container p-4 rounded-md mb-6 border border-outline-variant/20 flex items-center">
+<span class="material-symbols-outlined text-secondary mr-3">satellite_alt</span>
+<div>
+<span class="font-label-caps text-label-caps text-secondary uppercase block mb-1">Tecnología empleada</span>
+<span class="font-body-md text-body-md font-medium text-on-surface">Plantadora TOPCOM con autoguiado GPS</span>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary font-body-md font-bold py-3 px-4 rounded-DEFAULT hover:bg-primary-container transition-colors duration-200 mt-auto flex justify-center items-center">
+                                Consultar disponibilidad de plantación
+                                <span class="material-symbols-outlined ml-2 text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Bento grid for smaller services -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Service 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg p-8 sharp-shadow hover:sharp-shadow-hover transition-all duration-300 flex flex-col justify-between">
+<div>
+<div class="flex items-start justify-between mb-4">
+<h3 class="font-headline-md text-headline-md text-on-surface max-w-[80%]">Desfonde de Tierras y Preparación Profunda</h3>
+<div class="bg-surface-container-high p-2 rounded-full">
+<span class="material-symbols-outlined text-primary">landscape</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Aireación y rotura de capas compactadas profundas para mejorar el drenaje y desarrollo radicular previo a nuevas plantaciones.</p>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-outline text-sm">build</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Arado de volteo profundo</span>
+</div>
+<button class="text-primary font-body-md font-bold flex items-center hover:text-primary-container transition-colors">
+                                Hablar con un especialista en desfonde
+                                <span class="material-symbols-outlined ml-1 text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Service 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg p-8 sharp-shadow hover:sharp-shadow-hover transition-all duration-300 flex flex-col justify-between">
+<div>
+<div class="flex items-start justify-between mb-4">
+<h3 class="font-headline-md text-headline-md text-on-surface max-w-[80%]">Arranque de Viña y Limpieza de Cultivos</h3>
+<div class="bg-surface-container-high p-2 rounded-full">
+<span class="material-symbols-outlined text-primary">forest</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Eliminación eficiente de plantaciones viejas o enfermas, incluyendo la extracción de raíces y preparación inicial del terreno para su próximo uso.</p>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-outline text-sm">build</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Topo + Pala extractora</span>
+</div>
+<button class="text-primary font-body-md font-bold flex items-center hover:text-primary-container transition-colors">
+                                Pedir precio por hectárea para arranque
+                                <span class="material-symbols-outlined ml-1 text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: OBRA CIVIL Y EXCAVACIONES -->
+<section class="bg-surface-variant py-24 px-margin-mobile md:px-margin-desktop border-t border-outline-variant/20" id="obra-civil">
+<div class="max-w-max-width mx-auto">
+<div class="mb-16">
+<span class="font-label-caps text-label-caps text-secondary tracking-widest uppercase mb-2 block">Infraestructura &amp; Construcción</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">OBRA CIVIL Y EXCAVACIONES</h2>
+<div class="w-24 h-1 bg-secondary mt-4"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Main Feature Service -->
+<div class="md:col-span-8 bg-surface-container-lowest border border-outline-variant/30 rounded-lg overflow-hidden sharp-shadow hover:sharp-shadow-hover transition-all duration-300 flex flex-col md:flex-row group">
+<div class="md:w-1/2 h-64 md:h-auto relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A heavy yellow excavator digging a deep trench in a construction site. Piles of excavated earth surround the trench. In the background, other construction equipment and a temporary site office are visible under a partly cloudy sky. The scene conveys heavy duty civil engineering and earthmoving capabilities." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFN4qGOfXjN2K-80uhnHe8IZ2tIGcoOcFt9cR3vIqfVANynoSD-qevOqXsU2ulg2Uns4UZrPHgyLq6otFzu8ycA4ZGfTY-hKYfKVX7P2Tnml_NPyAsGPWw-3XNKhecRJoUXVoZRKmhx3TzMVRfk3DFIuuAKx8_brH5HpwTYUKL8A_1-B12RScw_1AhBNW9KD-6PJo6CJwBXC9_ctNheB75kzmS8f2Ue2hL7cS8XdlHg1o6zmCp8sC5"/>
+<div class="absolute top-4 left-4 bg-secondary text-on-secondary font-label-caps text-label-caps px-3 py-1 rounded-full uppercase shadow-sm">Movimiento de Tierras</div>
+</div>
+<div class="md:w-1/2 p-8 flex flex-col">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-3">Excavaciones, Cimentaciones y Movimiento de Tierras</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">Ejecución precisa de excavaciones para cimentaciones profundas, zanjas para canalizaciones y grandes movimientos de tierra para preparación de plataformas y nivelaciones topográficas.</p>
+<div class="bg-surface-container-low p-4 rounded-md mb-6 border-l-4 border-secondary">
+<span class="font-label-caps text-label-caps text-secondary uppercase block mb-1">Equipo Principal</span>
+<span class="font-body-md text-body-md font-semibold text-on-surface">Retropala de Alto Rendimiento TrinityB 432</span>
+</div>
+<button class="w-full border-2 border-secondary text-secondary font-body-md font-bold py-3 px-4 rounded-DEFAULT hover:bg-secondary hover:text-on-secondary transition-colors duration-200 mt-auto flex justify-center items-center">
+                                Consultar servicios de excavación
+                            </button>
+</div>
+</div>
+<!-- Side Services Column -->
+<div class="md:col-span-4 flex flex-col gap-gutter">
+<!-- Service 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg overflow-hidden sharp-shadow hover:sharp-shadow-hover transition-all duration-300 flex flex-col flex-grow">
+<div class="h-40 overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="An industrial rock crusher machine actively processing large chunks of concrete and rock in a quarry or construction site. A conveyor belt deposits the crushed material into a pile. An excavator is loading the crusher. The environment is dusty and industrial, emphasizing heavy-duty recycling and material processing." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdxbU5EnOYYyIiXj4JpB-9mlk-t5s6b4UZ-NDs6jNKpkxuyU-S8YGqkcrh1TV6s6BMLHXVB07LHDbUDVKqMiaKdYTAPb8VhJvso2WjimsCRWGdgeWOCu42aHh9_74jabdHLtmM5RRxWj1ktW5uuz1pp3vnqfduEs4zT22pyQ5vxJt0sKBMJjgG7vAugUtrgqrS9CdmTsTHx7VKuUHwJhBwzAdLxDAb_WTCfUtDkVh3GyXrhN_5TzOr"/>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2 text-xl">Trituración de Roca y Reciclaje de Pavimentos</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 text-sm flex-grow">Reducción volumétrica de materiales pedregosos y asfálticos in situ para su reutilización como base estabilizada.</p>
+<div class="flex items-center gap-2 mb-4 text-xs">
+<span class="material-symbols-outlined text-outline text-sm">settings_suggest</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">FI-IVAN 2T S2 + Fendt</span>
+</div>
+<button class="text-secondary font-body-md font-bold flex items-center hover:text-secondary-container transition-colors text-sm">
+                                    Solicitar valoración técnica
+                                    <span class="material-symbols-outlined ml-1 text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Service 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg p-6 sharp-shadow hover:sharp-shadow-hover transition-all duration-300 flex flex-col flex-grow">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2 text-xl">Trituración de Arbolado y Desbroce Integral</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 text-sm flex-grow">Limpieza profunda de parcelas forestales o urbanizables, eliminando biomasa pesada y maleza densa con equipos de alta capacidad.</p>
+<div class="flex items-center gap-2 mb-4 text-xs">
+<span class="material-symbols-outlined text-outline text-sm">settings_suggest</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Trituradora Forestal TFT Cancela</span>
+</div>
+<button class="text-secondary font-body-md font-bold flex items-center hover:text-secondary-container transition-colors text-sm mt-auto">
+                                Solicitar valoración para despeje
+                                <span class="material-symbols-outlined ml-1 text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-20 px-margin-mobile md:px-margin-desktop bg-surface">
+<div class="max-w-4xl mx-auto bg-primary-container rounded-xl p-8 md:p-12 sharp-shadow text-center relative overflow-hidden">
+<!-- Abstract machinery track pattern background -->
+<div class="absolute inset-0 opacity-10 pointer-events-none flex" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, #ffffff 10px, #ffffff 20px);"></div>
+<div class="relative z-10">
+<span class="material-symbols-outlined text-5xl text-on-primary-container mb-4">handshake</span>
+<h2 class="font-display-lg text-display-lg text-on-primary-container mb-4">¿Tienes un proyecto en mente?</h2>
+<p class="font-body-lg text-body-lg text-on-primary-container/90 mb-8 max-w-2xl mx-auto">Evaluamos tu terreno y te ofrecemos la solución técnica más eficiente con maquinaria propia, garantizando plazos y resultados profesionales.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-4">
+<button class="bg-on-primary-container text-primary-container font-body-md font-bold py-4 px-8 rounded-DEFAULT hover:bg-surface transition-colors duration-200 flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined mr-2">call</span>
+                            Llamar al Teléfono Directo
+                        </button>
+<button class="bg-transparent border-2 border-on-primary-container text-on-primary-container font-body-md font-bold py-4 px-8 rounded-DEFAULT hover:bg-on-primary-container/10 transition-colors duration-200 flex items-center justify-center">
+<span class="material-symbols-outlined mr-2">chat</span>
+                            Contactar por WhatsApp
+                        </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-inverse-surface dark:bg-surface-container-lowest w-full mt-auto border-t border-outline-variant/20 py-12 px-margin-mobile md:px-margin-desktop">
+<div class="max-w-max-width mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="font-headline-md text-headline-md font-bold text-surface dark:text-on-surface">
+                Quintanamur S.L.
+            </div>
+<div class="flex flex-wrap justify-center gap-x-8 gap-y-4">
+<a class="font-body-md text-body-md text-surface-variant/80 dark:text-on-surface-variant hover:text-primary-fixed transition-colors focus:ring-2 focus:ring-primary-fixed rounded-sm" href="#">Aviso Legal</a>
+<a class="font-body-md text-body-md text-surface-variant/80 dark:text-on-surface-variant hover:text-primary-fixed transition-colors focus:ring-2 focus:ring-primary-fixed rounded-sm" href="#">Política de Privacidad</a>
+<a class="font-body-md text-body-md text-surface-variant/80 dark:text-on-surface-variant hover:text-primary-fixed transition-colors focus:ring-2 focus:ring-primary-fixed rounded-sm" href="#">Sostenibilidad</a>
+<a class="font-body-md text-body-md text-surface-variant/80 dark:text-on-surface-variant hover:text-primary-fixed transition-colors focus:ring-2 focus:ring-primary-fixed rounded-sm" href="#">Certificaciones</a>
+</div>
+<div class="font-body-md text-body-md text-surface-variant/60">
+                © 2024 Quintanamur S.L. Engineering &amp; Agriculture Heritage.
+            </div>
+</div>
+</footer>
+</body></html>
