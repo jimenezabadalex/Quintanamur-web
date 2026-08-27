@@ -4,7 +4,7 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout
   title="Parque de Maquinaria y Flota Propia - Quintanamur S.L."
-  description="Flota Fendt, John Deere, Retropala Mixta, Fresadora FI-IVAN y guiado satelital GPS Topcon. Maquinaria propia y operarios expertos."
+  description="Flota Fendt 933, Fendt 930, Fendt 722, Retropala Mixta, Fresadora FI-IVAN y guiado satelital GPS Topcon. Maquinaria propia sin intermediarios."
   activePage="maquinaria"
 >
   <!-- Hero Section -->
@@ -79,64 +79,110 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
-        <!-- Fendt Card -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Fendt 933 Vario -->
         <div class="bg-surface border border-outline-variant/20 rounded overflow-hidden flex flex-col sharp-shadow transition-transform sharp-shadow-hover">
-          <div class="aspect-[16/10] sm:aspect-[16/9] overflow-hidden relative bg-surface-container-lowest">
+          <div class="aspect-[16/10] overflow-hidden relative bg-surface-container-lowest">
             <img
-              alt="Tractor Fendt de alta potencia"
+              alt="Tractor Fendt 933 Vario"
               class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
-              src="/images/maquinaria/tractor-fendt-vario.webp"
+              src="/images/maquinaria/tractor-fendt-933.webp"
               loading="lazy"
             />
             <div class="absolute top-4 left-4 bg-primary text-on-primary px-3 py-1 font-label-caps text-label-caps rounded-xl shadow-sm">
-              FLOTA FENDT
+              FENDT 933 VARIO
             </div>
           </div>
-          <div class="p-6 flex-grow flex flex-col">
-            <h3 class="font-headline-md text-headline-md text-on-surface mb-3">
-              El núcleo de nuestra capacidad operativa
-            </h3>
-            <p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow leading-relaxed">
-              Tecnología alemana al servicio del rendimiento extremo. Estos equipos proporcionan la tracción y el control necesarios tanto para arrastrar implementos pesados de estabilización de suelos como para labores de preparación agrícola de alta precisión.
-            </p>
-            <div class="flex flex-wrap gap-2 mt-auto">
+          <div class="p-6 flex-grow flex flex-col justify-between">
+            <div>
+              <h3 class="font-headline-md text-[22px] font-bold text-on-surface mb-3">
+                Trituración y Desbroce Pesado
+              </h3>
+              <p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
+                Máxima potencia para los trabajos más extremos. Tracción alemana equipada específicamente para arrastrar la fresadora <strong class="text-on-surface">FI-IVAN</strong> y la desbrozadora forestal <strong class="text-on-surface">TMC Cancela</strong> en viales de obra y acondicionamiento rústico.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2 mt-auto pt-4 border-t border-outline-variant/20">
               <span class="px-2 py-1 bg-surface-container text-on-surface-variant font-label-caps text-[10px] rounded border border-outline-variant/30">
-                Transmisión Vario
+                330 CV Potencia
               </span>
               <span class="px-2 py-1 bg-surface-container text-on-surface-variant font-label-caps text-[10px] rounded border border-outline-variant/30">
-                Alta Potencia
+                Fresadora FI-IVAN
+              </span>
+              <span class="px-2 py-1 bg-surface-container text-on-surface-variant font-label-caps text-[10px] rounded border border-outline-variant/30">
+                TFT Cancela
               </span>
             </div>
           </div>
         </div>
 
-        <!-- John Deere Card -->
+        <!-- Fendt 930 Vario -->
         <div class="bg-surface border border-outline-variant/20 rounded overflow-hidden flex flex-col sharp-shadow transition-transform sharp-shadow-hover">
-          <div class="aspect-[16/10] sm:aspect-[16/9] overflow-hidden relative bg-surface-container-lowest">
+          <div class="aspect-[16/10] overflow-hidden relative bg-surface-container-lowest">
             <img
-              alt="Tractor John Deere"
+              alt="Tractor Fendt 930 Vario"
               class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
-              src="/images/maquinaria/tractor-john-deere.webp"
+              src="/images/maquinaria/tractor-fendt-930.webp"
               loading="lazy"
             />
-            <div class="absolute top-4 left-4 bg-secondary text-on-secondary px-3 py-1 font-label-caps text-label-caps rounded-xl shadow-sm">
-              JOHN DEERE
+            <div class="absolute top-4 left-4 bg-primary text-on-primary px-3 py-1 font-label-caps text-label-caps rounded-xl shadow-sm">
+              FENDT 930 VARIO
             </div>
           </div>
-          <div class="p-6 flex-grow flex flex-col">
-            <h3 class="font-headline-md text-headline-md text-on-surface mb-3">
-              Nuestro clásico infatigable
-            </h3>
-            <p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow leading-relaxed">
-              Fiabilidad absoluta en cualquier terreno. Un equipo versátil que complementa nuestras operaciones diarias, asegurando que siempre tengamos la fuerza motriz adecuada disponible para tareas de apoyo logístico y movimiento ligero.
-            </p>
-            <div class="flex flex-wrap gap-2 mt-auto">
+          <div class="p-6 flex-grow flex flex-col justify-between">
+            <div>
+              <h3 class="font-headline-md text-[22px] font-bold text-on-surface mb-3">
+                Molino, Topo y Desfonde Profundo
+              </h3>
+              <p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
+                Fuerza de tiro constante en las profundidades del terreno. Especializado en el trabajo con <strong class="text-on-surface">molino de piedra</strong>, subsolador topo y arados de desfonde profundo para transformar fincas pedregosas en suelos productivos.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2 mt-auto pt-4 border-t border-outline-variant/20">
               <span class="px-2 py-1 bg-surface-container text-on-surface-variant font-label-caps text-[10px] rounded border border-outline-variant/30">
-                Fiabilidad Contrastada
+                300 CV Potencia
               </span>
               <span class="px-2 py-1 bg-surface-container text-on-surface-variant font-label-caps text-[10px] rounded border border-outline-variant/30">
-                Soporte Logístico
+                Desfonde Profundo
+              </span>
+              <span class="px-2 py-1 bg-surface-container text-on-surface-variant font-label-caps text-[10px] rounded border border-outline-variant/30">
+                Molino de Piedra
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fendt 722 Vario -->
+        <div class="bg-surface border border-outline-variant/20 rounded overflow-hidden flex flex-col sharp-shadow transition-transform sharp-shadow-hover">
+          <div class="aspect-[16/10] overflow-hidden relative bg-surface-container-lowest">
+            <img
+              alt="Tractor Fendt 722 Vario"
+              class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
+              src="/images/maquinaria/tractor-fendt-722.webp"
+              loading="lazy"
+            />
+            <div class="absolute top-4 left-4 bg-primary text-on-primary px-3 py-1 font-label-caps text-label-caps rounded-xl shadow-sm">
+              FENDT 722 VARIO
+            </div>
+          </div>
+          <div class="p-6 flex-grow flex flex-col justify-between">
+            <div>
+              <h3 class="font-headline-md text-[22px] font-bold text-on-surface mb-3">
+                Plantación de Precisión GPS Topcon
+              </h3>
+              <p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
+                Agilidad y tecnología satelital centimétrica. Acoplado a la máquina plantadora automatizada con guiado <strong class="text-on-surface">GPS Topcon RTK</strong> para plantaciones de viña, olivar intensivo, almendros y frutales con alineación impecable.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2 mt-auto pt-4 border-t border-outline-variant/20">
+              <span class="px-2 py-1 bg-surface-container text-on-surface-variant font-label-caps text-[10px] rounded border border-outline-variant/30">
+                220 CV Potencia
+              </span>
+              <span class="px-2 py-1 bg-surface-container text-on-surface-variant font-label-caps text-[10px] rounded border border-outline-variant/30">
+                GPS Topcon RTK
+              </span>
+              <span class="px-2 py-1 bg-surface-container text-on-surface-variant font-label-caps text-[10px] rounded border border-outline-variant/30">
+                Viña / Olivo / Almendro
               </span>
             </div>
           </div>
