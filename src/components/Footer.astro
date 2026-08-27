@@ -1,0 +1,27 @@
+---
+interface Props {
+  className?: string;
+}
+
+const { className = '' } = Astro.props;
+---
+
+<footer class={`bg-inverse-surface text-inverse-on-surface border-t border-outline-variant/20 py-12 px-margin-mobile md:px-margin-desktop mt-auto ${className}`}>
+  <div class="max-w-max-width mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+    <div class="text-center md:text-left">
+      <a href="/" class="text-headline-md font-headline-md font-bold text-primary-fixed block mb-2 focus:outline-none focus:ring-2 focus:ring-primary-fixed rounded">
+        Quintanamur S.L.
+      </a>
+      <p class="font-body-md text-body-md text-surface-container-high text-sm">
+        © 2026 Quintanamur S.L. Ingeniería Civil y Agraria de Precisión.
+      </p>
+    </div>
+
+    <nav class="flex flex-wrap justify-center gap-6 font-label-caps text-label-caps text-surface-variant" aria-label="Enlaces legales">
+      <a class="hover:text-primary-fixed-dim transition-colors" href="#">Aviso Legal</a>
+      <a class="hover:text-primary-fixed-dim transition-colors" href="#">Política de Privacidad</a>
+      <a class="hover:text-primary-fixed-dim transition-colors" href="#">Sostenibilidad</a>
+      <a class="hover:text-primary-fixed-dim transition-colors" href="#">Soporte Técnico</a>
+    </nav>
+  </div>
+</footer>

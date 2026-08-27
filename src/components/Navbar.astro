@@ -1,0 +1,123 @@
+---
+interface Props {
+  activePage?: 'inicio' | 'maquinaria' | 'servicios' | 'sobre-nosotros' | 'contacto' | string;
+}
+
+const { activePage } = Astro.props;
+const currentPath = Astro.url.pathname;
+
+const navItems = [
+  { label: 'Inicio', href: '/', key: 'inicio' },
+  { label: 'Maquinaria', href: '/maquinaria', key: 'maquinaria' },
+  { label: 'Servicios', href: '/servicios', key: 'servicios' },
+  { label: 'Sobre Nosotros', href: '/sobre-nosotros', key: 'sobre-nosotros' },
+  { label: 'Contacto', href: '/contacto', key: 'contacto' },
+];
+
+const isCurrent = (key: string, href: string) => {
+  if (activePage) return activePage === key;
+  if (href === '/' && (currentPath === '/' || currentPath === '')) return true;
+  return href !== '/' && currentPath.startsWith(href);
+};
+---
+
+<header class="bg-secondary text-on-secondary shadow-md sticky top-0 z-50 transition-colors duration-200">
+  <div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto h-20">
+    <!-- Brand Logo -->
+    <a class="text-headline-md font-headline-md font-bold text-on-secondary tracking-tight focus:outline-none focus:ring-2 focus:ring-secondary-fixed rounded" href="/">
+      Quintanamur S.L.
+    </a>
+
+    <!-- Navigation Links (Desktop) -->
+    <nav class="hidden md:flex gap-8 items-center" aria-label="Navegación principal">
+      {navItems.map(item => {
+        const active = isCurrent(item.key, item.href);
+        return (
+          <a
+            href={item.href}
+            class:list={[
+              'font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-secondary-fixed rounded px-1',
+              active
+                ? 'text-on-secondary font-bold border-b-2 border-on-secondary pb-1'
+                : 'text-on-secondary/80 hover:text-on-secondary'
+            ]}
+            aria-current={active ? 'page' : undefined}
+          >
+            {item.label}
+          </a>
+        );
+      })}
+    </nav>
+
+    <!-- Trailing Action -->
+    <div class="hidden md:block">
+      <a
+        class="bg-tertiary text-on-tertiary px-6 py-3 rounded hover:bg-tertiary-container transition-colors font-label-caps text-label-caps uppercase tracking-wider inline-block shadow-sm sharp-shadow focus:outline-none focus:ring-2 focus:ring-tertiary-fixed"
+        href="/contacto"
+      >
+        Solicitar Presupuesto
+      </a>
+    </div>
+
+    <!-- Mobile Menu Toggle Button -->
+    <button
+      id="mobile-menu-btn"
+      type="button"
+      class="md:hidden text-on-secondary p-2 rounded focus:outline-none focus:ring-2 focus:ring-secondary-fixed"
+      aria-label="Abrir menú de navegación"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <span class="material-symbols-outlined text-3xl" id="menu-icon">menu</span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu Dropdown -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden bg-secondary border-t border-secondary-fixed-dim/20 px-margin-mobile py-6 shadow-xl"
+  >
+    <nav class="flex flex-col gap-4" aria-label="Navegación móvil">
+      {navItems.map(item => {
+        const active = isCurrent(item.key, item.href);
+        return (
+          <a
+            href={item.href}
+            class:list={[
+              'py-2 px-3 rounded text-lg font-medium transition-colors duration-150',
+              active
+                ? 'bg-black/15 text-on-secondary font-bold border-l-4 border-primary-fixed'
+                : 'text-on-secondary/90 hover:bg-black/10'
+            ]}
+            aria-current={active ? 'page' : undefined}
+          >
+            {item.label}
+          </a>
+        );
+      })}
+      <div class="pt-4 border-t border-secondary-fixed-dim/20">
+        <a
+          class="w-full text-center block bg-tertiary text-on-tertiary px-6 py-3 rounded hover:bg-tertiary-container transition-colors font-label-caps text-label-caps uppercase tracking-wider shadow-sm"
+          href="/contacto"
+        >
+          Solicitar Presupuesto
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+
+  if (menuBtn && mobileMenu && menuIcon) {
+    menuBtn.addEventListener('click', () => {
+      const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+      menuBtn.setAttribute('aria-expanded', String(!isExpanded));
+      mobileMenu.classList.toggle('hidden');
+      menuIcon.textContent = isExpanded ? 'menu' : 'close';
+    });
+  }
+</script>

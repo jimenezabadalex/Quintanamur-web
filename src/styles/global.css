@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@theme {
+  --color-on-error: #ffffff;
+  --color-on-error-container: #93000a;
+  --color-on-surface-variant: #42493b;
+  --color-error-container: #ffdad6;
+  --color-error: #ba1a1a;
+  --color-primary-fixed-dim: #9bd771;
+  --color-on-secondary-fixed-variant: #633f11;
+  --color-surface-tint: #366b0f;
+  --color-inverse-surface: #3a2e26;
+  --color-secondary-fixed: #ffddba;
+  --color-secondary-fixed-dim: #f1bd84;
+  --color-surface: #fff8f5;
+  --color-on-secondary-fixed: #2b1700;
+  --color-on-surface: #241912;
+  --color-tertiary-fixed-dim: #ffb68e;
+  --color-surface-bright: #fff8f5;
+  --color-secondary: #7e5627;
+  --color-outline-variant: #c2c9b7;
+  --color-tertiary-fixed: #ffdbc9;
+  --color-on-tertiary: #ffffff;
+  --color-surface-dim: #ead6ca;
+  --color-inverse-on-surface: #ffede3;
+  --color-on-primary-fixed-variant: #235100;
+  --color-on-tertiary-container: #fffbff;
+  --color-surface-variant: #f3dfd2;
+  --color-tertiary: #974300;
+  --color-on-primary-fixed: #0a2100;
+  --color-primary-container: #4c8226;
+  --color-surface-container-lowest: #ffffff;
+  --color-tertiary-container: #bd5706;
+  --color-on-secondary-container: #785223;
+  --color-surface-container-highest: #f3dfd2;
+  --color-secondary-container: #fdc88e;
+  --color-on-background: #241912;
+  --color-on-tertiary-fixed-variant: #763300;
+  --color-primary-fixed: #b6f48a;
+  --color-surface-container: #ffeade;
+  --color-on-tertiary-fixed: #331200;
+  --color-on-secondary: #ffffff;
+  --color-background: #fff8f5;
+  --color-on-primary-container: #f9ffed;
+  --color-surface-container-high: #f9e4d8;
+  --color-outline: #727a6a;
+  --color-surface-container-low: #fff1e9;
+  --color-on-primary: #ffffff;
+  --color-primary: #34680c;
+  --color-inverse-primary: #9bd771;
+
+  --spacing-gutter: 24px;
+  --spacing-unit: 8px;
+  --spacing-margin-mobile: 20px;
+  --spacing-margin-desktop: 64px;
+  --spacing-max-width: 1280px;
+
+  --font-headline-lg: "Hanken Grotesk", sans-serif;
+  --font-body-lg: "Work Sans", sans-serif;
+  --font-headline-md: "Hanken Grotesk", sans-serif;
+  --font-label-caps: "JetBrains Mono", monospace;
+  --font-body-md: "Work Sans", sans-serif;
+  --font-headline-lg-mobile: "Hanken Grotesk", sans-serif;
+  --font-display-lg: "Hanken Grotesk", sans-serif;
+
+  --text-headline-lg: 40px;
+  --text-headline-lg--line-height: 1.2;
+  --text-headline-lg--font-weight: 700;
+
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 1.6;
+  --text-body-lg--font-weight: 400;
+
+  --text-headline-md: 28px;
+  --text-headline-md--line-height: 1.3;
+  --text-headline-md--font-weight: 600;
+
+  --text-label-caps: 12px;
+  --text-label-caps--line-height: 1.0;
+  --text-label-caps--letter-spacing: 0.1em;
+  --text-label-caps--font-weight: 500;
+
+  --text-body-md: 16px;
+  --text-body-md--line-height: 1.5;
+  --text-body-md--font-weight: 400;
+
+  --text-headline-lg-mobile: 32px;
+  --text-headline-lg-mobile--line-height: 1.2;
+  --text-headline-lg-mobile--font-weight: 700;
+
+  --text-display-lg: 56px;
+  --text-display-lg--line-height: 1.1;
+  --text-display-lg--letter-spacing: -0.02em;
+  --text-display-lg--font-weight: 800;
+}
+
+/* Custom Shadows and Interactions */
+.sharp-shadow {
+  box-shadow: 2px 2px 0px rgba(58, 46, 38, 0.12);
+}
+
+.sharp-shadow-hover:hover {
+  box-shadow: 4px 4px 0px rgba(58, 46, 38, 0.18);
+  transform: translateY(-2px);
+}
+
+.btn-active:active {
+  transform: translateY(2px);
+  box-shadow: 2px 2px 0px rgba(58, 46, 38, 0.12);
+}
