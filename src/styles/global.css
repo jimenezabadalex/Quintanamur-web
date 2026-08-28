@@ -63,13 +63,13 @@
   --spacing-margin-desktop: 64px;
   --spacing-max-width: 1280px;
 
-  --font-headline-lg: "Hanken Grotesk", sans-serif;
-  --font-body-lg: "Work Sans", sans-serif;
-  --font-headline-md: "Hanken Grotesk", sans-serif;
-  --font-label-caps: "JetBrains Mono", monospace;
-  --font-body-md: "Work Sans", sans-serif;
-  --font-headline-lg-mobile: "Hanken Grotesk", sans-serif;
-  --font-display-lg: "Hanken Grotesk", sans-serif;
+  --font-headline-lg: "Inter", sans-serif;
+  --font-body-lg: "Inter", sans-serif;
+  --font-headline-md: "Inter", sans-serif;
+  --font-label-caps: "Inter", sans-serif;
+  --font-body-md: "Inter", sans-serif;
+  --font-headline-lg-mobile: "Inter", sans-serif;
+  --font-display-lg: "Inter", sans-serif;
 
   --text-headline-lg: 40px;
   --text-headline-lg--line-height: 1.2;
@@ -238,8 +238,8 @@
   justify-content: center;
   gap: 0.5rem;
   background-color: transparent;
-  color: inherit;
-  border: 2px solid currentColor;
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.7);
   font-family: var(--font-label-caps);
   font-size: var(--text-label-caps);
   font-weight: 700;
@@ -251,7 +251,9 @@
   cursor: pointer;
 }
 .btn-outline-light:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: #ffffff;
+  color: #ffffff;
   transform: translateY(-2px);
 }
 .btn-outline-light:active {
