@@ -9,29 +9,29 @@ import Layout from "../layouts/Layout.astro";
 >
   <!-- Header / Hero con fondo dinámico integrado estilo Maquinaria -->
   <header
-    class="bg-inverse-surface text-on-primary py-24 md:py-32 px-margin-mobile md:px-margin-desktop relative overflow-hidden"
+    class="bg-inverse-surface text-on-primary py-24 md:py-32 lg:py-36 min-h-[520px] md:min-h-[580px] flex items-center px-margin-mobile md:px-margin-desktop relative overflow-hidden"
   >
     <!-- Background Layers -->
     <div class="absolute inset-0 pointer-events-none overflow-hidden">
       <!-- Imagen Agrícola (Fondo por defecto) -->
       <div
         id="hero-bg-agricola"
-        class="absolute inset-0 bg-cover bg-right md:bg-[center_right] bg-no-repeat transition-opacity duration-700 ease-in-out opacity-100"
+        class="absolute inset-0 bg-cover md:bg-[length:auto_100%] bg-right bg-no-repeat transition-opacity duration-700 ease-in-out opacity-100"
         style="background-image: url('/images/home/card-servicios-agricolas.webp');"
       >
       </div>
 
-      <!-- Imagen Obra Civil y Excavaciones -->
+      <!-- Imagen Obra Civil y Excavaciones (Encuadre completo sin cortes de brazo ni ruedas) -->
       <div
         id="hero-bg-obra-civil"
-        class="absolute inset-0 bg-cover bg-right md:bg-[center_right] bg-no-repeat transition-opacity duration-700 ease-in-out opacity-0"
+        class="absolute inset-0 bg-contain md:bg-[length:auto_96%] bg-right bg-no-repeat transition-opacity duration-700 ease-in-out opacity-0"
         style="background-image: url('/images/servicios/Header-obra-civil-excavaciones.webp');"
       >
       </div>
 
       <!-- Máscara de Gradiente Cinemático: oscuro sobre el texto (izquierda), transparente sobre la maquinaria (derecha) -->
       <div
-        class="absolute inset-0 bg-gradient-to-r from-inverse-surface via-inverse-surface/90 md:via-inverse-surface/80 to-inverse-surface/50 md:to-transparent"
+        class="absolute inset-0 bg-gradient-to-r from-inverse-surface via-inverse-surface/90 md:via-inverse-surface/80 to-inverse-surface/40 md:to-transparent"
       >
       </div>
       <!-- Gradiente vertical para móviles -->
