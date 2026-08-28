@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import MobileBottomBar from '../components/MobileBottomBar.astro';
 
 interface Props {
   title?: string;
@@ -14,6 +15,8 @@ const {
   description = 'Maquinaria pesada propia para obra civil, excavaciones, despedregado y plantación GPS en Yecla, Jumilla y comarca. Sin intermediarios.',
   activePage = 'inicio'
 } = Astro.props;
+
+const showMobileBar = activePage !== 'contacto';
 ---
 
 <!DOCTYPE html>
@@ -47,13 +50,15 @@ const {
       rel="stylesheet"
     />
   </head>
-  <body class="bg-background text-on-background font-body-md text-body-md antialiased overflow-x-hidden min-h-screen flex flex-col">
+  <body class="bg-background text-on-background font-body-md text-body-md antialiased overflow-x-hidden min-h-[100dvh] flex flex-col">
     <Navbar activePage={activePage} />
     
-    <main class="flex-grow">
+    <main class:list={['flex-grow', showMobileBar && 'pb-20 md:pb-0']}>
       <slot />
     </main>
 
     <Footer />
+
+    {showMobileBar && <MobileBottomBar />}
   </body>
 </html>
