@@ -52,6 +52,8 @@ const showMobileBar = activePage !== 'contacto';
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
       rel="stylesheet"
     />
+    <!-- Named slot for page-specific head injections (CSS, preloads, etc.) -->
+    <slot name="head" />
   </head>
   <body class="bg-background text-on-background font-body-md text-body-md antialiased overflow-x-hidden min-h-[100dvh] flex flex-col">
     <Navbar activePage={activePage} />
