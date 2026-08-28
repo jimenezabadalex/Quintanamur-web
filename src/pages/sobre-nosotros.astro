@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import CtaBanner from '../components/CtaBanner.astro';
+import { url } from '../utils/url';
 ---
 
 <Layout
@@ -12,7 +13,7 @@ import CtaBanner from '../components/CtaBanner.astro';
   <header class="bg-inverse-surface text-on-primary py-24 md:py-32 px-margin-mobile md:px-margin-desktop relative overflow-hidden">
     <div
       class="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none"
-      style="background-image: url('/images/sobre-nosotros/hero-nosotros-bg.webp');"
+      style={`background-image: url('${url('/images/sobre-nosotros/hero-nosotros-bg.webp')}');`}
     >
       <!-- Gradient overlay: strong dark tone on text side, completely open on image side -->
       <div class="absolute inset-0 bg-gradient-to-r from-inverse-surface via-inverse-surface/85 to-inverse-surface/40 md:to-transparent"></div>
@@ -79,7 +80,7 @@ import CtaBanner from '../components/CtaBanner.astro';
               <img
                 class="w-full h-full object-cover"
                 alt="Fotografía histórica de los orígenes de la empresa"
-                src="/images/sobre-nosotros/historia-1998-origenes.webp"
+                src={url('/images/sobre-nosotros/historia-1998-origenes.webp')}
                 loading="lazy"
               />
             </div>
@@ -95,7 +96,7 @@ import CtaBanner from '../components/CtaBanner.astro';
               <img
                 class="w-full h-full object-cover"
                 alt="Molino de piedra y tractor Fendt"
-                src="/images/sobre-nosotros/historia-2001-fima-molino.webp"
+                src={url('/images/sobre-nosotros/historia-2001-fima-molino.webp')}
                 loading="lazy"
               />
             </div>
@@ -138,7 +139,7 @@ import CtaBanner from '../components/CtaBanner.astro';
               <img
                 class="w-full h-full object-cover"
                 alt="Pantalla GPS Topcon para guiado satelital"
-                src="/images/sobre-nosotros/historia-2012-gps.webp"
+                src={url('/images/sobre-nosotros/historia-2012-gps.webp')}
                 loading="lazy"
               />
             </div>
@@ -154,7 +155,7 @@ import CtaBanner from '../components/CtaBanner.astro';
               <img
                 class="w-full h-full object-cover"
                 alt="Maquinaria pesada en obra civil"
-                src="/images/sobre-nosotros/historia-2025-quintanamur.webp"
+                src={url('/images/sobre-nosotros/historia-2025-quintanamur.webp')}
                 loading="lazy"
               />
             </div>

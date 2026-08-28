@@ -3,6 +3,7 @@ import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import MobileBottomBar from '../components/MobileBottomBar.astro';
+import { url } from '../utils/url';
 
 interface Props {
   title?: string;
@@ -24,8 +25,8 @@ const showMobileBar = activePage !== 'contacto';
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href={url('/favicon.svg')} />
+    <link rel="icon" href={url('/favicon.ico')} />
     <!-- Theme & Color Scheme -->
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#f9f8f5" media="(prefers-color-scheme: light)" />

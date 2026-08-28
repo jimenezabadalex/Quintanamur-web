@@ -1,4 +1,6 @@
 ---
+import { url } from '../utils/url';
+
 interface Props {
   className?: string;
 }
@@ -9,7 +11,7 @@ const { className = '' } = Astro.props;
 <footer class={`bg-inverse-surface text-inverse-on-surface border-t border-outline-variant/30 py-12 px-margin-mobile md:px-margin-desktop mt-auto ${className}`}>
   <div class="max-w-max-width mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
     <div class="text-center md:text-left">
-      <a href="/" class="text-headline-md font-headline-md font-bold text-primary-fixed hover:text-primary transition-colors block mb-2 focus:outline-none focus:ring-2 focus:ring-primary-fixed rounded">
+      <a href={url('/')} class="text-headline-md font-headline-md font-bold text-primary-fixed hover:text-primary transition-colors block mb-2 focus:outline-none focus:ring-2 focus:ring-primary-fixed rounded">
         Quintanamur S.L.
       </a>
       <p class="font-body-md text-body-md text-inverse-on-surface/80 text-sm">

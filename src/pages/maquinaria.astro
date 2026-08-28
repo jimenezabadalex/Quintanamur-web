@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import CtaBanner from "../components/CtaBanner.astro";
+import { url } from "../utils/url";
 ---
 
 <Layout
@@ -14,7 +15,7 @@ import CtaBanner from "../components/CtaBanner.astro";
   >
     <div
       class="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none"
-      style="background-image: url('/images/maquinaria/hero-flota-bg.webp');"
+      style={`background-image: url('${url('/images/maquinaria/hero-flota-bg.webp')}');`}
     >
       <!-- Gradient overlay: strong dark tone on text side, completely open on machinery side -->
       <div
@@ -208,7 +209,7 @@ import CtaBanner from "../components/CtaBanner.astro";
         </div>
         <div>
           <a
-            href="/servicios"
+            href={url('/servicios')}
             class="btn-agricola group"
           >
             <span>VER SERVICIOS</span>
@@ -231,7 +232,7 @@ import CtaBanner from "../components/CtaBanner.astro";
             <img
               alt="Tractor Fendt 933 Vario"
               class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
-              src="/images/maquinaria/tractor-fendt-933.webp"
+              src={url('/images/maquinaria/tractor-fendt-933.webp')}
               loading="lazy"
             />
             <div
@@ -290,7 +291,7 @@ import CtaBanner from "../components/CtaBanner.astro";
             <img
               alt="Tractor Fendt 930 Vario"
               class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
-              src="/images/maquinaria/tractor-fendt-930.webp"
+              src={url('/images/maquinaria/tractor-fendt-930.webp')}
               loading="lazy"
             />
             <div
@@ -348,7 +349,7 @@ import CtaBanner from "../components/CtaBanner.astro";
             <img
               alt="Tractor Fendt 722 Vario"
               class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
-              src="/images/maquinaria/tractor-fendt-722.webp"
+              src={url('/images/maquinaria/tractor-fendt-722.webp')}
               loading="lazy"
             />
             <div
@@ -407,7 +408,7 @@ import CtaBanner from "../components/CtaBanner.astro";
           <img
             alt="Tractor Fendt 211 Vario especialista en hilerado de piedras"
             class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
-            src="/images/maquinaria/tractor-fendt-211.webp"
+            src={url('/images/maquinaria/tractor-fendt-211.webp')}
             loading="lazy"
           />
           <div
@@ -492,7 +493,7 @@ import CtaBanner from "../components/CtaBanner.astro";
       </div>
       <div>
         <a
-          href="/servicios"
+          href={url('/servicios')}
           class="btn-agricola group"
         >
           <span>VER SERVICIOS</span>
@@ -512,7 +513,7 @@ import CtaBanner from "../components/CtaBanner.astro";
         <img
           alt="Retropala Mixta Caterpillar 432 en vista completa"
           class="w-full h-full max-h-[420px] object-contain mix-blend-multiply hover:scale-105 transition-transform duration-500"
-          src="/images/maquinaria/retropala-trinity.webp"
+          src={url('/images/maquinaria/retropala-trinity.webp')}
           loading="lazy"
         />
       </div>
@@ -587,7 +588,7 @@ import CtaBanner from "../components/CtaBanner.astro";
         </div>
         <div>
           <a
-            href="/servicios"
+            href={url('/servicios')}
             class="btn-agricola group"
           >
             <span>VER SERVICIOS</span>
@@ -610,7 +611,7 @@ import CtaBanner from "../components/CtaBanner.astro";
             <img
               alt="Fresadora FI-IVAN"
               class="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
-              src="/images/maquinaria/fresadora-fiivan.webp"
+              src={url('/images/maquinaria/fresadora-fiivan.webp')}
               loading="lazy"
             />
           </div>
@@ -641,7 +642,7 @@ import CtaBanner from "../components/CtaBanner.astro";
             <img
               alt="Trituradora Forestal TFT Cancela"
               class="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
-              src="/images/maquinaria/trituradora-forestal.webp"
+              src={url('/images/maquinaria/trituradora-forestal.webp')}
               loading="lazy"
             />
           </div>
@@ -673,7 +674,7 @@ import CtaBanner from "../components/CtaBanner.astro";
             <img
               alt="Guiado satelital GPS Topcon en cabina"
               class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-              src="/images/maquinaria/guiado-gps-topcon.webp"
+              src={url('/images/maquinaria/guiado-gps-topcon.webp')}
               loading="lazy"
             />
           </div>

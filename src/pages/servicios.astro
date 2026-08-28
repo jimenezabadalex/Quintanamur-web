@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import CtaBanner from "../components/CtaBanner.astro";
+import { url } from "../utils/url";
 ---
 
 <Layout
@@ -18,7 +19,7 @@ import CtaBanner from "../components/CtaBanner.astro";
       <div
         id="hero-bg-agricola"
         class="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-700 ease-in-out opacity-100"
-        style="background-image: url('/images/servicios/hero-agricola-bg.webp');"
+        style={`background-image: url('${url('/images/servicios/hero-agricola-bg.webp')}');`}
       >
       </div>
 
@@ -26,7 +27,7 @@ import CtaBanner from "../components/CtaBanner.astro";
       <div
         id="hero-bg-obra-civil"
         class="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-700 ease-in-out opacity-0"
-        style="background-image: url('/images/servicios/hero-obra-civil-bg.webp');"
+        style={`background-image: url('${url('/images/servicios/hero-obra-civil-bg.webp')}');`}
       >
       </div>
 
@@ -138,7 +139,7 @@ import CtaBanner from "../components/CtaBanner.astro";
             <img
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               alt="Fresadora FI-IVAN y tractor Fendt triturando piedra"
-              src="/images/servicios/despedregado-trituracion.webp"
+              src={url('/images/servicios/despedregado-trituracion.webp')}
               loading="lazy"
             />
             <div
@@ -182,7 +183,7 @@ import CtaBanner from "../components/CtaBanner.astro";
               </div>
             </div>
             <a
-              href="/contacto"
+              href={url('/contacto')}
               class="btn-agricola w-full mt-auto"
             >
               <span>Solicitar presupuesto para triturar piedra</span>
@@ -201,7 +202,7 @@ import CtaBanner from "../components/CtaBanner.astro";
             <img
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               alt="Plantadora con guiado satelital GPS"
-              src="/images/servicios/plantacion-gps-vinedo.webp"
+              src={url('/images/servicios/plantacion-gps-vinedo.webp')}
               loading="lazy"
             />
             <div
@@ -245,7 +246,7 @@ import CtaBanner from "../components/CtaBanner.astro";
               </div>
             </div>
             <a
-              href="/contacto"
+              href={url('/contacto')}
               class="btn-agricola w-full mt-auto"
             >
               <span>Consultar disponibilidad de plantación</span>
@@ -294,7 +295,7 @@ import CtaBanner from "../components/CtaBanner.astro";
               >
             </div>
             <a
-              href="/contacto"
+              href={url('/contacto')}
               class="btn-card-link-agricola"
             >
               <span>Hablar con un especialista en desfonde</span>
@@ -341,7 +342,7 @@ import CtaBanner from "../components/CtaBanner.astro";
               >
             </div>
             <a
-              href="/contacto"
+              href={url('/contacto')}
               class="btn-card-link-agricola"
             >
               <span>Pedir precio por hectárea para arranque</span>
@@ -381,7 +382,7 @@ import CtaBanner from "../components/CtaBanner.astro";
             <img
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               alt="Excavación y movimiento de tierras con retropala"
-              src="/images/servicios/excavaciones-movimiento.webp"
+              src={url('/images/servicios/excavaciones-movimiento.webp')}
               loading="lazy"
             />
             <div
@@ -424,7 +425,7 @@ import CtaBanner from "../components/CtaBanner.astro";
               </div>
             </div>
             <a
-              href="/contacto"
+              href={url('/contacto')}
               class="btn-obra w-full mt-auto"
             >
               <span>Consultar servicios de excavación</span>
@@ -443,7 +444,7 @@ import CtaBanner from "../components/CtaBanner.astro";
             <img
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               alt="Arreglo y trituración de caminos rurales con fresadora"
-              src="/images/servicios/trituracion-reciclaje.webp"
+              src={url('/images/servicios/trituracion-reciclaje.webp')}
               loading="lazy"
             />
             <div
@@ -487,7 +488,7 @@ import CtaBanner from "../components/CtaBanner.astro";
               </div>
             </div>
             <a
-              href="/contacto"
+              href={url('/contacto')}
               class="btn-obra w-full mt-auto"
             >
               <span>Solicitar Arreglo Camino</span>
@@ -506,7 +507,7 @@ import CtaBanner from "../components/CtaBanner.astro";
             <img
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               alt="Trituración de arbolado y desbroce integral"
-              src="/images/servicios/desbroce-forestal.webp"
+              src={url('/images/servicios/desbroce-forestal.webp')}
               loading="lazy"
             />
             <div
@@ -549,7 +550,7 @@ import CtaBanner from "../components/CtaBanner.astro";
               </div>
             </div>
             <a
-              href="/contacto"
+              href={url('/contacto')}
               class="btn-obra w-full mt-auto"
             >
               <span>Solicitar Desbroce y Trituración</span>
