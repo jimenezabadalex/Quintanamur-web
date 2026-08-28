@@ -63,7 +63,7 @@ import Layout from "../layouts/Layout.astro";
           maquinaria propia de última generación. Elige tu sector para descubrir
           cómo podemos ayudarte.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4">
+        <div class="hidden md:flex flex-row gap-4">
           <a
             id="btn-nav-agricola"
             class="inline-flex items-center justify-center bg-primary text-on-primary font-body-md font-bold py-3.5 px-6 rounded hover:bg-primary-container transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-fixed sharp-shadow group"
@@ -91,9 +91,29 @@ import Layout from "../layouts/Layout.astro";
     </div>
   </header>
 
+  <!-- Mobile Quick-Jump Category Bar (Solo Móvil) -->
+  <div class="sticky top-20 z-30 md:hidden bg-surface/95 backdrop-blur-md border-b border-outline-variant/30 px-3 py-2.5 shadow-sm">
+    <div class="grid grid-cols-2 gap-2.5 max-w-md mx-auto">
+      <a
+        href="#servicios-agricolas"
+        class="flex items-center justify-center gap-2 bg-surface-container-lowest border border-outline-variant/30 hover:border-primary active:bg-primary/10 text-on-surface py-2.5 px-3 rounded-lg text-center shadow-2xs active:scale-95 transition-all"
+      >
+        <span class="material-symbols-outlined text-primary text-xl">agriculture</span>
+        <span class="font-label-caps text-xs font-bold tracking-tight">Agrícolas</span>
+      </a>
+      <a
+        href="#obra-civil"
+        class="flex items-center justify-center gap-2 bg-surface-container-lowest border border-outline-variant/30 hover:border-secondary active:bg-secondary/10 text-on-surface py-2.5 px-3 rounded-lg text-center shadow-2xs active:scale-95 transition-all"
+      >
+        <span class="material-symbols-outlined text-secondary text-xl">construction</span>
+        <span class="font-label-caps text-xs font-bold tracking-tight">Excavaciones</span>
+      </a>
+    </div>
+  </div>
+
   <!-- Section 1: SERVICIOS AGRÍCOLAS -->
   <section
-    class="bg-surface py-24 px-margin-mobile md:px-margin-desktop"
+    class="bg-surface py-24 px-margin-mobile md:px-margin-desktop scroll-mt-36"
     id="servicios-agricolas"
   >
     <div class="max-w-max-width mx-auto">
@@ -336,7 +356,7 @@ import Layout from "../layouts/Layout.astro";
 
   <!-- Section 2: OBRA CIVIL Y EXCAVACIONES -->
   <section
-    class="bg-surface-variant py-24 px-margin-mobile md:px-margin-desktop border-t border-outline-variant/20"
+    class="bg-surface-variant py-24 px-margin-mobile md:px-margin-desktop border-t border-outline-variant/20 scroll-mt-36"
     id="obra-civil"
   >
     <div class="max-w-max-width mx-auto">

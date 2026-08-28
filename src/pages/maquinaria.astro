@@ -28,7 +28,7 @@ import Layout from '../layouts/Layout.astro';
         <p class="font-body-lg text-body-lg md:text-[19px] text-inverse-on-surface max-w-xl leading-relaxed mb-8">
           Al servicio de la obra civil y las labores agrícolas más exigentes. Tecnología alemana Fendt y operarios con experiencia real en los terrenos más duros.
         </p>
-        <div>
+        <div class="hidden md:block">
           <a
             href="#categoria-a"
             class="inline-flex items-center gap-3 bg-primary hover:bg-verde-oscuro text-on-primary px-7 py-3.5 rounded-xl font-label-caps text-label-caps tracking-wider shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 group"
@@ -40,6 +40,33 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </div>
   </header>
+
+  <!-- Mobile Quick-Jump Category Bar (Solo Móvil) -->
+  <div class="sticky top-20 z-30 md:hidden bg-surface/95 backdrop-blur-md border-b border-outline-variant/30 px-3 py-2.5 shadow-sm">
+    <div class="grid grid-cols-3 gap-2 max-w-md mx-auto">
+      <a
+        href="#categoria-a"
+        class="flex flex-col items-center justify-center gap-1 bg-surface-container-lowest border border-outline-variant/30 hover:border-primary active:bg-primary/10 text-on-surface py-2 px-1 rounded-lg text-center shadow-2xs active:scale-95 transition-all"
+      >
+        <span class="material-symbols-outlined text-primary text-xl">agriculture</span>
+        <span class="font-label-caps text-[11px] font-bold tracking-tight">Tractores</span>
+      </a>
+      <a
+        href="#categoria-b"
+        class="flex flex-col items-center justify-center gap-1 bg-surface-container-lowest border border-outline-variant/30 hover:border-primary active:bg-primary/10 text-on-surface py-2 px-1 rounded-lg text-center shadow-2xs active:scale-95 transition-all"
+      >
+        <span class="material-symbols-outlined text-primary text-xl">forklift</span>
+        <span class="font-label-caps text-[11px] font-bold tracking-tight">Retropala</span>
+      </a>
+      <a
+        href="#categoria-c"
+        class="flex flex-col items-center justify-center gap-1 bg-surface-container-lowest border border-outline-variant/30 hover:border-primary active:bg-primary/10 text-on-surface py-2 px-1 rounded-lg text-center shadow-2xs active:scale-95 transition-all"
+      >
+        <span class="material-symbols-outlined text-primary text-xl">build_circle</span>
+        <span class="font-label-caps text-[11px] font-bold tracking-tight">Equipo / Aperos</span>
+      </a>
+    </div>
+  </div>
 
   <!-- Strategic Advantage (Versatilidad Operativa) -->
   <section class="py-16 md:py-20 px-margin-mobile md:px-margin-desktop bg-surface max-w-max-width mx-auto">
@@ -76,7 +103,7 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- A. FUERZA MOTRIZ: TRACTORES -->
-  <section id="categoria-a" class="py-16 bg-surface-container-low border-y border-outline-variant/30 scroll-mt-6">
+  <section id="categoria-a" class="py-16 bg-surface-container-low border-y border-outline-variant/30 scroll-mt-36">
     <div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop">
       <div class="mb-12 flex items-end justify-between">
         <div>
@@ -246,7 +273,7 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- B. MOVIMIENTO DE TIERRAS -->
-  <section class="py-16 md:py-24 px-margin-mobile md:px-margin-desktop bg-surface max-w-max-width mx-auto">
+  <section id="categoria-b" class="py-16 md:py-24 px-margin-mobile md:px-margin-desktop bg-surface max-w-max-width mx-auto scroll-mt-36">
     <div class="mb-12">
       <span class="font-label-caps text-label-caps text-secondary mb-2 block">CATEGORÍA B</span>
       <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">
@@ -295,7 +322,7 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- C. IMPLEMENTOS DUALES -->
-  <section class="py-16 md:py-24 bg-surface-dim border-t border-outline-variant/20">
+  <section id="categoria-c" class="py-16 md:py-24 bg-surface-dim border-t border-outline-variant/20 scroll-mt-36">
     <div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop">
       <div class="text-center mb-16">
         <span class="font-label-caps text-label-caps text-secondary mb-2 block">CATEGORÍA C</span>
