@@ -1,0 +1,80 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  variant?: 'green' | 'sand';
+  showWhatsApp?: boolean;
+  showPhone?: boolean;
+  showContactPage?: boolean;
+}
+
+const {
+  title = "NO SOMOS INTERMEDIARIOS",
+  description = "Contratar a Quintanamur S.L. significa tratar directamente con los dueños de las máquinas. Sin subcontratas, sin sobrecostes ocultos. Garantizamos compromiso total con los plazos. ¿Hablamos de tu proyecto?",
+  variant = 'green',
+  showWhatsApp = true,
+  showPhone = true,
+  showContactPage = false,
+} = Astro.props;
+---
+
+<section class="py-16 md:py-20 px-margin-mobile md:px-margin-desktop bg-surface">
+  {variant === 'green' ? (
+    <div class="max-w-4xl mx-auto bg-primary-container text-on-primary-container rounded-xl p-8 md:p-12 text-center sharp-shadow border-2 border-primary-container/20">
+      <h2 class="font-display-lg text-[30px] md:text-[44px] font-extrabold mb-4 uppercase leading-tight">
+        {title}
+      </h2>
+      <p class="font-body-lg text-body-lg md:text-[18px] mb-8 text-on-primary-container/90 max-w-2xl mx-auto leading-relaxed">
+        {description}
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        {showWhatsApp && (
+          <a
+            href="https://wa.me/34600000000"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-whatsapp w-full sm:w-auto"
+          >
+            <span class="material-symbols-outlined text-lg">chat</span>
+            <span>Presupuesto por WhatsApp</span>
+          </a>
+        )}
+        {showPhone && (
+          <a
+            href="tel:+34600000000"
+            class="btn-outline-light w-full sm:w-auto"
+          >
+            <span class="material-symbols-outlined text-lg">call</span>
+            <span>Llamar por Teléfono</span>
+          </a>
+        )}
+        {showContactPage && (
+          <a
+            href="/contacto"
+            class="btn-agricola w-full sm:w-auto"
+          >
+            <span>SOLICITAR PRESUPUESTO</span>
+          </a>
+        )}
+      </div>
+    </div>
+  ) : (
+    <div class="max-w-4xl mx-auto bg-surface-container-high border border-outline-variant/30 rounded-xl p-8 md:p-12 text-center sharp-shadow">
+      <h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">
+        {title}
+      </h2>
+      <p class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-xl mx-auto leading-relaxed">
+        {description}
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+        <a href="/contacto" class="btn-agricola w-full sm:w-auto">
+          <span>SOLICITAR PRESUPUESTO</span>
+        </a>
+        <a href="https://wa.me/34600000000" target="_blank" rel="noopener noreferrer" class="btn-whatsapp w-full sm:w-auto">
+          <span class="material-symbols-outlined text-lg">chat</span>
+          <span>WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  )}
+</section>

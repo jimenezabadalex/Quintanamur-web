@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import CtaBanner from "../components/CtaBanner.astro";
 ---
 
 <Layout
@@ -66,7 +67,7 @@ import Layout from "../layouts/Layout.astro";
         <div class="hidden md:flex flex-row gap-4">
           <a
             id="btn-nav-agricola"
-            class="inline-flex items-center justify-center bg-primary text-on-primary font-body-md font-bold py-3.5 px-6 rounded hover:bg-primary-container transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-fixed sharp-shadow group"
+            class="btn-agricola group"
             href="#servicios-agricolas"
           >
             <span
@@ -77,7 +78,7 @@ import Layout from "../layouts/Layout.astro";
           </a>
           <a
             id="btn-nav-obra-civil"
-            class="inline-flex items-center justify-center bg-secondary text-on-secondary font-body-md font-bold py-3.5 px-6 rounded hover:bg-secondary-container hover:text-on-secondary-container transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-secondary-fixed sharp-shadow group"
+            class="btn-obra group"
             href="#obra-civil"
           >
             <span
@@ -182,9 +183,9 @@ import Layout from "../layouts/Layout.astro";
             </div>
             <a
               href="/contacto"
-              class="w-full bg-primary text-on-primary font-body-md font-bold py-3 px-4 rounded hover:bg-primary-container transition-colors duration-200 mt-auto flex justify-center items-center text-center"
+              class="btn-agricola w-full mt-auto"
             >
-              Solicitar presupuesto para triturar piedra
+              <span>Solicitar presupuesto para triturar piedra</span>
               <span class="material-symbols-outlined ml-2 text-sm"
                 >arrow_forward</span
               >
@@ -245,9 +246,9 @@ import Layout from "../layouts/Layout.astro";
             </div>
             <a
               href="/contacto"
-              class="w-full bg-primary text-on-primary font-body-md font-bold py-3 px-4 rounded hover:bg-primary-container transition-colors duration-200 mt-auto flex justify-center items-center text-center"
+              class="btn-agricola w-full mt-auto"
             >
-              Consultar disponibilidad de plantación
+              <span>Consultar disponibilidad de plantación</span>
               <span class="material-symbols-outlined ml-2 text-sm"
                 >arrow_forward</span
               >
@@ -294,9 +295,9 @@ import Layout from "../layouts/Layout.astro";
             </div>
             <a
               href="/contacto"
-              class="text-primary font-body-md font-bold flex items-center hover:text-primary-container transition-colors"
+              class="btn-card-link-agricola"
             >
-              Hablar con un especialista en desfonde
+              <span>Hablar con un especialista en desfonde</span>
               <span class="material-symbols-outlined ml-1 text-sm"
                 >arrow_forward</span
               >
@@ -341,9 +342,9 @@ import Layout from "../layouts/Layout.astro";
             </div>
             <a
               href="/contacto"
-              class="text-primary font-body-md font-bold flex items-center hover:text-primary-container transition-colors"
+              class="btn-card-link-agricola"
             >
-              Pedir precio por hectárea para arranque
+              <span>Pedir precio por hectárea para arranque</span>
               <span class="material-symbols-outlined ml-1 text-sm"
                 >arrow_forward</span
               >
@@ -424,9 +425,9 @@ import Layout from "../layouts/Layout.astro";
             </div>
             <a
               href="/contacto"
-              class="w-full border-2 border-secondary text-secondary font-body-md font-bold py-3 px-4 rounded hover:bg-secondary hover:text-on-secondary transition-colors duration-200 mt-auto flex justify-center items-center text-center"
+              class="btn-obra w-full mt-auto"
             >
-              Consultar servicios de excavación
+              <span>Consultar servicios de excavación</span>
               <span class="material-symbols-outlined ml-2 text-sm"
                 >arrow_forward</span
               >
@@ -487,9 +488,9 @@ import Layout from "../layouts/Layout.astro";
             </div>
             <a
               href="/contacto"
-              class="w-full border-2 border-secondary text-secondary font-body-md font-bold py-3 px-4 rounded hover:bg-secondary hover:text-on-secondary transition-colors duration-200 mt-auto flex justify-center items-center text-center"
+              class="btn-obra w-full mt-auto"
             >
-              Solicitar Arreglo Camino
+              <span>Solicitar Arreglo Camino</span>
               <span class="material-symbols-outlined ml-2 text-sm"
                 >arrow_forward</span
               >
@@ -549,9 +550,9 @@ import Layout from "../layouts/Layout.astro";
             </div>
             <a
               href="/contacto"
-              class="w-full border-2 border-secondary text-secondary font-body-md font-bold py-3 px-4 rounded hover:bg-secondary hover:text-on-secondary transition-colors duration-200 mt-auto flex justify-center items-center text-center"
+              class="btn-obra w-full mt-auto"
             >
-              Solicitar Desbroce y Trituración
+              <span>Solicitar Desbroce y Trituración</span>
               <span class="material-symbols-outlined ml-2 text-sm"
                 >arrow_forward</span
               >
@@ -563,52 +564,10 @@ import Layout from "../layouts/Layout.astro";
   </section>
 
   <!-- Final CTA -->
-  <section class="py-20 px-margin-mobile md:px-margin-desktop bg-surface">
-    <div
-      class="max-w-4xl mx-auto bg-primary-container rounded-xl p-8 md:p-12 sharp-shadow text-center relative overflow-hidden"
-    >
-      <div
-        class="absolute inset-0 opacity-10 pointer-events-none flex"
-        style="background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, #ffffff 10px, #ffffff 20px);"
-      >
-      </div>
-      <div class="relative z-10">
-        <span
-          class="material-symbols-outlined text-5xl text-on-primary-container mb-4 block"
-          >handshake</span
-        >
-        <h2
-          class="font-display-lg text-headline-lg-mobile md:text-display-lg text-on-primary-container mb-4"
-        >
-          ¿Tienes un proyecto en mente?
-        </h2>
-        <p
-          class="font-body-lg text-body-lg text-on-primary-container/90 mb-8 max-w-2xl mx-auto leading-relaxed"
-        >
-          Evaluamos tu terreno y te ofrecemos la solución técnica más eficiente
-          con maquinaria propia, garantizando plazos y resultados profesionales.
-        </p>
-        <div class="flex flex-col sm:flex-row justify-center gap-4">
-          <a
-            href="tel:+34600000000"
-            class="bg-on-primary-container text-primary-container font-body-md font-bold py-4 px-8 rounded hover:bg-surface transition-colors duration-200 flex items-center justify-center shadow-md sharp-shadow"
-          >
-            <span class="material-symbols-outlined mr-2">call</span>
-            Llamar al Teléfono Directo
-          </a>
-          <a
-            href="https://wa.me/34600000000"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="bg-transparent border-2 border-on-primary-container text-on-primary-container font-body-md font-bold py-4 px-8 rounded hover:bg-on-primary-container/10 transition-colors duration-200 flex items-center justify-center"
-          >
-            <span class="material-symbols-outlined mr-2">chat</span>
-            Contactar por WhatsApp
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <CtaBanner
+    title="¿Tienes un proyecto en mente?"
+    description="Evaluamos tu terreno y te ofrecemos la solución técnica más eficiente con maquinaria propia, garantizando plazos y resultados profesionales."
+  />
 
   <script>
     function setupHeaderPreview() {

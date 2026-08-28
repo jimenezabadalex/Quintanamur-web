@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import CtaBanner from "../components/CtaBanner.astro";
 ---
 
 <Layout
@@ -46,7 +47,7 @@ import Layout from "../layouts/Layout.astro";
         <div class="hidden md:block">
           <a
             href="#categoria-a"
-            class="inline-flex items-center gap-3 bg-primary hover:bg-verde-oscuro text-on-primary px-7 py-3.5 rounded-xl font-label-caps text-label-caps tracking-wider shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 group"
+            class="btn-agricola group"
           >
             <span>VER FLOTA DE TRACTORES</span>
             <span
@@ -208,7 +209,7 @@ import Layout from "../layouts/Layout.astro";
         <div>
           <a
             href="/servicios"
-            class="inline-flex items-center gap-2 bg-primary hover:bg-verde-oscuro text-on-primary font-label-caps text-label-caps uppercase px-5 py-3 rounded-lg shadow-sm hover:shadow-md transition-all active:scale-95 group"
+            class="btn-agricola group"
           >
             <span>VER SERVICIOS</span>
             <span
@@ -492,7 +493,7 @@ import Layout from "../layouts/Layout.astro";
       <div>
         <a
           href="/servicios"
-          class="inline-flex items-center gap-2 bg-primary hover:bg-verde-oscuro text-on-primary font-label-caps text-label-caps uppercase px-5 py-3 rounded-lg shadow-sm hover:shadow-md transition-all active:scale-95 group"
+          class="btn-agricola group"
         >
           <span>VER SERVICIOS</span>
           <span
@@ -587,7 +588,7 @@ import Layout from "../layouts/Layout.astro";
         <div>
           <a
             href="/servicios"
-            class="inline-flex items-center gap-2 bg-primary hover:bg-verde-oscuro text-on-primary font-label-caps text-label-caps uppercase px-5 py-3 rounded-lg shadow-sm hover:shadow-md transition-all active:scale-95 group"
+            class="btn-agricola group"
           >
             <span>VER SERVICIOS</span>
             <span
@@ -760,40 +761,5 @@ import Layout from "../layouts/Layout.astro";
   </section>
 
   <!-- Final CTA -->
-  <section class="py-20 px-margin-mobile md:px-margin-desktop bg-surface">
-    <div
-      class="max-w-4xl mx-auto bg-primary-container text-on-primary-container rounded-xl p-8 md:p-12 text-center sharp-shadow border-2 border-primary-container/20"
-    >
-      <h2
-        class="font-display-lg text-[32px] md:text-[48px] font-extrabold mb-4 uppercase"
-      >
-        NO SOMOS INTERMEDIARIOS
-      </h2>
-      <p
-        class="font-body-lg text-body-lg md:text-[20px] mb-8 text-on-primary-container/90 max-w-2xl mx-auto leading-relaxed"
-      >
-        Contratar a Quintanamur S.L. significa tratar directamente con los
-        dueños de las máquinas. Sin subcontratas, sin sobrecostes ocultos.
-        Garantizamos compromiso total con los plazos. ¿Hablamos de tu proyecto?
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <a
-          href="https://wa.me/34600000000"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="bg-primary hover:bg-primary/90 text-on-primary px-8 py-4 font-label-caps text-[14px] font-bold rounded transition-all w-full sm:w-auto flex items-center justify-center gap-2 shadow-sm sharp-shadow"
-        >
-          <span class="material-symbols-outlined text-lg">chat</span>
-          Presupuesto por WhatsApp
-        </a>
-        <a
-          href="tel:+34600000000"
-          class="bg-transparent border-2 border-on-primary-container text-on-primary-container hover:bg-on-primary-container/10 px-8 py-4 font-label-caps text-[14px] font-bold rounded transition-all w-full sm:w-auto flex items-center justify-center gap-2"
-        >
-          <span class="material-symbols-outlined text-lg">call</span>
-          Llamar por Teléfono
-        </a>
-      </div>
-    </div>
-  </section>
+  <CtaBanner />
 </Layout>
