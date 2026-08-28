@@ -63,13 +63,13 @@ import Layout from '../layouts/Layout.astro';
         class="flex flex-col items-center justify-center gap-1 bg-surface-container-lowest border border-outline-variant/30 hover:border-primary active:bg-primary/10 text-on-surface py-2 px-1 rounded-lg text-center shadow-2xs active:scale-95 transition-all"
       >
         <span class="material-symbols-outlined text-primary text-xl">build_circle</span>
-        <span class="font-label-caps text-[11px] font-bold tracking-tight">Equipo / Aperos</span>
+        <span class="font-label-caps text-[11px] font-bold tracking-tight">Aperos</span>
       </a>
     </div>
   </div>
 
-  <!-- Strategic Advantage (Versatilidad Operativa) -->
-  <section class="py-16 md:py-20 px-margin-mobile md:px-margin-desktop bg-surface max-w-max-width mx-auto">
+  <!-- Strategic Advantage (Versatilidad Operativa - Solo Escritorio) -->
+  <section class="hidden md:block py-16 md:py-20 px-margin-mobile md:px-margin-desktop bg-surface max-w-max-width mx-auto">
     <div class="max-w-4xl mx-auto bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-8 md:p-12 sharp-shadow">
       <div class="inline-flex items-center gap-2 mb-4 text-primary font-label-caps text-label-caps">
         <span class="material-symbols-outlined text-base">verified</span>
@@ -310,12 +310,6 @@ import Layout from '../layouts/Layout.astro';
               Mantenimiento de redes de riego, adecuación de caminos rurales y limpieza de cunetas de drenaje.
             </p>
           </div>
-          <div class="pt-4 border-t border-outline-variant/30">
-            <div class="flex items-center gap-3 text-on-surface font-medium">
-              <span class="material-symbols-outlined text-primary">local_shipping</span>
-              Agilidad Logística garantizada
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -390,6 +384,34 @@ import Layout from '../layouts/Layout.astro';
               Guiado Satelital RTK. Nivelación de terrenos para topografía civil y precisión centimétrica en siembras y plantaciones.
             </p>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 Pilares Clave de Garantía (Solo Móvil - Cierre Técnico) -->
+  <section class="md:hidden py-8 px-margin-mobile bg-surface-container-low/70 border-b border-outline-variant/25">
+    <div class="max-w-max-width mx-auto">
+      <div class="text-center mb-6">
+        <span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest block mb-1">Garantía Quintanamur</span>
+        <h3 class="font-headline-md text-body-lg font-bold text-on-surface">Nuestros 4 Compromisos</h3>
+      </div>
+      <div class="grid grid-cols-2 gap-2.5">
+        <div class="flex flex-col items-center justify-center text-center p-3.5 bg-surface rounded-xl border border-outline-variant/30 shadow-2xs gap-1.5">
+          <span class="material-symbols-outlined text-primary text-2xl">precision_manufacturing</span>
+          <span class="font-label-caps text-[11px] font-bold text-on-surface leading-tight">Maquinaria Propia</span>
+        </div>
+        <div class="flex flex-col items-center justify-center text-center p-3.5 bg-surface rounded-xl border border-outline-variant/30 shadow-2xs gap-1.5">
+          <span class="material-symbols-outlined text-primary text-2xl">engineering</span>
+          <span class="font-label-caps text-[11px] font-bold text-on-surface leading-tight">Operarios Expertos</span>
+        </div>
+        <div class="flex flex-col items-center justify-center text-center p-3.5 bg-surface rounded-xl border border-outline-variant/30 shadow-2xs gap-1.5">
+          <span class="material-symbols-outlined text-primary text-2xl">sync_alt</span>
+          <span class="font-label-caps text-[11px] font-bold text-on-surface leading-tight">Obra y Campo</span>
+        </div>
+        <div class="flex flex-col items-center justify-center text-center p-3.5 bg-surface rounded-xl border border-outline-variant/30 shadow-2xs gap-1.5">
+          <span class="material-symbols-outlined text-primary text-2xl">handshake</span>
+          <span class="font-label-caps text-[11px] font-bold text-on-surface leading-tight">Sin Intermediarios</span>
         </div>
       </div>
     </div>
