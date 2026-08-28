@@ -289,3 +289,123 @@
   color: #9c7141;
 }
 
+/* ==========================================================================
+   MODO NOCHE AUTOMÁTICO (QUINTANAMUR DARK THEME)
+   Activación por preferencia del sistema operativo: prefers-color-scheme: dark
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root,
+  html,
+  body {
+    /* Identidad Visual Nocturna */
+    --color-background: #161311;
+    --color-on-background: #ede6de;
+    --color-surface: #161311;
+    --color-surface-bright: #241f1b;
+    --color-on-surface: #ede6de;
+    --color-on-surface-variant: #c2b6ab;
+    --color-surface-variant: #231d18;
+    --color-surface-container-lowest: #1f1a16;
+    --color-surface-container-low: #241f1b;
+    --color-surface-container: #2c241f;
+    --color-surface-container-high: #352d28;
+    --color-surface-container-highest: #3f3630;
+    --color-surface-dim: #161311;
+    --color-inverse-surface: #100d0b;
+    --color-inverse-on-surface: #ede6de;
+
+    /* Acentos Primarios (Verde Fendt Luminoso en Oscuro) */
+    --color-primary: #78b54e;
+    --color-primary-container: #33551d;
+    --color-on-primary: #ffffff;
+    --color-on-primary-container: #e2f6d5;
+    --color-primary-fixed: #8ec468;
+    --color-primary-fixed-dim: #78b54e;
+    --color-surface-tint: #78b54e;
+
+    /* Acentos Secundarios (Ocre Tierra Luminoso en Oscuro) */
+    --color-secondary: #d4a36b;
+    --color-secondary-container: #5c4021;
+    --color-on-secondary: #ffffff;
+    --color-on-secondary-container: #fcefdc;
+    --color-secondary-fixed: #f4dcb8;
+    --color-secondary-fixed-dim: #d4a36b;
+
+    /* Líneas y Bordes Nocturnos */
+    --color-outline: #82766b;
+    --color-outline-variant: #3d342c;
+  }
+
+  /* Sombras oscuras de profundidad */
+  .sharp-shadow {
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.45);
+  }
+
+  .sharp-shadow-hover:hover {
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.6);
+    transform: translateY(-2px);
+  }
+
+  .btn-active:active {
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.45);
+  }
+
+  /* Adaptación de imágenes recortadas con mix-blend-multiply sobre fondos oscuros */
+  img.mix-blend-multiply {
+    mix-blend-mode: normal;
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4));
+  }
+
+  /* Botón Agrícola en Modo Noche */
+  .btn-agricola {
+    background-color: #61993b;
+    color: #ffffff;
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.4);
+  }
+  .btn-agricola:hover {
+    background-color: #72af45;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.55);
+  }
+
+  /* Botón Obra en Modo Noche */
+  .btn-obra {
+    background-color: #b58753;
+    color: #ffffff;
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.4);
+  }
+  .btn-obra:hover {
+    background-color: #c4965f;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.55);
+  }
+
+  /* Enlaces de Tarjetas */
+  .btn-card-link-agricola {
+    color: #78b54e;
+  }
+  .btn-card-link-agricola:hover {
+    color: #92d463;
+  }
+
+  .btn-card-link-obra {
+    color: #d4a36b;
+  }
+  .btn-card-link-obra:hover {
+    color: #e5b985;
+  }
+
+  /* Controles de Formulario */
+  input,
+  textarea,
+  select {
+    background-color: #1f1a16 !important;
+    color: #ede6de !important;
+    border-color: #3d342c !important;
+  }
+  input::placeholder,
+  textarea::placeholder {
+    color: #82766b !important;
+  }
+}
+
+
