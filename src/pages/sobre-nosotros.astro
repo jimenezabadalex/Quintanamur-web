@@ -7,32 +7,41 @@ import Layout from '../layouts/Layout.astro';
   description="Conoce la historia de Quintanamur S.L., desde los orígenes en Yecla en 1998 hasta la incorporación de tecnología GPS y la gran obra civil."
   activePage="sobre-nosotros"
 >
-  <!-- Hero Section -->
-  <section class="bg-inverse-surface relative overflow-hidden py-24 md:py-32">
+  <!-- Hero Section idéntico a Maquinaria -->
+  <header class="bg-inverse-surface text-on-primary py-24 md:py-32 px-margin-mobile md:px-margin-desktop relative overflow-hidden">
     <div
-      class="absolute inset-0 opacity-20 pointer-events-none"
-      style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"
-    ></div>
-    <div class="relative max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop z-10 grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
-      <div class="md:col-span-8 lg:col-span-7">
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none"
+      style="background-image: url('/images/sobre-nosotros/hero-nosotros-bg.webp');"
+    >
+      <!-- Gradient overlay: strong dark tone on text side, completely open on image side -->
+      <div class="absolute inset-0 bg-gradient-to-r from-inverse-surface via-inverse-surface/85 to-inverse-surface/40 md:to-transparent"></div>
+    </div>
+    <div class="max-w-max-width mx-auto relative z-10 flex flex-col md:flex-row items-center">
+      <div class="w-full md:w-7/12 lg:w-1/2">
         <span class="font-label-caps text-label-caps text-secondary-fixed-dim uppercase tracking-widest block mb-4">
           Nuestra Historia
         </span>
-        <h1 class="font-display-lg text-headline-lg-mobile md:text-display-lg text-inverse-on-surface mb-6 leading-tight">
+        <h1 class="font-display-lg text-headline-lg-mobile md:text-display-lg text-surface-bright mb-6 leading-tight">
           De la Casa Quintana a la Alta Tecnología
         </h1>
-        <p class="font-body-lg text-body-lg text-surface-container-high max-w-2xl leading-relaxed">
+        <p class="font-body-lg text-body-lg text-surface-container-high max-w-xl leading-relaxed mb-8">
           Nuestra experiencia en el terreno, desde los humildes inicios en Yecla, nos ha forjado. Nuestro objetivo principal siempre ha sido ofrecer maquinaria potente, fiable y de precisión milimétrica a agricultores y grandes constructoras de obra civil.
         </p>
-      </div>
-      <div class="md:col-span-4 lg:col-span-5 mt-12 md:mt-0 relative hidden md:block">
-        <div class="w-full aspect-square bg-secondary rounded-full absolute -right-1/4 opacity-30 blur-3xl"></div>
+        <div>
+          <a
+            href="#timeline"
+            class="inline-flex items-center gap-3 bg-secondary hover:bg-secondary-container hover:text-on-secondary-container text-on-secondary px-7 py-3.5 rounded font-label-caps text-label-caps tracking-wider sharp-shadow transition-all duration-300 transform hover:-translate-y-0.5 group"
+          >
+            <span>CONOCE NUESTRA TRAYECTORIA</span>
+            <span class="material-symbols-outlined text-lg group-hover:translate-y-0.5 transition-transform">arrow_downward</span>
+          </a>
+        </div>
       </div>
     </div>
-  </section>
+  </header>
 
   <!-- Timeline Section -->
-  <section class="py-24 bg-surface relative">
+  <section id="timeline" class="py-24 bg-surface relative">
     <div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop">
       <div class="text-center mb-20">
         <span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest block mb-2">Evolución</span>
