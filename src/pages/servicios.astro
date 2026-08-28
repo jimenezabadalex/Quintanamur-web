@@ -17,26 +17,26 @@ import Layout from "../layouts/Layout.astro";
       <div
         id="hero-bg-agricola"
         class="absolute inset-0 bg-cover md:bg-[length:auto_100%] bg-right bg-no-repeat transition-opacity duration-700 ease-in-out opacity-100"
-        style="background-image: url('/images/home/card-servicios-agricolas.webp');"
+        style="background-image: url('/images/home/card-servicios-agricolas.webp'); -webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 15%, rgba(0,0,0,0.7) 45%, black 70%); mask-image: linear-gradient(to right, transparent 0%, transparent 15%, rgba(0,0,0,0.7) 45%, black 70%);"
       >
       </div>
 
-      <!-- Imagen Obra Civil y Excavaciones (Encuadre completo sin cortes de brazo ni ruedas) -->
+      <!-- Imagen Obra Civil y Excavaciones (Fusión suave por la izquierda sin cortes) -->
       <div
         id="hero-bg-obra-civil"
         class="absolute inset-0 bg-contain md:bg-[length:auto_96%] bg-right bg-no-repeat transition-opacity duration-700 ease-in-out opacity-0"
-        style="background-image: url('/images/servicios/Header-obra-civil-excavaciones.webp');"
+        style="background-image: url('/images/servicios/Header-obra-civil-excavaciones.webp'); -webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 20%, rgba(0,0,0,0.8) 50%, black 75%); mask-image: linear-gradient(to right, transparent 0%, transparent 20%, rgba(0,0,0,0.8) 50%, black 75%);"
       >
       </div>
 
       <!-- Máscara de Gradiente Cinemático: oscuro sobre el texto (izquierda), transparente sobre la maquinaria (derecha) -->
       <div
-        class="absolute inset-0 bg-gradient-to-r from-inverse-surface via-inverse-surface/90 md:via-inverse-surface/80 to-inverse-surface/40 md:to-transparent"
+        class="absolute inset-0 bg-gradient-to-r from-inverse-surface from-20% via-inverse-surface/90 via-50% to-transparent to-90%"
       >
       </div>
       <!-- Gradiente vertical para móviles -->
       <div
-        class="absolute inset-0 bg-gradient-to-t from-inverse-surface/90 via-transparent to-transparent md:hidden"
+        class="absolute inset-0 bg-gradient-to-t from-inverse-surface via-inverse-surface/40 to-transparent md:hidden"
       >
       </div>
     </div>
