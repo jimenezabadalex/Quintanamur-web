@@ -11,10 +11,27 @@ import Layout from "../layouts/Layout.astro";
   <header
     class="bg-inverse-surface text-surface py-20 px-margin-mobile md:px-margin-desktop relative overflow-hidden"
   >
+    <!-- Mobile Background Overlays (Dynamic on hover / focus) -->
+    <div class="absolute inset-0 md:hidden overflow-hidden pointer-events-none z-0">
+      <img
+        id="bg-mobile-agricola"
+        src="/images/home/card-servicios-agricolas.webp"
+        alt="Servicios Agrícolas"
+        class="absolute inset-0 w-full h-full object-cover opacity-25 transition-opacity duration-500"
+      />
+      <img
+        id="bg-mobile-obra-civil"
+        src="/images/servicios/Header-obra-civil-excavaciones.webp"
+        alt="Obra Civil y Excavaciones"
+        class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-inverse-surface via-inverse-surface/85 to-inverse-surface/60"></div>
+    </div>
+
     <div
-      class="max-w-max-width mx-auto relative z-10 grid grid-cols-1 md:grid-cols-12 gap-gutter"
+      class="max-w-max-width mx-auto relative z-10 grid grid-cols-1 md:grid-cols-12 gap-gutter items-center"
     >
-      <div class="md:col-span-8 flex flex-col justify-center">
+      <div class="md:col-span-7 flex flex-col justify-center">
         <span
           class="font-label-caps text-label-caps text-secondary-fixed-dim uppercase tracking-widest block mb-3"
         >
@@ -40,28 +57,61 @@ import Layout from "../layouts/Layout.astro";
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
           <a
-            class="inline-flex items-center justify-center bg-primary text-on-primary font-body-md font-bold py-3.5 px-6 rounded hover:bg-primary-container transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-fixed sharp-shadow"
+            id="btn-nav-agricola"
+            class="inline-flex items-center justify-center bg-primary text-on-primary font-body-md font-bold py-3.5 px-6 rounded hover:bg-primary-container transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-fixed sharp-shadow group"
             href="#servicios-agricolas"
+            data-service="agricola"
           >
-            <span class="material-symbols-outlined mr-2">arrow_downward</span>
+            <span class="material-symbols-outlined mr-2 group-hover:translate-y-0.5 transition-transform">arrow_downward</span>
             VER SERVICIOS AGRÍCOLAS
           </a>
           <a
-            class="inline-flex items-center justify-center bg-secondary text-on-secondary font-body-md font-bold py-3.5 px-6 rounded hover:bg-secondary-container hover:text-on-secondary-container transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-secondary-fixed sharp-shadow"
+            id="btn-nav-obra-civil"
+            class="inline-flex items-center justify-center bg-secondary text-on-secondary font-body-md font-bold py-3.5 px-6 rounded hover:bg-secondary-container hover:text-on-secondary-container transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-secondary-fixed sharp-shadow group"
             href="#obra-civil"
+            data-service="obra-civil"
           >
-            <span class="material-symbols-outlined mr-2">arrow_downward</span>
+            <span class="material-symbols-outlined mr-2 group-hover:translate-y-0.5 transition-transform">arrow_downward</span>
             VER OBRA CIVIL Y EXCAVACIONES
           </a>
         </div>
       </div>
-      <!-- Decorative Elements -->
+
+      <!-- Desktop Preview Container -->
       <div
-        class="hidden md:flex md:col-span-4 items-center justify-center relative opacity-20"
+        class="hidden md:flex md:col-span-5 items-center justify-center relative"
       >
-        <span class="material-symbols-outlined text-[180px] text-surface"
-          >agriculture</span
+        <div
+          class="w-full aspect-[4/3] rounded-xl overflow-hidden shadow-2xl border border-secondary/30 relative bg-surface/5 backdrop-blur-sm"
         >
+          <img
+            id="preview-desktop-agricola"
+            src="/images/home/card-servicios-agricolas.webp"
+            alt="Servicios Agrícolas"
+            class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-100"
+          />
+          <img
+            id="preview-desktop-obra-civil"
+            src="/images/servicios/Header-obra-civil-excavaciones.webp"
+            alt="Obra Civil y Excavaciones"
+            class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0"
+          />
+          <!-- Badge overlay indicator -->
+          <div class="absolute bottom-4 left-4 right-4 z-10">
+            <span
+              id="preview-badge-agricola"
+              class="inline-block px-3 py-1 bg-primary text-on-primary font-label-caps text-label-caps rounded-full uppercase shadow-md transition-opacity duration-300 opacity-100"
+            >
+              Sector Agrícola
+            </span>
+            <span
+              id="preview-badge-obra-civil"
+              class="inline-block px-3 py-1 bg-secondary text-on-secondary font-label-caps text-label-caps rounded-full uppercase shadow-md transition-opacity duration-300 opacity-0 absolute left-0 bottom-0"
+            >
+              Obra Civil y Excavaciones
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   </header>
@@ -170,15 +220,15 @@ import Layout from "../layouts/Layout.astro";
           </div>
           <div class="p-8 flex flex-col flex-grow">
             <h3 class="font-headline-md text-headline-md text-on-surface mb-3">
-              Plantación de Viñedo y Almendros con GPS
+              Plantación con GPS para Viñedo, Olivar y Frutales
             </h3>
             <p
               class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow leading-relaxed"
             >
-              Establecimiento de nuevos cultivos leñosos con precisión
-              milimétrica. Utilizamos sistemas de guiado GPS RTK para garantizar
-              una alineación perfecta, optimizando el espacio y facilitando
-              futuras labores mecanizadas.
+              Plantación automatizada guiada por satélite GPS Topcon para todo
+              tipo de marcos de plantación: viñedo, olivar, almendro, pistacho,
+              higuera y frutales. Máxima precisión en alineación y colocación de
+              tutores en una sola pasada.
             </p>
             <div
               class="bg-surface-container p-4 rounded-md mb-6 border border-outline-variant/20 flex items-center"
@@ -222,7 +272,7 @@ import Layout from "../layouts/Layout.astro";
               <h3
                 class="font-headline-md text-headline-md text-on-surface max-w-[80%]"
               >
-                Desfonde de Tierras y Preparación Profunda
+                Desfonde de Tierras y Arado Profunda
               </h3>
               <div class="bg-surface-container-high p-2 rounded-full">
                 <span class="material-symbols-outlined text-primary"
@@ -510,4 +560,80 @@ import Layout from "../layouts/Layout.astro";
       </div>
     </div>
   </section>
+
+  <script>
+    function setupHeaderPreview() {
+      const btnAgricola = document.getElementById("btn-nav-agricola");
+      const btnObraCivil = document.getElementById("btn-nav-obra-civil");
+
+      const imgDesktopAgricola = document.getElementById(
+        "preview-desktop-agricola",
+      );
+      const imgDesktopObraCivil = document.getElementById(
+        "preview-desktop-obra-civil",
+      );
+      const badgeAgricola = document.getElementById("preview-badge-agricola");
+      const badgeObraCivil = document.getElementById("preview-badge-obra-civil");
+
+      const imgMobileAgricola = document.getElementById("bg-mobile-agricola");
+      const imgMobileObraCivil = document.getElementById("bg-mobile-obra-civil");
+
+      function showAgricola() {
+        if (imgDesktopAgricola && imgDesktopObraCivil) {
+          imgDesktopAgricola.classList.remove("opacity-0");
+          imgDesktopAgricola.classList.add("opacity-100");
+          imgDesktopObraCivil.classList.remove("opacity-100");
+          imgDesktopObraCivil.classList.add("opacity-0");
+        }
+        if (badgeAgricola && badgeObraCivil) {
+          badgeAgricola.classList.remove("opacity-0");
+          badgeAgricola.classList.add("opacity-100");
+          badgeObraCivil.classList.remove("opacity-100");
+          badgeObraCivil.classList.add("opacity-0");
+        }
+        if (imgMobileAgricola && imgMobileObraCivil) {
+          imgMobileAgricola.classList.remove("opacity-0");
+          imgMobileAgricola.classList.add("opacity-25");
+          imgMobileObraCivil.classList.remove("opacity-25");
+          imgMobileObraCivil.classList.add("opacity-0");
+        }
+      }
+
+      function showObraCivil() {
+        if (imgDesktopAgricola && imgDesktopObraCivil) {
+          imgDesktopAgricola.classList.remove("opacity-100");
+          imgDesktopAgricola.classList.add("opacity-0");
+          imgDesktopObraCivil.classList.remove("opacity-0");
+          imgDesktopObraCivil.classList.add("opacity-100");
+        }
+        if (badgeAgricola && badgeObraCivil) {
+          badgeAgricola.classList.remove("opacity-100");
+          badgeAgricola.classList.add("opacity-0");
+          badgeObraCivil.classList.remove("opacity-0");
+          badgeObraCivil.classList.add("opacity-100");
+        }
+        if (imgMobileAgricola && imgMobileObraCivil) {
+          imgMobileAgricola.classList.remove("opacity-25");
+          imgMobileAgricola.classList.add("opacity-0");
+          imgMobileObraCivil.classList.remove("opacity-0");
+          imgMobileObraCivil.classList.add("opacity-25");
+        }
+      }
+
+      btnAgricola?.addEventListener("mouseenter", showAgricola);
+      btnAgricola?.addEventListener("focus", showAgricola);
+      btnAgricola?.addEventListener("touchstart", showAgricola, { passive: true });
+
+      btnObraCivil?.addEventListener("mouseenter", showObraCivil);
+      btnObraCivil?.addEventListener("focus", showObraCivil);
+      btnObraCivil?.addEventListener("touchstart", showObraCivil, { passive: true });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", setupHeaderPreview);
+    } else {
+      setupHeaderPreview();
+    }
+    document.addEventListener("astro:page-load", setupHeaderPreview);
+  </script>
 </Layout>
