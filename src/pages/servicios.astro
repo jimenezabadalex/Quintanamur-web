@@ -6,7 +6,7 @@ import { url } from "../utils/url";
 
 <Layout
   title="Servicios Agrícolas y Movimiento de Tierras | Quintanamur"
-  description="Servicios agrícolas de precisión, despedregado, plantación GPS, desfonde y excavaciones para obra civil en Yecla y comarca. ¡Solicita tu presupuesto sin compromiso!"
+  description="Servicios agrícolas, arranque de cultivos despedregado, plantación GPS, desfonde y excavaciones para obra civil en Yecla y comarca. "
   activePage="servicios"
 >
   <!-- Header / Hero Section idéntico a Maquinaria -->
@@ -19,7 +19,7 @@ import { url } from "../utils/url";
       <div
         id="hero-bg-agricola"
         class="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-700 ease-in-out opacity-100"
-        style={`background-image: url('${url('/images/servicios/hero-agricola-bg.webp')}');`}
+        style={`background-image: url('${url("/images/servicios/hero-agricola-bg.webp")}');`}
       >
       </div>
 
@@ -27,7 +27,7 @@ import { url } from "../utils/url";
       <div
         id="hero-bg-obra-civil"
         class="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-700 ease-in-out opacity-0"
-        style={`background-image: url('${url('/images/servicios/hero-obra-civil-bg.webp')}');`}
+        style={`background-image: url('${url("/images/servicios/hero-obra-civil-bg.webp")}');`}
       >
       </div>
 
@@ -56,7 +56,8 @@ import { url } from "../utils/url";
         <p
           class="font-headline-md text-headline-md font-medium text-inverse-on-surface mb-3"
         >
-          De la preparación de parcelas agrícolas al movimiento de tierras más pesado.
+          De la preparación de parcelas agrícolas al movimiento de tierras más
+          pesado.
         </p>
         <p
           class="font-body-lg text-body-lg md:text-[19px] text-inverse-on-surface/90 mb-8 max-w-xl leading-relaxed"
@@ -77,11 +78,7 @@ import { url } from "../utils/url";
             >
             VER SERVICIOS AGRÍCOLAS
           </a>
-          <a
-            id="btn-nav-obra-civil"
-            class="btn-obra group"
-            href="#obra-civil"
-          >
+          <a id="btn-nav-obra-civil" class="btn-obra group" href="#obra-civil">
             <span
               class="material-symbols-outlined mr-2 group-hover:translate-y-0.5 transition-transform"
               >arrow_downward</span
@@ -94,21 +91,31 @@ import { url } from "../utils/url";
   </header>
 
   <!-- Mobile Quick-Jump Category Bar (Solo Móvil) -->
-  <div class="sticky top-20 z-30 md:hidden bg-surface/95 backdrop-blur-md border-b border-outline-variant/30 px-3 py-2.5 shadow-sm">
+  <div
+    class="sticky top-20 z-30 md:hidden bg-surface/95 backdrop-blur-md border-b border-outline-variant/30 px-3 py-2.5 shadow-sm"
+  >
     <div class="grid grid-cols-2 gap-2.5 max-w-md mx-auto">
       <a
         href="#servicios-agricolas"
         class="flex items-center justify-center gap-2 bg-surface-container-lowest border border-outline-variant/30 hover:border-primary active:bg-primary/10 text-on-surface py-2.5 px-3 rounded-lg text-center shadow-2xs active:scale-95 transition-all"
       >
-        <span class="material-symbols-outlined text-primary text-xl">agriculture</span>
-        <span class="font-label-caps text-xs font-bold tracking-tight">Agrícolas</span>
+        <span class="material-symbols-outlined text-primary text-xl"
+          >agriculture</span
+        >
+        <span class="font-label-caps text-xs font-bold tracking-tight"
+          >Agrícolas</span
+        >
       </a>
       <a
         href="#obra-civil"
         class="flex items-center justify-center gap-2 bg-surface-container-lowest border border-outline-variant/30 hover:border-secondary active:bg-secondary/10 text-on-surface py-2.5 px-3 rounded-lg text-center shadow-2xs active:scale-95 transition-all"
       >
-        <span class="material-symbols-outlined text-secondary text-xl">construction</span>
-        <span class="font-label-caps text-xs font-bold tracking-tight">Excavaciones</span>
+        <span class="material-symbols-outlined text-secondary text-xl"
+          >construction</span
+        >
+        <span class="font-label-caps text-xs font-bold tracking-tight"
+          >Excavaciones</span
+        >
       </a>
     </div>
   </div>
@@ -139,7 +146,7 @@ import { url } from "../utils/url";
             <img
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               alt="Fresadora de piedra FI-IVAN y tractor Fendt triturando roca en parcela"
-              src={url('/images/servicios/despedregado-trituracion.webp')}
+              src={url("/images/servicios/despedregado-trituracion.webp")}
               loading="lazy"
             />
             <div
@@ -174,7 +181,7 @@ import { url } from "../utils/url";
               <div>
                 <span
                   class="font-label-caps text-label-caps text-secondary uppercase block mb-1"
-                  >Tecnología empleada</span
+                  >Maquinaria empleada</span
                 >
                 <span
                   class="font-body-md text-body-md font-medium text-on-surface"
@@ -182,10 +189,7 @@ import { url } from "../utils/url";
                 >
               </div>
             </div>
-            <a
-              href={url('/contacto')}
-              class="btn-agricola w-full mt-auto"
-            >
+            <a href={url("/contacto")} class="btn-agricola w-full mt-auto">
               <span>Solicitar presupuesto para triturar piedra</span>
               <span class="material-symbols-outlined ml-2 text-sm"
                 >arrow_forward</span
@@ -202,7 +206,7 @@ import { url } from "../utils/url";
             <img
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               alt="Plantadora guiada por satélite GPS Topcon realizando plantación de viña"
-              src={url('/images/servicios/plantacion-gps-vinedo.webp')}
+              src={url("/images/servicios/plantacion-gps-vinedo.webp")}
               loading="lazy"
             />
             <div
@@ -237,7 +241,7 @@ import { url } from "../utils/url";
               <div>
                 <span
                   class="font-label-caps text-label-caps text-secondary uppercase block mb-1"
-                  >Tecnología empleada</span
+                  >Maquinaria empleada</span
                 >
                 <span
                   class="font-body-md text-body-md font-medium text-on-surface"
@@ -245,10 +249,7 @@ import { url } from "../utils/url";
                 >
               </div>
             </div>
-            <a
-              href={url('/contacto')}
-              class="btn-agricola w-full mt-auto"
-            >
+            <a href={url("/contacto")} class="btn-agricola w-full mt-auto">
               <span>Consultar disponibilidad de plantación</span>
               <span class="material-symbols-outlined ml-2 text-sm"
                 >arrow_forward</span
@@ -294,12 +295,9 @@ import { url } from "../utils/url";
                 >Arado de volteo profundo</span
               >
             </div>
-            <a
-              href={url('/contacto')}
-              class="btn-card-link-agricola"
-            >
+            <a href={url("/contacto")} class="btn-agricola w-full mt-auto">
               <span>Hablar con un especialista en desfonde</span>
-              <span class="material-symbols-outlined ml-1 text-sm"
+              <span class="material-symbols-outlined ml-2 text-sm"
                 >arrow_forward</span
               >
             </a>
@@ -341,12 +339,9 @@ import { url } from "../utils/url";
                 >Topo + Pala extractora</span
               >
             </div>
-            <a
-              href={url('/contacto')}
-              class="btn-card-link-agricola"
-            >
+            <a href={url("/contacto")} class="btn-agricola w-full mt-auto">
               <span>Pedir precio por hectárea para arranque</span>
-              <span class="material-symbols-outlined ml-1 text-sm"
+              <span class="material-symbols-outlined ml-2 text-sm"
                 >arrow_forward</span
               >
             </a>
@@ -382,7 +377,7 @@ import { url } from "../utils/url";
             <img
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               alt="Retropala mixta realizando excavación y movimiento de tierras para cimentaciones"
-              src={url('/images/servicios/excavaciones-movimiento.webp')}
+              src={url("/images/servicios/excavaciones-movimiento.webp")}
               loading="lazy"
             />
             <div
@@ -424,10 +419,7 @@ import { url } from "../utils/url";
                 >
               </div>
             </div>
-            <a
-              href={url('/contacto')}
-              class="btn-obra w-full mt-auto"
-            >
+            <a href={url("/contacto")} class="btn-obra w-full mt-auto">
               <span>Consultar servicios de excavación</span>
               <span class="material-symbols-outlined ml-2 text-sm"
                 >arrow_forward</span
@@ -444,7 +436,7 @@ import { url } from "../utils/url";
             <img
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               alt="Fresadora de piedra reacondicionando y triturando firme de camino rural"
-              src={url('/images/servicios/trituracion-reciclaje.webp')}
+              src={url("/images/servicios/trituracion-reciclaje.webp")}
               loading="lazy"
             />
             <div
@@ -487,10 +479,7 @@ import { url } from "../utils/url";
                 >
               </div>
             </div>
-            <a
-              href={url('/contacto')}
-              class="btn-obra w-full mt-auto"
-            >
+            <a href={url("/contacto")} class="btn-obra w-full mt-auto">
               <span>Solicitar Arreglo Camino</span>
               <span class="material-symbols-outlined ml-2 text-sm"
                 >arrow_forward</span
@@ -507,7 +496,7 @@ import { url } from "../utils/url";
             <img
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               alt="Trituradora forestal realizando desbroce y trituración de arbolado en finca"
-              src={url('/images/servicios/desbroce-forestal.webp')}
+              src={url("/images/servicios/desbroce-forestal.webp")}
               loading="lazy"
             />
             <div
@@ -549,10 +538,7 @@ import { url } from "../utils/url";
                 >
               </div>
             </div>
-            <a
-              href={url('/contacto')}
-              class="btn-obra w-full mt-auto"
-            >
+            <a href={url("/contacto")} class="btn-obra w-full mt-auto">
               <span>Solicitar Desbroce y Trituración</span>
               <span class="material-symbols-outlined ml-2 text-sm"
                 >arrow_forward</span

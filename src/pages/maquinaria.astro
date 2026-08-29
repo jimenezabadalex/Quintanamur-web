@@ -6,7 +6,7 @@ import { url } from "../utils/url";
 
 <Layout
   title="Parque de Maquinaria y Flota Propia - Quintanamur S.L."
-  description="Flota propia de tractores Fendt, retropala mixta, fresadora de piedra y guiado GPS Topcon. Maquinaria pesada sin intermediarios en Yecla. ¡Pide tu presupuesto!"
+  description="Flota de tractores Fendt, retropala, trituradora forestal, fresadora de piedra y guiado GPS Topcon. Maquinaria pesada sin intermediarios en Yecla."
   activePage="maquinaria"
 >
   <!-- Hero Section -->
@@ -15,7 +15,7 @@ import { url } from "../utils/url";
   >
     <div
       class="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none"
-      style={`background-image: url('${url('/images/maquinaria/hero-flota-bg.webp')}');`}
+      style={`background-image: url('${url("/images/maquinaria/hero-flota-bg.webp")}');`}
     >
       <!-- Gradient overlay: strong dark tone on text side, completely open on machinery side -->
       <div
@@ -36,7 +36,9 @@ import { url } from "../utils/url";
           class="font-display-lg text-headline-lg-mobile md:text-display-lg lg:text-[60px] font-extrabold mb-5 text-on-primary leading-tight"
         >
           NUESTRA FLOTA:<br />
-          <span class="text-primary-fixed-dim">MAQUINARIA PESADA Y TRACTORES FENDT</span>
+          <span class="text-primary-fixed-dim"
+            >MAQUINARIA PESADA Y TRACTORES FENDT</span
+          >
         </h1>
         <p
           class="font-body-lg text-body-lg md:text-[19px] text-inverse-on-surface max-w-xl leading-relaxed mb-8"
@@ -46,10 +48,7 @@ import { url } from "../utils/url";
           terrenos más duros.
         </p>
         <div class="hidden md:block">
-          <a
-            href="#categoria-a"
-            class="btn-agricola group"
-          >
+          <a href="#categoria-a" class="btn-agricola group">
             <span>VER FLOTA DE TRACTORES</span>
             <span
               class="material-symbols-outlined text-lg group-hover:translate-y-0.5 transition-transform"
@@ -206,10 +205,7 @@ import { url } from "../utils/url";
           </h2>
         </div>
         <div>
-          <a
-            href={url('/servicios')}
-            class="btn-agricola group"
-          >
+          <a href={url("/servicios")} class="btn-agricola group">
             <span>VER SERVICIOS</span>
             <span
               class="material-symbols-outlined text-base group-hover:translate-x-0.5 transition-transform"
@@ -230,7 +226,7 @@ import { url } from "../utils/url";
             <img
               alt="Tractor Fendt 933 Vario de gran potencia para trituración y desbroce"
               class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
-              src={url('/images/maquinaria/tractor-fendt-933.webp')}
+              src={url("/images/maquinaria/tractor-fendt-933.webp")}
               loading="lazy"
             />
             <div
@@ -289,7 +285,7 @@ import { url } from "../utils/url";
             <img
               alt="Tractor Fendt 930 Vario realizando labores de desfonde profundo y molino"
               class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
-              src={url('/images/maquinaria/tractor-fendt-930.webp')}
+              src={url("/images/maquinaria/tractor-fendt-930.webp")}
               loading="lazy"
             />
             <div
@@ -347,7 +343,7 @@ import { url } from "../utils/url";
             <img
               alt="Tractor Fendt 722 Vario con guiado satelital GPS para plantaciones"
               class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
-              src={url('/images/maquinaria/tractor-fendt-722.webp')}
+              src={url("/images/maquinaria/tractor-fendt-722.webp")}
               loading="lazy"
             />
             <div
@@ -406,7 +402,7 @@ import { url } from "../utils/url";
           <img
             alt="Tractor Fendt 211 Vario especialista en hilerado de piedras"
             class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
-            src={url('/images/maquinaria/tractor-fendt-211.webp')}
+            src={url("/images/maquinaria/tractor-fendt-211.webp")}
             loading="lazy"
           />
           <div
@@ -436,8 +432,8 @@ import { url } from "../utils/url";
               Tractor compacto y ágil de perfil estrecho. Especializado en
               labores de <strong class="text-on-surface"
                 >hilerado y acumulación de piedra superficial</strong
-              > en cualquier marco de plantación, preparando el terreno para su
-              trituración o recogida.
+              > en cualquier marco de plantación, preparando el terreno para su trituración
+              o recogida.
             </p>
           </div>
           <div
@@ -488,10 +484,7 @@ import { url } from "../utils/url";
         </h2>
       </div>
       <div>
-        <a
-          href={url('/servicios')}
-          class="btn-agricola group"
-        >
+        <a href={url("/servicios")} class="btn-agricola group">
           <span>VER SERVICIOS</span>
           <span
             class="material-symbols-outlined text-base group-hover:translate-x-0.5 transition-transform"
@@ -509,7 +502,7 @@ import { url } from "../utils/url";
         <img
           alt="Retropala mixta Caterpillar 432 para excavaciones y apertura de zanjas"
           class="w-full h-full max-h-[420px] object-contain mix-blend-multiply hover:scale-105 transition-transform duration-500"
-          src={url('/images/maquinaria/retropala-trinity.webp')}
+          src={url("/images/maquinaria/retropala-trinity.webp")}
           loading="lazy"
         />
       </div>
@@ -583,10 +576,7 @@ import { url } from "../utils/url";
           </p>
         </div>
         <div>
-          <a
-            href={url('/servicios')}
-            class="btn-agricola group"
-          >
+          <a href={url("/servicios")} class="btn-agricola group">
             <span>VER SERVICIOS</span>
             <span
               class="material-symbols-outlined text-base group-hover:translate-x-0.5 transition-transform"
@@ -607,7 +597,7 @@ import { url } from "../utils/url";
             <img
               alt="Fresadora de piedra FI-IVAN para trituración y estabilización de suelo"
               class="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
-              src={url('/images/maquinaria/fresadora-fiivan.webp')}
+              src={url("/images/maquinaria/fresadora-fiivan.webp")}
               loading="lazy"
             />
           </div>
@@ -638,7 +628,7 @@ import { url } from "../utils/url";
             <img
               alt="Trituradora forestal TFT Cancela para desbroce y despeje de fincas"
               class="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
-              src={url('/images/maquinaria/trituradora-forestal.webp')}
+              src={url("/images/maquinaria/trituradora-forestal.webp")}
               loading="lazy"
             />
           </div>
@@ -670,7 +660,7 @@ import { url } from "../utils/url";
             <img
               alt="Guiado satelital GPS Topcon en cabina"
               class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-              src={url('/images/maquinaria/guiado-gps-topcon.webp')}
+              src={url("/images/maquinaria/guiado-gps-topcon.webp")}
               loading="lazy"
             />
           </div>
