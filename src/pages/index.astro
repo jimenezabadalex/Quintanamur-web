@@ -5,8 +5,8 @@ import { url } from "../utils/url";
 ---
 
 <Layout
-  title="Quintanamur S.L. - Potencia Industrial al Servicio de la Obra y el Campo"
-  description="Acondicionamiento extremo de terrenos, excavaciones, despedregado y plantación GPS en Yecla, Jumilla y comarca. Maquinaria propia sin intermediarios."
+  title="Maquinaria Agrícola y Obra Civil | Quintanamur"
+  description="Servicios de excavación, movimiento de tierras, despedregado y plantación GPS en Yecla y comarca. Maquinaria propia sin intermediarios. ¡Pide tu presupuesto!"
   activePage="inicio"
 >
   <!-- Hero Section -->
@@ -28,7 +28,7 @@ import { url } from "../utils/url";
         <h1
           class="font-display-lg text-headline-lg-mobile md:text-display-lg lg:text-[60px] font-extrabold mb-5 text-on-primary leading-tight"
         >
-          POTENCIA INDUSTRIAL AL SERVICIO DE LA OBRA Y EL CAMPO
+          MAQUINARIA AL SERVICIO DE LA OBRA Y EL CAMPO
         </h1>
         <p
           class="font-body-lg text-body-lg md:text-[19px] text-inverse-on-surface max-w-xl leading-relaxed mb-8"
@@ -39,13 +39,13 @@ import { url } from "../utils/url";
         <div class="flex flex-col sm:flex-row gap-4">
           <a
             class="btn-agricola w-full sm:w-auto text-center"
-            href={url('/maquinaria')}
+            href={url("/maquinaria")}
           >
             VER NUESTRA FLOTA
           </a>
           <a
             class="btn-obra w-full sm:w-auto text-center"
-            href={url('/servicios')}
+            href={url("/servicios")}
           >
             Ver Servicios
           </a>
@@ -59,8 +59,8 @@ import { url } from "../utils/url";
         >
           <img
             class="w-full h-full object-cover"
-            alt="Maquinaria pesada trabajando en el campo"
-            src={url('/images/home/hero-maquinaria.webp')}
+            alt="Tractor Fendt de gran potencia realizando labores de movimiento de tierras"
+            src={url("/images/home/hero-maquinaria.webp")}
             loading="eager"
           />
         </div>
@@ -77,7 +77,7 @@ import { url } from "../utils/url";
           >Especialidades</span
         >
         <h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">
-          NUESTRAS ESPECIALIDADES
+          ESPECIALIDADES EN OBRA Y CAMPO
         </h2>
         <div class="w-20 h-1 bg-secondary mx-auto"></div>
       </div>
@@ -92,13 +92,13 @@ import { url } from "../utils/url";
             >
               <img
                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                alt="Retropala trabajando en obra civil y agricultura"
-                src={url('/images/home/card-servicios-agricolas.webp')}
+                alt="Tractor agrícola realizando labores de preparación y desfonde de suelo"
+                src={url("/images/home/card-servicios-agricolas.webp")}
                 loading="lazy"
               />
             </div>
             <h3 class="font-headline-md text-headline-md text-on-surface mb-3">
-              Servicios Agrícolas
+              Servicios Agrícolas de Precisión
             </h3>
             <p class="text-on-surface-variant mb-6 leading-relaxed">
               Despedregado, desfonde profundo, arranque de viña vieja y
@@ -108,7 +108,7 @@ import { url } from "../utils/url";
           <div>
             <a
               class="btn-agricola"
-              href={url('/servicios#servicios-agricolas')}
+              href={url("/servicios#servicios-agricolas")}
             >
               VER SERVICIOS
             </a>
@@ -125,8 +125,8 @@ import { url } from "../utils/url";
             >
               <img
                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                alt="Excavadora trabajando en obra civil"
-                src={url('/images/home/card-obra-civil.webp')}
+                alt="Excavadora de cadenas ejecutando zanja y movimiento de tierras"
+                src={url("/images/home/card-obra-civil.webp")}
                 loading="lazy"
               />
             </div>
@@ -139,10 +139,7 @@ import { url } from "../utils/url";
             </p>
           </div>
           <div>
-            <a
-              class="btn-obra"
-              href={url('/servicios#obra-civil')}
-            >
+            <a class="btn-obra" href={url("/servicios#obra-civil")}>
               VER SERVICIOS
             </a>
           </div>
@@ -175,14 +172,23 @@ import { url } from "../utils/url";
               class="w-14 h-14 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6 transition-all duration-300 group-hover:bg-primary group-hover:text-on-primary group-hover:scale-105 shadow-sm"
             >
               <!-- Icono Piedra con Grieta Central y Granos de Trituración en Base -->
-              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 15L7 5L17 4L20 12L17.5 17.5L6.5 17.5L4 15Z" />
-                <path d="M12 4.5L10.5 9L13.5 12.5L11.5 17.5" />
-                <circle cx="4.5" cy="20.5" r="0.9" fill="currentColor" />
-                <circle cx="8.5" cy="21" r="0.9" fill="currentColor" />
-                <circle cx="12" cy="20.5" r="0.9" fill="currentColor" />
-                <circle cx="15.5" cy="21" r="0.9" fill="currentColor" />
-                <circle cx="19.5" cy="20.5" r="0.9" fill="currentColor" />
+              <svg
+                class="w-7 h-7"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M4 15L7 5L17 4L20 12L17.5 17.5L6.5 17.5L4 15Z"></path>
+                <path d="M12 4.5L10.5 9L13.5 12.5L11.5 17.5"></path>
+                <circle cx="4.5" cy="20.5" r="0.9" fill="currentColor"></circle>
+                <circle cx="8.5" cy="21" r="0.9" fill="currentColor"></circle>
+                <circle cx="12" cy="20.5" r="0.9" fill="currentColor"></circle>
+                <circle cx="15.5" cy="21" r="0.9" fill="currentColor"></circle>
+                <circle cx="19.5" cy="20.5" r="0.9" fill="currentColor"
+                ></circle>
               </svg>
             </div>
             <h3 class="font-headline-md text-headline-md text-on-surface mb-3">
@@ -190,15 +196,19 @@ import { url } from "../utils/url";
             </h3>
             <p class="text-on-surface-variant leading-relaxed">
               Trituramos la piedra directamente en tu parcela hasta alcanzar los
-              35 cm de profundidad. La roca se convierte en gravilla fina in situ.
+              35 cm de profundidad. La roca se convierte en gravilla fina in
+              situ.
             </p>
           </div>
           <a
-            href={url('/servicios#servicios-agricolas')}
+            href={url("/servicios#servicios-agricolas")}
             class="mt-6 btn-card-link-agricola group"
           >
             <span>Saber más</span>
-            <span class="material-symbols-outlined text-base group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+            <span
+              class="material-symbols-outlined text-base group-hover:translate-x-0.5 transition-transform"
+              >arrow_forward</span
+            >
           </a>
         </div>
 
@@ -211,15 +221,23 @@ import { url } from "../utils/url";
               class="w-14 h-14 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6 transition-all duration-300 group-hover:bg-primary group-hover:text-on-primary group-hover:scale-105 shadow-sm"
             >
               <!-- Icono Rastro de Arado Recto en Perspectiva (Sin curvas) -->
-              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M2 7H22" />
-                <path d="M2 20L6 7" />
-                <path d="M22 20L18 7" />
-                <path d="M5.5 20L8.5 7" />
-                <path d="M9.5 20L11 7" />
-                <path d="M14.5 20L13 7" />
-                <path d="M18.5 20L15.5 7" />
-                <path d="M2 20H22" />
+              <svg
+                class="w-7 h-7"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M2 7H22"></path>
+                <path d="M2 20L6 7"></path>
+                <path d="M22 20L18 7"></path>
+                <path d="M5.5 20L8.5 7"></path>
+                <path d="M9.5 20L11 7"></path>
+                <path d="M14.5 20L13 7"></path>
+                <path d="M18.5 20L15.5 7"></path>
+                <path d="M2 20H22"></path>
               </svg>
             </div>
             <h3 class="font-headline-md text-headline-md text-on-surface mb-3">
@@ -231,11 +249,14 @@ import { url } from "../utils/url";
             </p>
           </div>
           <a
-            href={url('/servicios#servicios-agricolas')}
+            href={url("/servicios#servicios-agricolas")}
             class="mt-6 btn-card-link-agricola group"
           >
             <span>Saber más</span>
-            <span class="material-symbols-outlined text-base group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+            <span
+              class="material-symbols-outlined text-base group-hover:translate-x-0.5 transition-transform"
+              >arrow_forward</span
+            >
           </a>
         </div>
 
@@ -247,7 +268,9 @@ import { url } from "../utils/url";
             <div
               class="w-14 h-14 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6 transition-all duration-300 group-hover:bg-primary group-hover:text-on-primary group-hover:scale-105 shadow-sm"
             >
-              <span class="material-symbols-outlined text-3xl">satellite_alt</span>
+              <span class="material-symbols-outlined text-3xl"
+                >satellite_alt</span
+              >
             </div>
             <h3 class="font-headline-md text-headline-md text-on-surface mb-3">
               Plantación con GPS
@@ -258,11 +281,14 @@ import { url } from "../utils/url";
             </p>
           </div>
           <a
-            href={url('/servicios#servicios-agricolas')}
+            href={url("/servicios#servicios-agricolas")}
             class="mt-6 btn-card-link-agricola group"
           >
             <span>Saber más</span>
-            <span class="material-symbols-outlined text-base group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+            <span
+              class="material-symbols-outlined text-base group-hover:translate-x-0.5 transition-transform"
+              >arrow_forward</span
+            >
           </a>
         </div>
       </div>
@@ -291,15 +317,24 @@ import { url } from "../utils/url";
               class="w-14 h-14 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center mb-6 transition-all duration-300 group-hover:bg-secondary group-hover:text-on-secondary group-hover:scale-105 shadow-sm"
             >
               <!-- Icono Retroexcavadora -->
-              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="17" width="12" height="5" rx="2.5" />
-                <circle cx="5" cy="19.5" r="0.8" fill="currentColor" />
-                <circle cx="8" cy="19.5" r="0.8" fill="currentColor" />
-                <circle cx="11" cy="19.5" r="0.8" fill="currentColor" />
-                <path d="M4 17V11a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v6" />
-                <path d="M5.5 12h3.5" />
-                <path d="M11 13l4-5 3.5 2.5" />
-                <path d="M18.5 10.5l2.5 3-2 1.5-2-2.5z" fill="currentColor" />
+              <svg
+                class="w-7 h-7"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="2" y="17" width="12" height="5" rx="2.5"></rect>
+                <circle cx="5" cy="19.5" r="0.8" fill="currentColor"></circle>
+                <circle cx="8" cy="19.5" r="0.8" fill="currentColor"></circle>
+                <circle cx="11" cy="19.5" r="0.8" fill="currentColor"></circle>
+                <path d="M4 17V11a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v6"></path>
+                <path d="M5.5 12h3.5"></path>
+                <path d="M11 13l4-5 3.5 2.5"></path>
+                <path d="M18.5 10.5l2.5 3-2 1.5-2-2.5z" fill="currentColor"
+                ></path>
               </svg>
             </div>
             <h3 class="font-headline-md text-headline-md text-on-surface mb-3">
@@ -307,15 +342,19 @@ import { url } from "../utils/url";
             </h3>
             <p class="text-on-surface-variant leading-relaxed">
               Ejecutamos excavaciones ajustándonos estrictamente a las cotas.
-              Extracción, perfilado del terreno y retirada del material sobrante.
+              Extracción, perfilado del terreno y retirada del material
+              sobrante.
             </p>
           </div>
           <a
-            href={url('/servicios#obra-civil')}
+            href={url("/servicios#obra-civil")}
             class="mt-6 btn-card-link-obra group"
           >
             <span>Saber más</span>
-            <span class="material-symbols-outlined text-base group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+            <span
+              class="material-symbols-outlined text-base group-hover:translate-x-0.5 transition-transform"
+              >arrow_forward</span
+            >
           </a>
         </div>
 
@@ -327,7 +366,8 @@ import { url } from "../utils/url";
             <div
               class="w-14 h-14 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center mb-6 transition-all duration-300 group-hover:bg-secondary group-hover:text-on-secondary group-hover:scale-105 shadow-sm"
             >
-              <span class="material-symbols-outlined text-3xl">engineering</span>
+              <span class="material-symbols-outlined text-3xl">engineering</span
+              >
             </div>
             <h3 class="font-headline-md text-headline-md text-on-surface mb-3">
               Movimiento de Tierras
@@ -338,11 +378,14 @@ import { url } from "../utils/url";
             </p>
           </div>
           <a
-            href={url('/servicios#obra-civil')}
+            href={url("/servicios#obra-civil")}
             class="mt-6 btn-card-link-obra group"
           >
             <span>Saber más</span>
-            <span class="material-symbols-outlined text-base group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+            <span
+              class="material-symbols-outlined text-base group-hover:translate-x-0.5 transition-transform"
+              >arrow_forward</span
+            >
           </a>
         </div>
 
@@ -357,19 +400,22 @@ import { url } from "../utils/url";
               <span class="material-symbols-outlined text-3xl">forest</span>
             </div>
             <h3 class="font-headline-md text-headline-md text-on-surface mb-3">
-              Desbroce Forestal
+              Desbroce Forestal de Terrenos
             </h3>
             <p class="text-on-surface-variant leading-relaxed">
-              Despeje rápido y ecológico. Trituramos árboles enteros in situ para
-              la reconversión de fincas y parques solares.
+              Despeje rápido y ecológico. Trituramos árboles enteros in situ
+              para la reconversión de fincas y parques solares.
             </p>
           </div>
           <a
-            href={url('/servicios#obra-civil')}
+            href={url("/servicios#obra-civil")}
             class="mt-6 btn-card-link-obra group"
           >
             <span>Saber más</span>
-            <span class="material-symbols-outlined text-base group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+            <span
+              class="material-symbols-outlined text-base group-hover:translate-x-0.5 transition-transform"
+              >arrow_forward</span
+            >
           </a>
         </div>
       </div>
@@ -380,18 +426,14 @@ import { url } from "../utils/url";
   <section
     class="py-24 bg-surface-container-low border-t border-outline-variant/20"
   >
-    <div
-      class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop"
-    >
+    <div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop">
       <div class="text-center mb-16">
         <span
           class="font-label-caps text-label-caps text-secondary uppercase tracking-widest block mb-2"
           >Flota y Capacidad</span
         >
-        <h2
-          class="font-headline-lg text-headline-lg text-on-surface mb-4"
-        >
-          POTENCIA Y MÚSCULO TÉCNICO
+        <h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">
+          Maquinaria y Equipamiento
         </h2>
         <p
           class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto leading-relaxed"
@@ -409,9 +451,7 @@ import { url } from "../utils/url";
           >
             100% Maquinaria Propia
           </div>
-          <h3
-            class="font-headline-md text-headline-md text-on-surface mb-3"
-          >
+          <h3 class="font-headline-md text-headline-md text-on-surface mb-3">
             Flota 100% Fendt: Potencia Vario
           </h3>
           <p class="text-on-surface-variant mb-6 leading-relaxed">
@@ -431,12 +471,12 @@ import { url } from "../utils/url";
             Cancela y Guiado Satelital GPS Topcon.
           </p>
           <div>
-            <a
-              href={url('/maquinaria')}
-              class="btn-agricola group"
-            >
+            <a href={url("/maquinaria")} class="btn-agricola group">
               <span>EXPLORAR NUESTRA FLOTA</span>
-              <span class="material-symbols-outlined text-base group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+              <span
+                class="material-symbols-outlined text-base group-hover:translate-x-0.5 transition-transform"
+                >arrow_forward</span
+              >
             </a>
           </div>
         </div>
@@ -445,8 +485,8 @@ import { url } from "../utils/url";
         >
           <img
             class="w-full h-full object-cover"
-            alt="Flota de tractores Fendt de alta potencia operando"
-            src={url('/images/home/flota-alta-potencia.webp')}
+            alt="Flota de tractores Fendt de alta potencia para trabajos agrícolas"
+            src={url("/images/home/flota-alta-potencia.webp")}
             loading="lazy"
           />
         </div>
@@ -465,7 +505,7 @@ import { url } from "../utils/url";
           >Nuestra Historia</span
         >
         <h2 class="font-headline-lg text-headline-lg text-on-surface mb-6">
-          DE LA CASA QUINTANA A LA ALTA TECNOLOGÍA
+          HISTORIA Y RAÍCES DE QUINTANAMUR
         </h2>
         <h3 class="font-headline-md text-headline-md text-primary mb-4">
           Las raíces en la tierra
@@ -480,11 +520,8 @@ import { url } from "../utils/url";
           Quintanamur S.L. es el puente perfecto entre la tradición agrícola y
           la fuerza de la maquinaria industrial.
         </p>
-        <a
-          class="btn-obra"
-          href={url('/sobre-nosotros')}
-        >
-          LEER NUESTRA HISTORIA
+        <a class="btn-obra" href={url("/sobre-nosotros")}>
+          CONOCE NUESTRA HISTORIA
         </a>
       </div>
       <div class="md:col-span-6">
@@ -493,8 +530,8 @@ import { url } from "../utils/url";
         >
           <img
             class="w-full h-full object-cover"
-            alt="Historia y tradición en el campo"
-            src={url('/images/home/historia-raices.webp')}
+            alt="Maquinaria agrícola tradicional trabajando la tierra en fincas de Yecla"
+            src={url("/images/home/historia-raices.webp")}
             loading="lazy"
           />
         </div>
