@@ -42,7 +42,7 @@ import { url } from '../utils/url';
           </div>
           <div>
             <h2 class="font-headline-md text-body-lg font-bold text-on-surface">¿Trabajamos en tu zona?</h2>
-            <p class="font-body-md text-on-surface-variant text-sm">Zona de cobertura directa: 150 km desde Yecla (Murcia)</p>
+            <p class="font-body-md text-on-surface-variant text-sm">Zona de cobertura directa: 100 km desde Yecla (Murcia)</p>
           </div>
         </div>
         <div class="flex flex-col sm:flex-row gap-2">
@@ -196,7 +196,7 @@ import { url } from '../utils/url';
   <script is:inline>
     const YECLA_LAT = 38.6136;
     const YECLA_LNG = -1.1166;
-    const MAX_RADIUS_KM = 150;
+    const MAX_RADIUS_KM = 100;
     const COLOR_PRIMARY   = '#61993b';
     const COLOR_SECONDARY = '#b58753';
 
@@ -231,7 +231,7 @@ import { url } from '../utils/url';
       const L = window.L;
       if (!L) { console.error('Leaflet no cargado'); return; }
 
-      const map = L.map('coverage-map', { center:[YECLA_LAT, YECLA_LNG], zoom:7, scrollWheelZoom:false });
+      const map = L.map('coverage-map', { center:[YECLA_LAT, YECLA_LNG], zoom:8, scrollWheelZoom:false });
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution:'© <a href="https://openstreetmap.org/copyright">OpenStreetMap</a>', maxZoom:18 }).addTo(map);
 
       L.circle([YECLA_LAT, YECLA_LNG], { radius: MAX_RADIUS_KM*1000, color: COLOR_PRIMARY, fillColor: COLOR_PRIMARY, fillOpacity:0.08, weight:2, dashArray:'6 4' }).addTo(map);
