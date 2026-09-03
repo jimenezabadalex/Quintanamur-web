@@ -2,8 +2,8 @@
 
 > **Proyecto:** Quintanamur S.L. Platform  
 > **Documentos Relacionados:**  
-> - [`docs/INFORME_DISENO_BBDD_NEON_BIGQUERY.md`](file:///c:/Users/alexj/Quintanamur-web/docs/INFORME_DISENO_BBDD_NEON_BIGQUERY.md)  
-> - [`docs/GUIA_INTEGRACION_DATOS_NEON_BIGQUERY.md`](file:///c:/Users/alexj/Quintanamur-web/docs/GUIA_INTEGRACION_DATOS_NEON_BIGQUERY.md)  
+> - [`docs/datos/INFORME_DISENO_BBDD_NEON_BIGQUERY.md`](file:///c:/Users/alexj/Quintanamur-web/docs/datos/INFORME_DISENO_BBDD_NEON_BIGQUERY.md)  
+> - [`docs/datos/GUIA_INTEGRACION_DATOS_NEON_BIGQUERY.md`](file:///c:/Users/alexj/Quintanamur-web/docs/datos/GUIA_INTEGRACION_DATOS_NEON_BIGQUERY.md)  
 > - [`src/pages/contacto.astro`](file:///c:/Users/alexj/Quintanamur-web/src/pages/contacto.astro)  
 > **Propósito:** Explicar con un caso real cómo viajan los datos recopilados por el formulario y el mapa interactivo hasta quedar almacenados en la base de datos PostgreSQL de Neon.
 

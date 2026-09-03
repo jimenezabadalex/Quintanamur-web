@@ -1,7 +1,7 @@
 # 🗄️ Informe Técnico: Diseño y Contenido de la Base de Datos (Neon PostgreSQL & Google BigQuery)
 
 > **Proyecto:** Quintanamur S.L. Web Platform  
-> **Documento Base de Referencia:** [`docs/GUIA_INTEGRACION_DATOS_NEON_BIGQUERY.md`](file:///c:/Users/alexj/Quintanamur-web/docs/GUIA_INTEGRACION_DATOS_NEON_BIGQUERY.md)  
+> **Documento Base de Referencia:** [`docs/datos/GUIA_INTEGRACION_DATOS_NEON_BIGQUERY.md`](file:///c:/Users/alexj/Quintanamur-web/docs/datos/GUIA_INTEGRACION_DATOS_NEON_BIGQUERY.md)  
 > **Componentes Web Fuente:** [`src/pages/contacto.astro`](file:///c:/Users/alexj/Quintanamur-web/src/pages/contacto.astro), [`src/components/MobileBottomBar.astro`](file:///c:/Users/alexj/Quintanamur-web/src/components/MobileBottomBar.astro), [`src/components/Navbar.astro`](file:///c:/Users/alexj/Quintanamur-web/src/components/Navbar.astro)  
 > **Propósito:** Definir de manera exhaustiva el diccionario de datos, tipos, tablas, orígenes de captura en el frontend y la transformación dimensional hacia el Data Warehouse.
 
@@ -188,7 +188,7 @@ Cuando el script ELT en Python (`elt_pipeline.py`) transfiere los datos desde Ne
 
 ## 5. 🛡️ Gobernanza del Dato y Cumplimiento Normativo (RGPD)
 
-En consonancia con el plan [`docs/PLAN_CUMPLIMIENTO_RGPD_PRIVACIDAD.md`](file:///c:/Users/alexj/Quintanamur-web/docs/PLAN_CUMPLIMIENTO_RGPD_PRIVACIDAD.md):
+En consonancia con el plan [`docs/legal/PLAN_CUMPLIMIENTO_RGPD_PRIVACIDAD.md`](file:///c:/Users/alexj/Quintanamur-web/docs/legal/PLAN_CUMPLIMIENTO_RGPD_PRIVACIDAD.md):
 
 1. **Principio de Minimización (Art. 5.1.c RGPD):**
    - Solo se solicitan los campos estrictamente indispensables para elaborar la propuesta económica.

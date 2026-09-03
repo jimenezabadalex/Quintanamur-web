@@ -2,8 +2,8 @@
 
 > **Proyecto:** Quintanamur S.L. Platform  
 > **Documentos Relacionados:**  
-> - [`docs/FLUJO_DATOS_Y_EJEMPLO_NEON.md`](file:///c:/Users/alexj/Quintanamur-web/docs/FLUJO_DATOS_Y_EJEMPLO_NEON.md)  
-> - [`docs/INFORME_DISENO_BBDD_NEON_BIGQUERY.md`](file:///c:/Users/alexj/Quintanamur-web/docs/INFORME_DISENO_BBDD_NEON_BIGQUERY.md)  
+> - [`docs/datos/FLUJO_DATOS_Y_EJEMPLO_NEON.md`](file:///c:/Users/alexj/Quintanamur-web/docs/datos/FLUJO_DATOS_Y_EJEMPLO_NEON.md)  
+> - [`docs/datos/INFORME_DISENO_BBDD_NEON_BIGQUERY.md`](file:///c:/Users/alexj/Quintanamur-web/docs/datos/INFORME_DISENO_BBDD_NEON_BIGQUERY.md)  
 > - [`src/pages/contacto.astro`](file:///c:/Users/alexj/Quintanamur-web/src/pages/contacto.astro)  
 > **Objetivo:** Garantizar la **cero pérdida de clientes potenciales (*leads*)** ante fallos de conectividad, caídas del servidor o errores de validación, estableciendo mecanismos de rescate automáticos y analizando sus contrapartidas técnicas y operativas.
 
