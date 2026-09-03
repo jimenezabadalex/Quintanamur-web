@@ -303,8 +303,14 @@ import { url } from "../utils/url";
                     name="name"
                     placeholder="Ej. Finca San José"
                     type="text"
+                    minlength="3"
+                    maxlength="70"
+                    pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ0-9\s.,&'-]{3,70}$"
+                    title="Introduce entre 3 y 70 caracteres alfanuméricos válidos."
+                    autocomplete="name"
                     required
                   />
+                  <span class="text-[11px] text-outline/80">Entre 3 y 70 caracteres.</span>
                 </div>
                 <div class="flex flex-col gap-2">
                   <label
@@ -317,8 +323,14 @@ import { url } from "../utils/url";
                     name="phone"
                     placeholder="+34 600 00 00 00"
                     type="tel"
+                    minlength="9"
+                    maxlength="18"
+                    pattern="^\+?[0-9\s\-()]{9,18}$"
+                    title="Introduce un teléfono válido (de 9 a 18 dígitos, admite prefijo +34)."
+                    autocomplete="tel"
                     required
                   />
+                  <span class="text-[11px] text-outline/80">Solo números y prefijo (9-18 car.).</span>
                 </div>
               </div>
               <div class="flex flex-col gap-2">
@@ -340,24 +352,63 @@ import { url } from "../utils/url";
                     name="location"
                     placeholder="Indica dónde se realizará el trabajo"
                     type="text"
+                    minlength="3"
+                    maxlength="100"
                     required
                   />
                 </div>
+                <span class="text-[11px] text-outline/80">Máximo 100 caracteres.</span>
               </div>
               <div class="flex flex-col gap-2">
-                <label
-                  class="font-label-caps text-label-caps text-on-surface-variant uppercase"
-                  for="message">Cuéntanos qué necesitas (Breve)</label
-                >
+                <div class="flex justify-between items-center">
+                  <label
+                    class="font-label-caps text-label-caps text-on-surface-variant uppercase"
+                    for="message">Cuéntanos qué necesitas (Breve)</label
+                  >
+                  <span
+                    id="message-counter"
+                    class="text-xs font-mono text-outline transition-colors"
+                    >0 / 500</span
+                  >
+                </div>
                 <textarea
                   class="w-full bg-surface-bright border border-outline-variant rounded-lg px-4 py-3 font-body-md text-on-surface placeholder:text-outline/50 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all shadow-sm resize-none"
                   id="message"
                   name="message"
                   placeholder="Desbroce de 20 hectáreas, zanjeo para tuberías..."
                   rows="4"
+                  minlength="10"
+                  maxlength="500"
                   required></textarea>
+                <span class="text-[11px] text-outline/80">Mínimo 10 y máximo 500 caracteres.</span>
               </div>
-              <div class="mt-4">
+
+              <!-- Checkbox RGPD obligatorio -->
+              <div class="flex flex-col gap-2 pt-1">
+                <label class="flex items-start gap-3 cursor-pointer group select-none">
+                  <input
+                    type="checkbox"
+                    id="privacy-consent"
+                    name="privacy-consent"
+                    required
+                    class="mt-1 w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary cursor-pointer accent-primary"
+                  />
+                  <span class="font-body-md text-xs sm:text-sm text-on-surface-variant leading-snug">
+                    He leído y acepto la
+                    <a
+                      href="/politica-de-privacidad"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-primary underline font-medium hover:text-primary/80"
+                      >política de privacidad</a
+                    >
+                    para el tratamiento y valoración de mi solicitud.
+                    <span class="text-error font-bold" title="Campo obligatorio">*</span>
+                  </span>
+                </label>
+              </div>
+
+              <div class="mt-2">
                 <button
                   class="btn-agricola w-full py-4 text-base group cursor-pointer"
                   type="submit"
@@ -368,9 +419,8 @@ import { url } from "../utils/url";
                     >arrow_forward</span
                   >
                 </button>
-                <p class="font-body-md text-xs text-outline text-center mt-4">
-                  Al enviar este formulario, aceptas nuestra política de
-                  privacidad con respecto al tratamiento de datos.
+                <p class="font-body-md text-xs text-outline text-center mt-3">
+                  Respuesta comercial garantizada en menos de 24 horas laborables.
                 </p>
               </div>
             </form>
@@ -532,6 +582,9 @@ import { url } from "../utils/url";
         }).addTo(map);
         const name = await reverseGeocode(lat, lng);
         const dist = haversineKm(YECLA_LAT, YECLA_LNG, lat, lng);
+        window.currentUserLat = lat;
+        window.currentUserLng = lng;
+        window.currentDistanceKm = dist;
         userMarker
           .bindPopup(`<b>${name}</b><br>${Math.round(dist)} km de Yecla`)
           .openPopup();
@@ -539,6 +592,9 @@ import { url } from "../utils/url";
           const pos = e.target.getLatLng();
           const n = await reverseGeocode(pos.lat, pos.lng);
           const d = haversineKm(YECLA_LAT, YECLA_LNG, pos.lat, pos.lng);
+          window.currentUserLat = pos.lat;
+          window.currentUserLng = pos.lng;
+          window.currentDistanceKm = d;
           userMarker
             .setPopupContent(`<b>${n}</b><br>${Math.round(d)} km de Yecla`)
             .openPopup();
@@ -595,6 +651,103 @@ import { url } from "../utils/url";
                 `No se encontró "${query}". Prueba con otro nombre de municipio o haz clic en el mapa.`,
               );
             }
+          }
+        });
+      }
+
+      // =========================================================================
+      // Control, Validación Ligera y Sanitización de Formulario (Vanilla JS Nativo)
+      // =========================================================================
+      const leadForm = document.getElementById("lead-form");
+      const nameInput = document.getElementById("name");
+      const phoneInput = document.getElementById("phone");
+      const locationInput = document.getElementById("location");
+      const messageInput = document.getElementById("message");
+      const messageCounter = document.getElementById("message-counter");
+      const consentInput = document.getElementById("privacy-consent");
+
+      // 1. Control reactivo de Teléfono: filtrar en vivo caracteres no telefónicos
+      if (phoneInput) {
+        phoneInput.addEventListener("input", () => {
+          // Conserva solo dígitos, +, -, paréntesis y espacios
+          const cleaned = phoneInput.value.replace(/[^0-9+\s\-()]/g, "");
+          if (phoneInput.value !== cleaned) {
+            phoneInput.value = cleaned;
+          }
+          // Verificar mínimo de dígitos numéricos reales
+          const digitsOnly = phoneInput.value.replace(/\D/g, "");
+          if (digitsOnly.length > 0 && digitsOnly.length < 9) {
+            phoneInput.setCustomValidity("Introduce un teléfono válido con al menos 9 dígitos.");
+          } else {
+            phoneInput.setCustomValidity("");
+          }
+        });
+      }
+
+      // 2. Contador reactivo y límites del campo Mensaje (10 - 500 caracteres)
+      if (messageInput && messageCounter) {
+        const updateMessageCounter = () => {
+          const len = messageInput.value.length;
+          messageCounter.textContent = `${len} / 500`;
+
+          if (len >= 480) {
+            messageCounter.className = "text-xs font-mono text-error font-bold transition-colors";
+          } else if (len >= 10) {
+            messageCounter.className = "text-xs font-mono text-primary font-medium transition-colors";
+          } else {
+            messageCounter.className = "text-xs font-mono text-outline transition-colors";
+          }
+
+          if (len > 0 && len < 10) {
+            messageInput.setCustomValidity("Describe tu necesidad con al menos 10 caracteres.");
+          } else {
+            messageInput.setCustomValidity("");
+          }
+        };
+
+        messageInput.addEventListener("input", updateMessageCounter);
+        updateMessageCounter();
+      }
+
+      // 3. Sanitización y limpieza de espacios en blanco redundantes al salir del foco
+      if (nameInput) {
+        nameInput.addEventListener("blur", () => {
+          nameInput.value = nameInput.value.trim().replace(/\s+/g, " ");
+        });
+      }
+      if (locationInput) {
+        locationInput.addEventListener("blur", () => {
+          locationInput.value = locationInput.value.trim().replace(/\s+/g, " ");
+        });
+      }
+
+      // 4. Validación antes de envío
+      if (leadForm) {
+        leadForm.addEventListener("submit", (e) => {
+          if (nameInput) nameInput.value = nameInput.value.trim().replace(/\s+/g, " ");
+          if (locationInput) locationInput.value = locationInput.value.trim().replace(/\s+/g, " ");
+          if (messageInput) messageInput.value = messageInput.value.trim();
+
+          const digits = phoneInput ? phoneInput.value.replace(/\D/g, "") : "";
+          if (digits.length < 9) {
+            e.preventDefault();
+            phoneInput?.focus();
+            alert("Por favor, introduce un número de teléfono válido con al menos 9 dígitos.");
+            return;
+          }
+
+          if (messageInput && messageInput.value.length < 10) {
+            e.preventDefault();
+            messageInput.focus();
+            alert("Por favor, cuéntanos qué necesitas con al menos 10 caracteres.");
+            return;
+          }
+
+          if (consentInput && !consentInput.checked) {
+            e.preventDefault();
+            consentInput.focus();
+            alert("Debes aceptar la política de privacidad para enviar tu solicitud.");
+            return;
           }
         });
       }
