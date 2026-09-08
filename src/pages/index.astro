@@ -9,34 +9,53 @@ import { url } from "../utils/url";
   description="Servicios de excavación, movimiento de tierras, trituración forestal, despedregado y plantación GPS en Yecla y comarca. "
   activePage="inicio"
 >
-  <!-- Hero Section con Vídeo en Reversa Panorámico y Fusión Transparente -->
+  <!-- Hero Section Cinemático: Ambient Glow + Vídeo Íntegro a la Derecha sin Cortes + Degradado -->
   <header
     id="home-hero"
-    class="bg-inverse-surface relative overflow-hidden min-h-[640px] md:min-h-[720px] lg:min-h-[780px] flex items-center py-24 md:py-32"
+    class="bg-inverse-surface relative overflow-hidden min-h-[640px] md:min-h-[720px] lg:min-h-[780px] xl:min-h-[820px] flex items-center py-24 md:py-32"
   >
-    <!-- Background Video Layer -->
+    <!-- Capa 1: Ambient Glow Dinámico de Fondo (Reflejo cinemático en tiempo real) -->
     <div class="absolute inset-0 pointer-events-none overflow-hidden z-0">
       <video
-        id="home-hero-video"
-        class="w-full h-full object-cover object-center"
-        src={url("/images/home/hero-home-panoramic.mp4")}
+        id="home-hero-ambient"
+        class="w-full h-full object-cover object-center scale-125 filter blur-[60px] md:blur-[100px] opacity-30 md:opacity-40"
+        src={url("/images/home/hero-home-square.mp4")}
         autoplay
         muted
         playsinline
         preload="auto"
+        aria-hidden="true"
+        tabindex="-1"
       ></video>
+    </div>
 
-      <!-- Gradient Overlay lateral para contraste del texto -->
-      <div
-        class="absolute inset-0 bg-gradient-to-r from-inverse-surface via-inverse-surface/85 to-inverse-surface/30 md:via-inverse-surface/75 md:to-transparent"
-      >
+    <!-- Capa 2: Vídeo Principal Íntegro a la Derecha (Sin Cortes en sus 4 Lados) -->
+    <div
+      class="absolute inset-y-0 right-0 w-full md:w-3/5 lg:w-1/2 flex items-center justify-end pointer-events-none z-1 overflow-hidden"
+    >
+      <div class="relative h-full aspect-square flex items-center justify-end">
+        <video
+          id="home-hero-video"
+          class="h-full w-auto aspect-square object-contain object-right hero-video-mask"
+          src={url("/images/home/hero-home-square.mp4")}
+          autoplay
+          muted
+          playsinline
+          preload="auto"
+        ></video>
       </div>
+    </div>
 
-      <!-- Fusión suave y transparente continua hacia la siguiente sección (bg-surface) -->
-      <div
-        class="absolute bottom-0 inset-x-0 h-32 sm:h-44 md:h-56 bg-gradient-to-t from-surface via-surface/60 to-transparent"
-      >
-      </div>
+    <!-- Capa 3: Gradient Overlay Lateral de Alto Contraste para el Texto -->
+    <div
+      class="absolute inset-0 bg-gradient-to-r from-inverse-surface via-inverse-surface/85 to-inverse-surface/40 md:via-inverse-surface/80 md:to-transparent pointer-events-none z-2"
+    >
+    </div>
+
+    <!-- Capa 4: Fusión Transparente Continua hacia la Siguiente Sección (bg-surface) -->
+    <div
+      class="absolute bottom-0 inset-x-0 h-32 sm:h-44 md:h-56 bg-gradient-to-t from-surface via-surface/60 to-transparent pointer-events-none z-3"
+    >
     </div>
 
     <!-- Foreground Content -->
@@ -556,9 +575,17 @@ import { url } from "../utils/url";
     showContactPage={true}
   />
 
+  <style>
+    .hero-video-mask {
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 15%, black 35%, black 100%);
+      mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 15%, black 35%, black 100%);
+    }
+  </style>
+
   <script>
     function setupHomeHeroVideo() {
       const video = document.getElementById("home-hero-video") as HTMLVideoElement | null;
+      const ambientVideo = document.getElementById("home-hero-ambient") as HTMLVideoElement | null;
       const hero = document.getElementById("home-hero");
       if (!video || !hero) return;
 
@@ -566,18 +593,36 @@ import { url } from "../utils/url";
       let isUserScrolledDown = false;
       let lastScrollY = window.scrollY;
 
+      function playBoth() {
+        video?.play().catch(() => {});
+        ambientVideo?.play().catch(() => {});
+      }
+
+      function pauseBoth() {
+        video?.pause();
+        ambientVideo?.pause();
+      }
+
+      function resetBoth() {
+        if (video) video.currentTime = 0;
+        if (ambientVideo) ambientVideo.currentTime = 0;
+      }
+
       // 1. Manejo de fin de reproducción: esperar 4 segundos y reiniciar
       function scheduleReplay() {
         if (pauseTimeout) clearTimeout(pauseTimeout);
         pauseTimeout = window.setTimeout(() => {
           if (!isUserScrolledDown && !document.hidden) {
-            video.currentTime = 0;
-            video.play().catch(() => {});
+            resetBoth();
+            playBoth();
           }
         }, 4000);
       }
 
       video.addEventListener("ended", scheduleReplay);
+
+      // Iniciar reproducción
+      playBoth();
 
       // 2. Control inteligente de scroll:
       // Al hacer scroll hacia abajo -> se para.
@@ -591,15 +636,15 @@ import { url } from "../utils/url";
           if (!isUserScrolledDown) {
             isUserScrolledDown = true;
             if (pauseTimeout) clearTimeout(pauseTimeout);
-            video.pause();
+            pauseBoth();
           }
         } else if (currentScrollY <= 50 || (currentScrollY < lastScrollY && currentScrollY < heroHeight)) {
           // Usuario hace scroll hacia arriba y vuelve a la zona del hero
           if (isUserScrolledDown) {
             isUserScrolledDown = false;
             if (pauseTimeout) clearTimeout(pauseTimeout);
-            video.currentTime = 0;
-            video.play().catch(() => {});
+            resetBoth();
+            playBoth();
           }
         }
 
@@ -614,13 +659,13 @@ import { url } from "../utils/url";
           entries.forEach((entry) => {
             if (!entry.isIntersecting) {
               if (pauseTimeout) clearTimeout(pauseTimeout);
-              video.pause();
+              pauseBoth();
             } else if (window.scrollY <= 50) {
               if (isUserScrolledDown) {
                 isUserScrolledDown = false;
-                video.currentTime = 0;
+                resetBoth();
               }
-              video.play().catch(() => {});
+              playBoth();
             }
           });
         },
