@@ -1,7 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import CtaBanner from "../components/CtaBanner.astro";
+import ServiceAccordionItem from "../components/ServiceAccordionItem.astro";
+import { SERVICIOS } from "../data/servicios";
 import { url } from "../utils/url";
+
+const serviciosAgricolas = SERVICIOS.filter((s) => s.categoria === "agricola");
+const serviciosObraCivil = SERVICIOS.filter((s) => s.categoria === "obra-civil");
 ---
 
 <Layout
@@ -130,469 +135,15 @@ import { url } from "../utils/url";
         </h2>
         <div class="w-24 h-1 bg-primary mt-4"></div>
       </div>
+      <p class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-2xl">
+        Listado de intervenciones agrícolas de precisión. Selecciona cualquier servicio para desplegar su demostración multimedia, detalles técnicos y fases en campo.
+      </p>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter mb-gutter">
-        <!-- Service Card 1 -->
-        <div
-          class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg overflow-hidden sharp-shadow hover:sharp-shadow-hover transition-all duration-300 flex flex-col group"
-        >
-          <div class="h-64 overflow-hidden relative">
-            <img
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              alt="Fresadora de piedra FI-IVAN y tractor Fendt triturando roca en parcela"
-              src={url("/images/servicios/agricola/despedregado-trituracion.webp")}
-              loading="lazy"
-            />
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"
-            >
-            </div>
-            <div
-              class="absolute bottom-4 left-4 bg-primary text-on-primary font-label-caps text-label-caps px-3 py-1 rounded-full uppercase"
-            >
-              Preparación de Suelo
-            </div>
-          </div>
-          <div class="p-8 flex flex-col flex-grow">
-            <h3 class="font-headline-md text-headline-md text-on-surface mb-3">
-              Despedregado de Fincas y Trituración de Piedra
-            </h3>
-            <p
-              class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow leading-relaxed"
-            >
-              Transformamos terrenos pedregosos en tierras fértiles y seguras
-              para la siembra. Nuestra maquinaria especializada tritura roca in
-              situ hasta 35cm de profundidad, mejorando la estructura del suelo
-              sin necesidad de retirar material.
-            </p>
-            <div
-              class="bg-surface-container p-4 rounded-md mb-6 border border-outline-variant/20 flex items-center"
-            >
-              <span
-                class="material-symbols-outlined text-secondary mr-3 text-2xl"
-                >precision_manufacturing</span
-              >
-              <div>
-                <span
-                  class="font-label-caps text-label-caps text-secondary uppercase block mb-1"
-                  >Maquinaria empleada</span
-                >
-                <span
-                  class="font-body-md text-body-md font-medium text-on-surface"
-                  >Fresadora FI-IVAN + Tractor Fendt Alta Potencia</span
-                >
-              </div>
-            </div>
-            <a href={url("/contacto")} class="btn-agricola w-full mt-auto">
-              <span>Solicitar presupuesto para triturar piedra</span>
-              <span class="material-symbols-outlined ml-2 text-sm"
-                >arrow_forward</span
-              >
-            </a>
-          </div>
-        </div>
-
-        <!-- Service Card 2 -->
-        <div
-          class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg overflow-hidden sharp-shadow hover:sharp-shadow-hover transition-all duration-300 flex flex-col group"
-        >
-          <div class="h-64 overflow-hidden relative">
-            <img
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              alt="Plantadora guiada por satélite GPS Topcon realizando plantación de viña"
-              src={url("/images/servicios/agricola/plantacion-gps-vinedo.webp")}
-              loading="lazy"
-            />
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"
-            >
-            </div>
-            <div
-              class="absolute bottom-4 left-4 bg-primary text-on-primary font-label-caps text-label-caps px-3 py-1 rounded-full uppercase"
-            >
-              Plantación de Precisión
-            </div>
-          </div>
-          <div class="p-8 flex flex-col flex-grow">
-            <h3 class="font-headline-md text-headline-md text-on-surface mb-3">
-              Plantación con GPS para Viñedo y Frutales
-            </h3>
-            <p
-              class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow leading-relaxed"
-            >
-              Plantación automatizada guiada por satélite GPS Topcon para todo
-              tipo de marcos de plantación: viñedo, olivar, almendro, pistacho,
-              higuera y frutales. Máxima precisión en alineación y colocación de
-              tutores en una sola pasada.
-            </p>
-            <div
-              class="bg-surface-container p-4 rounded-md mb-6 border border-outline-variant/20 flex items-center"
-            >
-              <span
-                class="material-symbols-outlined text-secondary mr-3 text-2xl"
-                >satellite_alt</span
-              >
-              <div>
-                <span
-                  class="font-label-caps text-label-caps text-secondary uppercase block mb-1"
-                  >Maquinaria empleada</span
-                >
-                <span
-                  class="font-body-md text-body-md font-medium text-on-surface"
-                  >Plantadora TOPCOM con autoguiado GPS</span
-                >
-              </div>
-            </div>
-            <a href={url("/contacto")} class="btn-agricola w-full mt-auto">
-              <span>Consultar disponibilidad de plantación</span>
-              <span class="material-symbols-outlined ml-2 text-sm"
-                >arrow_forward</span
-              >
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Service 3: Desfonde de Tierras y Arado Profundo -->
-      <div
-        class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-6 sm:p-8 sharp-shadow hover:sharp-shadow-hover transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8"
-      >
-        <div class="max-w-2xl">
-          <div class="flex items-center gap-3 mb-2">
-            <div
-              class="bg-primary/10 text-primary p-2.5 rounded-lg flex items-center justify-center flex-shrink-0"
-            >
-              <span class="material-symbols-outlined text-2xl">landscape</span>
-            </div>
-            <h3 class="font-headline-md text-[22px] font-bold text-on-surface">
-              Desfonde de Tierras y Arado Profundo
-            </h3>
-          </div>
-          <p
-            class="font-body-md text-body-md text-on-surface-variant leading-relaxed pl-0 md:pl-12"
-          >
-            Aireación y rotura de capas compactadas profundas para mejorar el
-            drenaje y desarrollo radicular previo a nuevas plantaciones.
-          </p>
-        </div>
-        <div
-          class="flex flex-col sm:flex-row md:flex-col lg:flex-row items-start sm:items-center gap-4 flex-shrink-0"
-        >
-          <div
-            class="bg-surface-container px-4 py-2.5 rounded-md border border-outline-variant/20 flex items-center gap-2.5"
-          >
-            <span class="material-symbols-outlined text-secondary text-xl"
-              >agriculture</span
-            >
-            <div>
-              <span
-                class="font-label-caps text-[10px] text-secondary uppercase block"
-                >Maquinaria</span
-              >
-              <span class="font-body-md text-sm font-medium text-on-surface"
-                >Arado de volteo profundo</span
-              >
-            </div>
-          </div>
-          <a
-            href={url("/contacto")}
-            class="btn-agricola whitespace-nowrap w-full sm:w-auto"
-          >
-            <span>Consultar desfonde</span>
-            <span class="material-symbols-outlined ml-1.5 text-sm"
-              >arrow_forward</span
-            >
-          </a>
-        </div>
-      </div>
-
-      <!-- Service 4: Arranque de Viña y Limpieza de Cultivos (Showcase Multimedia Panorámico) -->
-      <div
-        id="showcase-arranque"
-        class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl overflow-hidden sharp-shadow hover:sharp-shadow-hover transition-all duration-300 grid grid-cols-1 lg:grid-cols-12"
-      >
-        <!-- Columna Izquierda: Pantalla del Reproductor Secuencial Multimedia (lg:col-span-7) -->
-        <div
-          class="lg:col-span-7 bg-neutral-950 relative overflow-hidden flex flex-col justify-between min-h-[380px] sm:min-h-[460px] lg:min-h-[520px]"
-        >
-          <!-- Contenedor de Diapositivas (Aspecto adaptable y centrado) -->
-          <div
-            id="arranque-slides-container"
-            class="relative w-full h-full flex-grow flex items-center justify-center bg-black overflow-hidden"
-          >
-            <!-- Diapositiva 0: Imagen - Cultivo antes del arranque -->
-            <div
-              class="arranque-slide absolute inset-0 transition-opacity duration-700 opacity-100 flex items-center justify-center"
-              data-type="image"
-              data-duration="4500"
-              data-badge="Paso 1: Parcela Inicial"
-              data-title="Cultivo antes del arranque"
-            >
-              <img
-                src={url("/images/servicios/agricola/arranque/cultivo-antes-arranque.webp")}
-                alt="Parcela con viñedo y cultivo viejo antes del arranque"
-                class="w-full h-full object-contain"
-                loading="lazy"
-              />
-            </div>
-
-            <!-- Diapositiva 1: Imagen - Tractor en labor de arranque -->
-            <div
-              class="arranque-slide absolute inset-0 transition-opacity duration-700 opacity-0 pointer-events-none flex items-center justify-center"
-              data-type="image"
-              data-duration="4500"
-              data-badge="Paso 2: Equipo de Tiro"
-              data-title="Tractor con apero extractor y pala"
-            >
-              <img
-                src={url("/images/servicios/agricola/arranque/tractor-aranque-cultivos.webp")}
-                alt="Tractor John Deere 7710 equipado para arranque de cepas"
-                class="w-full h-full object-contain"
-                loading="lazy"
-              />
-            </div>
-
-            <!-- Diapositiva 2: Vídeo - Tractor arrancando cultivo -->
-            <div
-              class="arranque-slide absolute inset-0 transition-opacity duration-700 opacity-0 pointer-events-none flex items-center justify-center"
-              data-type="video"
-              data-badge="Paso 3: Arranque en Acción (Vídeo)"
-              data-title="Extracción y descepado profundo de raíz"
-            >
-              <video
-                src={url("/images/servicios/agricola/arranque/tractor-arranque-cultivo.mp4")}
-                class="w-full h-full object-contain"
-                muted
-                playsinline
-                preload="metadata"
-              ></video>
-            </div>
-
-            <!-- Diapositiva 3: Vídeo - Recogida y despeje de cultivos -->
-            <div
-              class="arranque-slide absolute inset-0 transition-opacity duration-700 opacity-0 pointer-events-none flex items-center justify-center"
-              data-type="video"
-              data-badge="Paso 4: Recogida y Despeje (Vídeo)"
-              data-title="Recolección mecánica y acopio de restos"
-            >
-              <video
-                src={url("/images/servicios/agricola/arranque/recogida-aranque-cultivos.mp4")}
-                class="w-full h-full object-contain"
-                muted
-                playsinline
-                preload="metadata"
-              ></video>
-            </div>
-
-            <!-- Diapositiva 4: Imagen - Cultivo después del arranque -->
-            <div
-              class="arranque-slide absolute inset-0 transition-opacity duration-700 opacity-0 pointer-events-none flex items-center justify-center"
-              data-type="image"
-              data-duration="4500"
-              data-badge="Paso 5: Finca Limpia y Lista"
-              data-title="Terreno acondicionado y nivelado"
-            >
-              <img
-                src={url("/images/servicios/agricola/arranque/cultivo-despues-arranque.webp")}
-                alt="Finca agrícola limpia, despejada y lista para nueva siembra tras el arranque"
-                class="w-full h-full object-contain"
-                loading="lazy"
-              />
-            </div>
-          </div>
-
-          <!-- Capa Superior: Badge dinámico y controles de audio/pausa -->
-          <div
-            class="absolute top-4 left-4 right-4 z-20 flex items-center justify-between pointer-events-none"
-          >
-            <span
-              id="arranque-badge"
-              class="bg-black/75 backdrop-blur-md text-white font-label-caps text-xs px-3.5 py-1.5 rounded-full border border-white/20 shadow-lg flex items-center gap-2"
-            >
-              <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-              <span id="arranque-badge-text">Paso 1: Parcela Inicial</span>
-            </span>
-
-            <div class="flex items-center gap-2 pointer-events-auto">
-              <!-- Botón Silencio / Sonido -->
-              <button
-                id="arranque-btn-sound"
-                type="button"
-                class="w-9 h-9 rounded-full bg-black/70 hover:bg-black/90 backdrop-blur-md text-white border border-white/20 flex items-center justify-center shadow-lg transition-all active:scale-95 cursor-pointer"
-                title="Activar/Silenciar sonido de vídeos"
-                aria-label="Activar o silenciar sonido"
-              >
-                <span class="material-symbols-outlined text-lg" id="arranque-sound-icon">volume_off</span>
-              </button>
-              <!-- Botón Pausa / Play -->
-              <button
-                id="arranque-btn-play"
-                type="button"
-                class="w-9 h-9 rounded-full bg-black/70 hover:bg-black/90 backdrop-blur-md text-white border border-white/20 flex items-center justify-center shadow-lg transition-all active:scale-95 cursor-pointer"
-                title="Pausar o reanudar reproducción automática"
-                aria-label="Pausar o reanudar"
-              >
-                <span class="material-symbols-outlined text-lg" id="arranque-play-icon">pause</span>
-              </button>
-            </div>
-          </div>
-
-          <!-- Capa Inferior: Flechas de navegación y Barra de Progreso -->
-          <div
-            class="absolute bottom-0 inset-x-0 z-20 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-4 pt-8"
-          >
-            <div class="flex items-center justify-between mb-2.5">
-              <button
-                id="arranque-btn-prev"
-                type="button"
-                class="px-3 py-1 rounded bg-white/15 hover:bg-white/30 text-white text-xs font-label-caps flex items-center gap-1 transition-all cursor-pointer select-none"
-                title="Paso anterior"
-              >
-                <span class="material-symbols-outlined text-sm">arrow_back</span>
-                <span>ANTERIOR</span>
-              </button>
-              <span
-                id="arranque-counter"
-                class="text-white/80 font-label-caps text-[11px] tracking-widest font-semibold"
-                >1 / 5</span
-              >
-              <button
-                id="arranque-btn-next"
-                type="button"
-                class="px-3 py-1 rounded bg-white/15 hover:bg-white/30 text-white text-xs font-label-caps flex items-center gap-1 transition-all cursor-pointer select-none"
-                title="Siguiente paso"
-              >
-                <span>SIGUIENTE</span>
-                <span class="material-symbols-outlined text-sm">arrow_forward</span>
-              </button>
-            </div>
-            <!-- Barra de Progreso Continua -->
-            <div class="w-full h-1.5 bg-white/20 rounded-full overflow-hidden">
-              <div
-                id="arranque-progress-bar"
-                class="h-full bg-primary rounded-full transition-all duration-100 ease-linear"
-                style="width: 0%;"
-              >
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Columna Derecha: Información Técnica y Pasos Interactivos (lg:col-span-5) -->
-        <div
-          class="lg:col-span-5 p-6 sm:p-8 lg:p-10 flex flex-col justify-between h-full bg-surface-container-lowest border-t lg:border-t-0 lg:border-l border-outline-variant/20"
-        >
-          <div>
-            <div
-              class="inline-flex items-center gap-2 mb-3 text-primary font-label-caps text-label-caps font-bold"
-            >
-              <span class="material-symbols-outlined text-base">video_library</span>
-              <span>PROCESO REAL EN CAMPO</span>
-            </div>
-            <h3
-              class="font-headline-md text-[24px] md:text-[28px] font-bold text-on-surface mb-3 leading-tight"
-            >
-              Arranque de Viña y Limpieza de Cultivos
-            </h3>
-            <p
-              class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed"
-            >
-              Eliminación integral y mecanizada de plantaciones leñosas, viñedos
-              viejos y arbolado improductivo. Arrancamos de raíz el sistema
-              radicular, acopiamos el ramaje y dejamos la parcela completamente
-              despejada y allanada para su próxima siembra o reestructuración.
-            </p>
-
-            <!-- Lista interactiva de los 5 pasos del proceso -->
-            <div class="space-y-2 mb-6" id="arranque-step-tabs">
-              <button
-                type="button"
-                class="arranque-step-btn w-full text-left p-2.5 rounded-lg border transition-all flex items-center justify-between gap-3 cursor-pointer bg-primary/10 border-primary/40 text-on-surface font-semibold shadow-2xs"
-                data-step="0"
-              >
-                <div class="flex items-center gap-2.5 min-w-0">
-                  <span class="w-5 h-5 rounded-full bg-primary text-on-primary text-[10px] font-bold flex items-center justify-center flex-shrink-0">1</span>
-                  <span class="text-xs truncate">Estado Inicial: Parcela con viñedo</span>
-                </div>
-                <span class="material-symbols-outlined text-sm text-primary flex-shrink-0">yard</span>
-              </button>
-
-              <button
-                type="button"
-                class="arranque-step-btn w-full text-left p-2.5 rounded-lg border transition-all flex items-center justify-between gap-3 cursor-pointer bg-surface border-outline-variant/30 text-on-surface-variant hover:border-primary/40"
-                data-step="1"
-              >
-                <div class="flex items-center gap-2.5 min-w-0">
-                  <span class="w-5 h-5 rounded-full bg-surface-container-high text-on-surface-variant text-[10px] font-bold flex items-center justify-center flex-shrink-0">2</span>
-                  <span class="text-xs truncate">Equipo de Tiro: Tractor John Deere</span>
-                </div>
-                <span class="material-symbols-outlined text-sm text-outline flex-shrink-0">agriculture</span>
-              </button>
-
-              <button
-                type="button"
-                class="arranque-step-btn w-full text-left p-2.5 rounded-lg border transition-all flex items-center justify-between gap-3 cursor-pointer bg-surface border-outline-variant/30 text-on-surface-variant hover:border-primary/40"
-                data-step="2"
-              >
-                <div class="flex items-center gap-2.5 min-w-0">
-                  <span class="w-5 h-5 rounded-full bg-surface-container-high text-on-surface-variant text-[10px] font-bold flex items-center justify-center flex-shrink-0">3</span>
-                  <span class="text-xs truncate">Arranque Profundo de Raíz <strong class="text-primary font-bold">(Vídeo)</strong></span>
-                </div>
-                <span class="material-symbols-outlined text-sm text-primary flex-shrink-0">play_circle</span>
-              </button>
-
-              <button
-                type="button"
-                class="arranque-step-btn w-full text-left p-2.5 rounded-lg border transition-all flex items-center justify-between gap-3 cursor-pointer bg-surface border-outline-variant/30 text-on-surface-variant hover:border-primary/40"
-                data-step="3"
-              >
-                <div class="flex items-center gap-2.5 min-w-0">
-                  <span class="w-5 h-5 rounded-full bg-surface-container-high text-on-surface-variant text-[10px] font-bold flex items-center justify-center flex-shrink-0">4</span>
-                  <span class="text-xs truncate">Recogida y Despeje Mecánico <strong class="text-primary font-bold">(Vídeo)</strong></span>
-                </div>
-                <span class="material-symbols-outlined text-sm text-primary flex-shrink-0">play_circle</span>
-              </button>
-
-              <button
-                type="button"
-                class="arranque-step-btn w-full text-left p-2.5 rounded-lg border transition-all flex items-center justify-between gap-3 cursor-pointer bg-surface border-outline-variant/30 text-on-surface-variant hover:border-primary/40"
-                data-step="4"
-              >
-                <div class="flex items-center gap-2.5 min-w-0">
-                  <span class="w-5 h-5 rounded-full bg-surface-container-high text-on-surface-variant text-[10px] font-bold flex items-center justify-center flex-shrink-0">5</span>
-                  <span class="text-xs truncate">Resultado Final: Finca limpia y allanada</span>
-                </div>
-                <span class="material-symbols-outlined text-sm text-primary flex-shrink-0">check_circle</span>
-              </button>
-            </div>
-          </div>
-
-          <div>
-            <div
-              class="bg-surface-container p-4 rounded-md mb-6 border border-outline-variant/20 flex items-center"
-            >
-              <span class="material-symbols-outlined text-secondary mr-3 text-2xl"
-                >precision_manufacturing</span
-              >
-              <div>
-                <span
-                  class="font-label-caps text-label-caps text-secondary uppercase block mb-1"
-                  >Maquinaria empleada</span
-                >
-                <span
-                  class="font-body-md text-body-md font-medium text-on-surface"
-                  >Tractor John Deere 7710 + Apero extractor + Pala</span
-                >
-              </div>
-            </div>
-            <a href={url("/contacto")} class="btn-agricola w-full mt-auto">
-              <span>Pedir precio por hectárea para arranque</span>
-              <span class="material-symbols-outlined ml-2 text-sm"
-                >arrow_forward</span
-              >
-            </a>
-          </div>
-        </div>
+      <!-- Listado Acordeón Agrícola -->
+      <div class="space-y-3" id="accordion-group-agricola">
+        {serviciosAgricolas.map((servicio) => (
+          <ServiceAccordionItem servicio={servicio} />
+        ))}
       </div>
     </div>
   </section>
@@ -603,7 +154,7 @@ import { url } from "../utils/url";
     id="obra-civil"
   >
     <div class="max-w-max-width mx-auto">
-      <div class="mb-16">
+      <div class="mb-8">
         <span
           class="font-label-caps text-label-caps text-secondary tracking-widest uppercase mb-2 block"
           >Infraestructura &amp; Construcción</span
@@ -614,184 +165,15 @@ import { url } from "../utils/url";
         <div class="w-24 h-1 bg-secondary mt-4"></div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-        <!-- Service Card 1: Excavaciones y Movimiento de Tierras -->
-        <div
-          class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg overflow-hidden sharp-shadow hover:sharp-shadow-hover transition-all duration-300 flex flex-col group"
-        >
-          <div class="h-60 overflow-hidden relative">
-            <img
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              alt="Retropala mixta realizando excavación y movimiento de tierras para cimentaciones"
-              src={url("/images/servicios/obra-civil/excavaciones-movimiento.webp")}
-              loading="lazy"
-            />
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"
-            >
-            </div>
-            <div
-              class="absolute bottom-4 left-4 bg-secondary text-on-secondary font-label-caps text-label-caps px-3 py-1 rounded-full uppercase shadow-sm"
-            >
-              Movimiento de Tierras
-            </div>
-          </div>
-          <div class="p-8 flex flex-col flex-grow">
-            <h3 class="font-headline-md text-headline-md text-on-surface mb-3">
-              Excavaciones, Cimentaciones y Movimiento de Tierras
-            </h3>
-            <p
-              class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow leading-relaxed"
-            >
-              Ejecución precisa de excavaciones para cimentaciones profundas,
-              zanjas para canalizaciones y grandes movimientos de tierra para
-              preparación de plataformas y nivelaciones topográficas.
-            </p>
-            <div
-              class="bg-surface-container p-4 rounded-md mb-6 border border-outline-variant/20 flex items-center"
-            >
-              <span
-                class="material-symbols-outlined text-secondary mr-3 text-2xl"
-                >engineering</span
-              >
-              <div>
-                <span
-                  class="font-label-caps text-label-caps text-secondary uppercase block mb-1"
-                  >Equipo Principal</span
-                >
-                <span
-                  class="font-body-md text-body-md font-medium text-on-surface"
-                  >Retropala TrinityB 432</span
-                >
-              </div>
-            </div>
-            <a href={url("/contacto")} class="btn-obra w-full mt-auto">
-              <span>Consultar servicios de excavación</span>
-              <span class="material-symbols-outlined ml-2 text-sm"
-                >arrow_forward</span
-              >
-            </a>
-          </div>
-        </div>
+      <p class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-2xl">
+        Soluciones integrales de excavación pesada, preparación de plataformas y acondicionamiento de caminos. Haz clic en un servicio para ver su proceso y maquinaria.
+      </p>
 
-        <!-- Service Card 2: Arreglo y Trituración de Caminos Rurales -->
-        <div
-          class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg overflow-hidden sharp-shadow hover:sharp-shadow-hover transition-all duration-300 flex flex-col group"
-        >
-          <div class="h-60 overflow-hidden relative">
-            <img
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              alt="Fresadora de piedra reacondicionando y triturando firme de camino rural"
-              src={url("/images/servicios/obra-civil/trituracion-reciclaje.webp")}
-              loading="lazy"
-            />
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"
-            >
-            </div>
-            <div
-              class="absolute bottom-4 left-4 bg-secondary text-on-secondary font-label-caps text-label-caps px-3 py-1 rounded-full uppercase shadow-sm"
-            >
-              Restauración de Caminos
-            </div>
-          </div>
-          <div class="p-8 flex flex-col flex-grow">
-            <h3 class="font-headline-md text-headline-md text-on-surface mb-3">
-              Arreglo y Trituración de Caminos Rurales
-            </h3>
-            <p
-              class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow leading-relaxed"
-            >
-              Acondicionamiento y recuperación de caminos de tierra mediante la
-              trituración directa de piedras in situ. Convertimos los firmes
-              pedregosos y degradados en superficies lisas y transitables de una
-              sola pasada, sin necesidad de retirar escombros.
-            </p>
-            <div
-              class="bg-surface-container p-4 rounded-md mb-6 border border-outline-variant/20 flex items-center"
-            >
-              <span
-                class="material-symbols-outlined text-secondary mr-3 text-2xl"
-                >precision_manufacturing</span
-              >
-              <div>
-                <span
-                  class="font-label-caps text-label-caps text-secondary uppercase block mb-1"
-                  >Equipo Principal</span
-                >
-                <span
-                  class="font-body-md text-body-md font-medium text-on-surface"
-                  >Fresadora FI-IVAN 2T S2 + Fendt</span
-                >
-              </div>
-            </div>
-            <a href={url("/contacto")} class="btn-obra w-full mt-auto">
-              <span>Solicitar Arreglo Camino</span>
-              <span class="material-symbols-outlined ml-2 text-sm"
-                >arrow_forward</span
-              >
-            </a>
-          </div>
-        </div>
-
-        <!-- Service Card 3: Trituración de Arbolado y Desbroce Integral -->
-        <div
-          class="bg-surface-container-lowest border border-outline-variant/30 rounded-lg overflow-hidden sharp-shadow hover:sharp-shadow-hover transition-all duration-300 flex flex-col group"
-        >
-          <div class="h-60 overflow-hidden relative">
-            <img
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              alt="Trituradora forestal realizando desbroce y trituración de arbolado en finca"
-              src={url("/images/servicios/obra-civil/desbroce-forestal.webp")}
-              loading="lazy"
-            />
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"
-            >
-            </div>
-            <div
-              class="absolute bottom-4 left-4 bg-secondary text-on-secondary font-label-caps text-label-caps px-3 py-1 rounded-full uppercase shadow-sm"
-            >
-              Desbroce Pesado
-            </div>
-          </div>
-          <div class="p-8 flex flex-col flex-grow">
-            <h3 class="font-headline-md text-headline-md text-on-surface mb-3">
-              Trituración de Arbolado y Desbroce Integral
-            </h3>
-            <p
-              class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow leading-relaxed"
-            >
-              Limpieza profunda de parcelas forestales o urbanizables,
-              eliminando arbolado y maleza densa con equipos de alta capacidad.
-              Acondicionamiento para infraestructuras y proyectos solares.
-            </p>
-            <div
-              class="bg-surface-container p-4 rounded-md mb-6 border border-outline-variant/20 flex items-center"
-            >
-              <span
-                class="material-symbols-outlined text-secondary mr-3 text-2xl"
-                >forest</span
-              >
-              <div>
-                <span
-                  class="font-label-caps text-label-caps text-secondary uppercase block mb-1"
-                  >Equipo Principal</span
-                >
-                <span
-                  class="font-body-md text-body-md font-medium text-on-surface"
-                  >Trituradora Forestal TFT Cancela</span
-                >
-              </div>
-            </div>
-            <a href={url("/contacto")} class="btn-obra w-full mt-auto">
-              <span>Solicitar Desbroce y Trituración</span>
-              <span class="material-symbols-outlined ml-2 text-sm"
-                >arrow_forward</span
-              >
-            </a>
-          </div>
-        </div>
+      <!-- Listado Acordeón Obra Civil -->
+      <div class="space-y-3" id="accordion-group-obra-civil">
+        {serviciosObraCivil.map((servicio) => (
+          <ServiceAccordionItem servicio={servicio} />
+        ))}
       </div>
     </div>
   </section>
@@ -841,252 +223,387 @@ import { url } from "../utils/url";
       });
     }
 
-    let arranqueCleanup: (() => void) | null = null;
+    let accordionCleanup: (() => void) | null = null;
 
-    function setupArranquePlayer() {
-      if (arranqueCleanup) {
-        arranqueCleanup();
-        arranqueCleanup = null;
+    function setupServicesAccordion() {
+      if (accordionCleanup) {
+        accordionCleanup();
+        accordionCleanup = null;
       }
 
-      const container = document.getElementById("showcase-arranque");
-      if (!container) return;
+      const items = document.querySelectorAll<HTMLElement>(".service-accordion-item");
+      if (!items.length) return;
 
-      const slides = container.querySelectorAll<HTMLElement>(".arranque-slide");
-      const stepTabs = container.querySelectorAll<HTMLElement>(".arranque-step-btn");
-      const progressBar = document.getElementById("arranque-progress-bar");
-      const badgeText = document.getElementById("arranque-badge-text");
-      const counter = document.getElementById("arranque-counter");
-      const btnPrev = document.getElementById("arranque-btn-prev");
-      const btnNext = document.getElementById("arranque-btn-next");
-      const btnPlay = document.getElementById("arranque-btn-play");
-      const playIcon = document.getElementById("arranque-play-icon");
-      const btnSound = document.getElementById("arranque-btn-sound");
-      const soundIcon = document.getElementById("arranque-sound-icon");
-
-      if (!slides.length) return;
-
-      let currentIndex = 0;
-      let isPlaying = true;
-      let isMuted = true;
-      let currentRaf: number | null = null;
-      let imageTimerStart = 0;
-      let imageElapsedBeforePause = 0;
-      let currentDuration = 4500;
-      let isDestroyed = false;
-
-      // Pausa cualquier vídeo activo
-      function stopCurrentMedia() {
-        if (currentRaf) {
-          cancelAnimationFrame(currentRaf);
-          currentRaf = null;
+      const playerControllers = new Map<
+        string,
+        {
+          play: () => void;
+          pause: () => void;
+          reset: () => void;
+          destroy: () => void;
         }
-        slides.forEach((s) => {
-          const v = s.querySelector("video");
-          if (v) {
-            v.pause();
-            v.currentTime = 0;
+      >();
+
+      items.forEach((item) => {
+        const serviceId = item.getAttribute("data-service-id") || "";
+        const isAgricola = item.getAttribute("data-category") === "agricola";
+        const showcase = item.querySelector<HTMLElement>(".service-showcase-container");
+        if (!showcase) return;
+
+        const slides = showcase.querySelectorAll<HTMLElement>(".service-slide");
+        const stepTabs = showcase.querySelectorAll<HTMLElement>(".service-step-btn");
+        const progressBar = showcase.querySelector<HTMLElement>(".service-progress-bar");
+        const badgeText = showcase.querySelector<HTMLElement>(".service-badge-text");
+        const counter = showcase.querySelector<HTMLElement>(".service-counter");
+        const btnPrev = showcase.querySelector<HTMLElement>(".service-btn-prev");
+        const btnNext = showcase.querySelector<HTMLElement>(".service-btn-next");
+        const btnPlay = showcase.querySelector<HTMLElement>(".service-btn-play");
+        const playIcon = showcase.querySelector<HTMLElement>(".service-play-icon");
+        const btnSound = showcase.querySelector<HTMLElement>(".service-btn-sound");
+        const soundIcon = showcase.querySelector<HTMLElement>(".service-sound-icon");
+
+        let currentIndex = 0;
+        let isPlaying = false;
+        let isMuted = true;
+        let cycleCount = 0;
+        const maxCycles = 1;
+        let currentRaf: number | null = null;
+        let imageTimerStart = 0;
+        let imageElapsedBeforePause = 0;
+        let currentDuration = 4500;
+        let isDestroyed = false;
+
+        function stopCurrentMedia() {
+          if (currentRaf) {
+            cancelAnimationFrame(currentRaf);
+            currentRaf = null;
           }
-        });
-      }
-
-      function updateTabs(index: number) {
-        stepTabs.forEach((tab, i) => {
-          const numBadge = tab.querySelector("span:first-child");
-          const icon = tab.querySelector(".material-symbols-outlined");
-
-          if (i === index) {
-            tab.className =
-              "arranque-step-btn w-full text-left p-2.5 rounded-lg border transition-all flex items-center justify-between gap-3 cursor-pointer bg-primary/10 border-primary/40 text-on-surface font-semibold shadow-2xs";
-            if (numBadge) {
-              numBadge.className =
-                "w-5 h-5 rounded-full bg-primary text-on-primary text-[10px] font-bold flex items-center justify-center flex-shrink-0";
+          slides.forEach((s) => {
+            const v = s.querySelector<HTMLVideoElement>("video");
+            if (v) {
+              v.pause();
+              v.currentTime = 0;
             }
-            if (icon) {
-              icon.classList.remove("text-outline");
-              icon.classList.add("text-primary");
-            }
-          } else {
-            tab.className =
-              "arranque-step-btn w-full text-left p-2.5 rounded-lg border transition-all flex items-center justify-between gap-3 cursor-pointer bg-surface border-outline-variant/30 text-on-surface-variant hover:border-primary/40";
-            if (numBadge) {
-              numBadge.className =
-                "w-5 h-5 rounded-full bg-surface-container-high text-on-surface-variant text-[10px] font-bold flex items-center justify-center flex-shrink-0";
-            }
-            if (icon) {
-              icon.classList.remove("text-primary");
-              icon.classList.add("text-outline");
-            }
-          }
-        });
-      }
-
-      function goToSlide(index: number, manual = false) {
-        if (isDestroyed) return;
-        stopCurrentMedia();
-
-        currentIndex = (index + slides.length) % slides.length;
-        const currentSlide = slides[currentIndex];
-        const isVideo = currentSlide.getAttribute("data-type") === "video";
-        currentDuration = parseInt(currentSlide.getAttribute("data-duration") || "4500", 10);
-        imageElapsedBeforePause = 0;
-
-        // Actualizar visibilidad de slides
-        slides.forEach((slide, i) => {
-          if (i === currentIndex) {
-            slide.classList.remove("opacity-0", "pointer-events-none");
-            slide.classList.add("opacity-100", "pointer-events-auto");
-          } else {
-            slide.classList.remove("opacity-100", "pointer-events-auto");
-            slide.classList.add("opacity-0", "pointer-events-none");
-          }
-        });
-
-        // Actualizar textos e indicadores
-        if (badgeText) {
-          badgeText.textContent = currentSlide.getAttribute("data-badge") || `Paso ${currentIndex + 1}`;
-        }
-        if (counter) {
-          counter.textContent = `${currentIndex + 1} / ${slides.length}`;
-        }
-        if (progressBar) {
-          progressBar.style.width = "0%";
+          });
         }
 
-        updateTabs(currentIndex);
+        function updateStepTabs(index: number) {
+          stepTabs.forEach((tab, i) => {
+            const numBadge = tab.querySelector<HTMLElement>(".step-num-badge");
+            const icon = tab.querySelector<HTMLElement>(".material-symbols-outlined");
 
-        if (!isPlaying) return;
+            if (i === index) {
+              tab.className = isAgricola
+                ? "service-step-btn w-full text-left p-2.5 rounded-lg border transition-all flex items-center justify-between gap-3 cursor-pointer bg-primary/10 border-primary/40 text-on-surface font-semibold shadow-2xs"
+                : "service-step-btn w-full text-left p-2.5 rounded-lg border transition-all flex items-center justify-between gap-3 cursor-pointer bg-secondary/10 border-secondary/40 text-on-surface font-semibold shadow-2xs";
+              if (numBadge) {
+                numBadge.className = isAgricola
+                  ? "step-num-badge w-5 h-5 rounded-full text-[10px] font-bold flex items-center justify-center flex-shrink-0 bg-primary text-on-primary"
+                  : "step-num-badge w-5 h-5 rounded-full text-[10px] font-bold flex items-center justify-center flex-shrink-0 bg-secondary text-on-secondary";
+              }
+              if (icon) {
+                icon.classList.remove("text-outline");
+                icon.classList.add(isAgricola ? "text-primary" : "text-secondary");
+              }
+            } else {
+              tab.className =
+                "service-step-btn w-full text-left p-2.5 rounded-lg border transition-all flex items-center justify-between gap-3 cursor-pointer bg-surface border-outline-variant/30 text-on-surface-variant hover:border-outline";
+              if (numBadge) {
+                numBadge.className =
+                  "step-num-badge w-5 h-5 rounded-full text-[10px] font-bold flex items-center justify-center flex-shrink-0 bg-surface-container-high text-on-surface-variant";
+              }
+              if (icon) {
+                icon.classList.remove("text-primary", "text-secondary");
+                icon.classList.add("text-outline");
+              }
+            }
+          });
+        }
 
-        if (isVideo) {
-          const video = currentSlide.querySelector("video");
-          if (video) {
-            video.muted = isMuted;
-            video.currentTime = 0;
-            const playPromise = video.play();
-            if (playPromise !== undefined) {
-              playPromise.catch(() => {
-                // Silenciar e intentar de nuevo si el navegador bloqueó audio
-                video.muted = true;
-                video.play().catch(() => {});
-              });
+        function onSlideCompleted() {
+          if (currentIndex === slides.length - 1) {
+            cycleCount++;
+            if (cycleCount >= maxCycles) {
+              // Fin de ciclo completo: pausar y poner icono replay
+              isPlaying = false;
+              if (playIcon) playIcon.textContent = "replay";
+              if (btnPlay) btnPlay.setAttribute("title", "Volver a reproducir secuencia");
+              if (progressBar) progressBar.style.width = "100%";
+              return;
             }
           }
-        } else {
-          startImageTimer();
+          goToSlide(currentIndex + 1);
         }
-      }
 
-      function startImageTimer() {
-        if (!isPlaying || isDestroyed) return;
-        imageTimerStart = performance.now() - imageElapsedBeforePause;
+        function goToSlide(index: number, manual = false) {
+          if (isDestroyed) return;
+          stopCurrentMedia();
 
-        function tick(now: number) {
-          if (!isPlaying || isDestroyed) return;
-          const elapsed = now - imageTimerStart;
-          const pct = Math.min(100, (elapsed / currentDuration) * 100);
+          currentIndex = (index + slides.length) % slides.length;
+          const currentSlide = slides[currentIndex];
+          if (!currentSlide) return;
+
+          const isVideo = currentSlide.getAttribute("data-type") === "video";
+          currentDuration = parseInt(currentSlide.getAttribute("data-duration") || "4500", 10);
+          imageElapsedBeforePause = 0;
+
+          slides.forEach((slide, i) => {
+            if (i === currentIndex) {
+              slide.classList.remove("opacity-0", "pointer-events-none");
+              slide.classList.add("opacity-100", "pointer-events-auto");
+            } else {
+              slide.classList.remove("opacity-100", "pointer-events-auto");
+              slide.classList.add("opacity-0", "pointer-events-none");
+            }
+          });
+
+          if (badgeText) {
+            badgeText.textContent = currentSlide.getAttribute("data-badge") || `Paso ${currentIndex + 1}`;
+          }
+          if (counter) {
+            counter.textContent = `${currentIndex + 1} / ${slides.length}`;
+          }
           if (progressBar) {
-            progressBar.style.width = `${pct}%`;
+            progressBar.style.width = "0%";
           }
 
-          if (elapsed >= currentDuration) {
-            goToSlide(currentIndex + 1);
-          } else {
-            currentRaf = requestAnimationFrame(tick);
+          updateStepTabs(currentIndex);
+
+          if (manual && isPlaying && playIcon) {
+            playIcon.textContent = "pause";
           }
-        }
 
-        currentRaf = requestAnimationFrame(tick);
-      }
+          if (!isPlaying) return;
 
-      // Eventos en vídeos (actualizar barra y pasar al siguiente al finalizar)
-      slides.forEach((slide) => {
-        const video = slide.querySelector("video");
-        if (video) {
-          video.addEventListener("timeupdate", () => {
-            if (slides[currentIndex] === slide && video.duration > 0 && progressBar) {
-              const pct = (video.currentTime / video.duration) * 100;
-              progressBar.style.width = `${pct}%`;
-            }
-          });
-
-          video.addEventListener("ended", () => {
-            if (slides[currentIndex] === slide && isPlaying) {
-              goToSlide(currentIndex + 1);
-            }
-          });
-        }
-      });
-
-      // Controles manuales
-      btnPrev?.addEventListener("click", () => goToSlide(currentIndex - 1, true));
-      btnNext?.addEventListener("click", () => goToSlide(currentIndex + 1, true));
-
-      stepTabs.forEach((tab) => {
-        tab.addEventListener("click", () => {
-          const stepIndex = parseInt(tab.getAttribute("data-step") || "0", 10);
-          goToSlide(stepIndex, true);
-        });
-      });
-
-      // Play / Pausa
-      btnPlay?.addEventListener("click", () => {
-        isPlaying = !isPlaying;
-        if (playIcon) {
-          playIcon.textContent = isPlaying ? "pause" : "play_arrow";
-        }
-        btnPlay.setAttribute("title", isPlaying ? "Pausar reproducción automática" : "Reanudar reproducción");
-
-        const currentSlide = slides[currentIndex];
-        const isVideo = currentSlide.getAttribute("data-type") === "video";
-
-        if (isPlaying) {
           if (isVideo) {
-            const video = currentSlide.querySelector("video");
-            video?.play().catch(() => {});
+            const video = currentSlide.querySelector<HTMLVideoElement>("video");
+            if (video) {
+              video.muted = isMuted;
+              video.currentTime = 0;
+              const playPromise = video.play();
+              if (playPromise !== undefined) {
+                playPromise.catch(() => {
+                  video.muted = true;
+                  video.play().catch(() => {});
+                });
+              }
+            }
           } else {
             startImageTimer();
           }
-        } else {
-          if (isVideo) {
-            const video = currentSlide.querySelector("video");
-            video?.pause();
-          } else {
-            if (currentRaf) {
-              cancelAnimationFrame(currentRaf);
-              currentRaf = null;
-            }
-            imageElapsedBeforePause = performance.now() - imageTimerStart;
-          }
         }
-      });
 
-      // Silencio / Sonido
-      btnSound?.addEventListener("click", () => {
-        isMuted = !isMuted;
-        slides.forEach((s) => {
-          const v = s.querySelector("video");
-          if (v) v.muted = isMuted;
+        function startImageTimer() {
+          if (!isPlaying || isDestroyed) return;
+          imageTimerStart = performance.now() - imageElapsedBeforePause;
+
+          function tick(now: number) {
+            if (!isPlaying || isDestroyed) return;
+            const elapsed = now - imageTimerStart;
+            const pct = Math.min(100, (elapsed / currentDuration) * 100);
+            if (progressBar) {
+              progressBar.style.width = `${pct}%`;
+            }
+
+            if (elapsed >= currentDuration) {
+              onSlideCompleted();
+            } else {
+              currentRaf = requestAnimationFrame(tick);
+            }
+          }
+
+          currentRaf = requestAnimationFrame(tick);
+        }
+
+        slides.forEach((slide) => {
+          const video = slide.querySelector<HTMLVideoElement>("video");
+          if (video) {
+            video.addEventListener("timeupdate", () => {
+              if (slides[currentIndex] === slide && video.duration > 0 && progressBar) {
+                const pct = (video.currentTime / video.duration) * 100;
+                progressBar.style.width = `${pct}%`;
+              }
+            });
+
+            video.addEventListener("ended", () => {
+              if (slides[currentIndex] === slide && isPlaying) {
+                onSlideCompleted();
+              }
+            });
+          }
         });
 
-        if (soundIcon) {
-          soundIcon.textContent = isMuted ? "volume_off" : "volume_up";
-        }
-        btnSound.setAttribute("title", isMuted ? "Activar sonido" : "Silenciar sonido");
+        btnPrev?.addEventListener("click", () => goToSlide(currentIndex - 1, true));
+        btnNext?.addEventListener("click", () => goToSlide(currentIndex + 1, true));
+
+        stepTabs.forEach((tab) => {
+          tab.addEventListener("click", () => {
+            const idx = parseInt(tab.getAttribute("data-step-index") || "0", 10);
+            goToSlide(idx, true);
+          });
+        });
+
+        btnPlay?.addEventListener("click", () => {
+          if (playIcon?.textContent === "replay") {
+            cycleCount = 0;
+            isPlaying = true;
+            playIcon.textContent = "pause";
+            btnPlay.setAttribute("title", "Pausar reproducción");
+            goToSlide(0);
+            return;
+          }
+
+          isPlaying = !isPlaying;
+          if (playIcon) {
+            playIcon.textContent = isPlaying ? "pause" : "play_arrow";
+          }
+          btnPlay.setAttribute("title", isPlaying ? "Pausar reproducción" : "Reanudar reproducción");
+
+          const currentSlide = slides[currentIndex];
+          const isVideo = currentSlide?.getAttribute("data-type") === "video";
+
+          if (isPlaying) {
+            if (isVideo) {
+              const video = currentSlide.querySelector<HTMLVideoElement>("video");
+              video?.play().catch(() => {});
+            } else {
+              startImageTimer();
+            }
+          } else {
+            if (isVideo) {
+              const video = currentSlide.querySelector<HTMLVideoElement>("video");
+              video?.pause();
+            } else {
+              if (currentRaf) {
+                cancelAnimationFrame(currentRaf);
+                currentRaf = null;
+              }
+              imageElapsedBeforePause = performance.now() - imageTimerStart;
+            }
+          }
+        });
+
+        btnSound?.addEventListener("click", () => {
+          isMuted = !isMuted;
+          slides.forEach((s) => {
+            const v = s.querySelector<HTMLVideoElement>("video");
+            if (v) v.muted = isMuted;
+          });
+          if (soundIcon) {
+            soundIcon.textContent = isMuted ? "volume_off" : "volume_up";
+          }
+          btnSound.setAttribute("title", isMuted ? "Activar sonido" : "Silenciar sonido");
+        });
+
+        playerControllers.set(serviceId, {
+          play: () => {
+            cycleCount = 0;
+            isPlaying = true;
+            if (playIcon) playIcon.textContent = "pause";
+            goToSlide(0);
+          },
+          pause: () => {
+            isPlaying = false;
+            stopCurrentMedia();
+            if (playIcon) playIcon.textContent = "play_arrow";
+          },
+          reset: () => {
+            cycleCount = 0;
+            isPlaying = false;
+            stopCurrentMedia();
+            if (progressBar) progressBar.style.width = "0%";
+            if (playIcon) playIcon.textContent = "play_arrow";
+            goToSlide(0);
+          },
+          destroy: () => {
+            isDestroyed = true;
+            stopCurrentMedia();
+          },
+        });
       });
 
-      // Iniciar en la primera diapositiva
-      goToSlide(0);
+      function closeItem(item: HTMLElement) {
+        const serviceId = item.getAttribute("data-service-id") || "";
+        const trigger = item.querySelector<HTMLElement>(".service-accordion-trigger");
+        const collapse = item.querySelector<HTMLElement>(".service-accordion-collapse");
+        const chevron = item.querySelector<HTMLElement>(".accordion-chevron");
+        const actionPill = item.querySelector<HTMLElement>(".accordion-action-pill");
+        const actionText = item.querySelector<HTMLElement>(".accordion-action-text");
 
-      // Registrador de cleanup
-      arranqueCleanup = () => {
-        isDestroyed = true;
-        stopCurrentMedia();
+        item.setAttribute("data-state", "closed");
+        trigger?.setAttribute("aria-expanded", "false");
+        collapse?.classList.remove("grid-rows-[1fr]");
+        collapse?.classList.add("grid-rows-[0fr]");
+        chevron?.classList.remove("rotate-180");
+        if (actionText) actionText.textContent = "Ver demostración";
+        if (actionPill) {
+          actionPill.className =
+            "accordion-action-pill flex items-center gap-1.5 px-3.5 py-2 rounded-lg font-label-caps text-xs font-bold border transition-all bg-surface-container-high text-on-surface border-outline-variant/30 hover:border-outline";
+        }
+
+        const controller = playerControllers.get(serviceId);
+        controller?.pause();
+      }
+
+      function openItem(item: HTMLElement) {
+        items.forEach((other) => {
+          if (other !== item && other.getAttribute("data-state") === "open") {
+            closeItem(other);
+          }
+        });
+
+        const serviceId = item.getAttribute("data-service-id") || "";
+        const trigger = item.querySelector<HTMLElement>(".service-accordion-trigger");
+        const collapse = item.querySelector<HTMLElement>(".service-accordion-collapse");
+        const chevron = item.querySelector<HTMLElement>(".accordion-chevron");
+        const actionPill = item.querySelector<HTMLElement>(".accordion-action-pill");
+        const actionText = item.querySelector<HTMLElement>(".accordion-action-text");
+        const isAgricola = item.getAttribute("data-category") === "agricola";
+
+        item.setAttribute("data-state", "open");
+        trigger?.setAttribute("aria-expanded", "true");
+        collapse?.classList.remove("grid-rows-[0fr]");
+        collapse?.classList.add("grid-rows-[1fr]");
+        chevron?.classList.add("rotate-180");
+        if (actionText) actionText.textContent = "Plegar servicio";
+        if (actionPill) {
+          actionPill.className = isAgricola
+            ? "accordion-action-pill flex items-center gap-1.5 px-3.5 py-2 rounded-lg font-label-caps text-xs font-bold border transition-all bg-primary text-on-primary border-primary"
+            : "accordion-action-pill flex items-center gap-1.5 px-3.5 py-2 rounded-lg font-label-caps text-xs font-bold border transition-all bg-secondary text-on-secondary border-secondary";
+        }
+
+        const controller = playerControllers.get(serviceId);
+        controller?.play();
+
+        setTimeout(() => {
+          const rect = item.getBoundingClientRect();
+          if (rect.top < 80 || rect.top > window.innerHeight - 150) {
+            item.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          }
+        }, 150);
+      }
+
+      items.forEach((item) => {
+        const trigger = item.querySelector<HTMLElement>(".service-accordion-trigger");
+        trigger?.addEventListener("click", () => {
+          const isOpen = item.getAttribute("data-state") === "open";
+          if (isOpen) {
+            closeItem(item);
+          } else {
+            openItem(item);
+          }
+        });
+      });
+
+      accordionCleanup = () => {
+        playerControllers.forEach((ctrl) => ctrl.destroy());
+        playerControllers.clear();
       };
     }
 
     function initPage() {
       setupHeaderPreview();
-      setupArranquePlayer();
+      setupServicesAccordion();
     }
 
     if (document.readyState === "loading") {

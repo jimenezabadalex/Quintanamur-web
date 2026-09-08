@@ -1,0 +1,335 @@
+---
+import type { Servicio } from "../data/servicios";
+import { url } from "../utils/url";
+
+interface Props {
+  servicio: Servicio;
+  initialOpen?: boolean;
+}
+
+const { servicio, initialOpen = false } = Astro.props;
+const isAgricola = servicio.categoria === "agricola";
+const accentColor = isAgricola ? "primary" : "secondary";
+const btnClass = isAgricola ? "btn-agricola" : "btn-obra";
+---
+
+<div
+  id={`service-item-${servicio.id}`}
+  class="service-accordion-item bg-surface-container-lowest border border-outline-variant/30 rounded-xl overflow-hidden sharp-shadow hover:sharp-shadow-hover transition-all duration-300 mb-4"
+  data-service-id={servicio.id}
+  data-category={servicio.categoria}
+  data-state={initialOpen ? "open" : "closed"}
+>
+  <!-- Cabecera / Fila Resumen Clicable -->
+  <button
+    type="button"
+    class="service-accordion-trigger w-full text-left p-4 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-pointer select-none transition-colors hover:bg-surface-container/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+    aria-expanded={initialOpen ? "true" : "false"}
+    aria-controls={`service-content-${servicio.id}`}
+  >
+    <div class="flex items-start sm:items-center gap-4 min-w-0 flex-grow">
+      <!-- Número e Icono -->
+      <div class="flex items-center gap-3 flex-shrink-0">
+        <span
+          class={`font-label-caps text-xs font-bold px-2.5 py-1 rounded-md border ${
+            isAgricola
+              ? "bg-primary/10 border-primary/20 text-primary"
+              : "bg-secondary/10 border-secondary/20 text-secondary"
+          }`}
+        >
+          {servicio.numero}
+        </span>
+        <div
+          class={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
+            isAgricola
+              ? "bg-primary/15 text-primary"
+              : "bg-secondary/15 text-secondary"
+          }`}
+        >
+          <span class="material-symbols-outlined text-xl">{servicio.icono}</span>
+        </div>
+      </div>
+
+      <!-- Título y Frase Corta -->
+      <div class="min-w-0 flex-grow">
+        <div class="flex flex-wrap items-center gap-2 mb-1">
+          <h3 class="font-headline-md text-base sm:text-lg font-bold text-on-surface leading-snug">
+            {servicio.titulo}
+          </h3>
+          <span
+            class={`font-label-caps text-[11px] font-semibold px-2 py-0.5 rounded-full ${
+              isAgricola
+                ? "bg-primary/10 text-primary"
+                : "bg-secondary/10 text-secondary"
+            }`}
+          >
+            {servicio.badgeCategoria}
+          </span>
+        </div>
+        <p class="font-body-md text-xs sm:text-sm text-on-surface-variant leading-relaxed">
+          {servicio.fraseCorta}
+        </p>
+      </div>
+    </div>
+
+    <!-- Metadatos y Botón Desplegar -->
+    <div class="flex items-center justify-between sm:justify-end gap-3 flex-shrink-0 border-t sm:border-t-0 pt-3 sm:pt-0 border-outline-variant/15">
+      <!-- Píldora Maquinaria -->
+      <div class="hidden lg:flex items-center gap-2 bg-surface-container px-3 py-1.5 rounded-md border border-outline-variant/20 text-xs text-on-surface-variant max-w-[220px]">
+        <span class="material-symbols-outlined text-base text-outline">agriculture</span>
+        <span class="truncate font-medium">{servicio.maquinaria}</span>
+      </div>
+
+      <!-- Botón de Estado / Indicador -->
+      <div
+        class={`accordion-action-pill flex items-center gap-1.5 px-3.5 py-2 rounded-lg font-label-caps text-xs font-bold border transition-all ${
+          initialOpen
+            ? isAgricola
+              ? "bg-primary text-on-primary border-primary"
+              : "bg-secondary text-on-secondary border-secondary"
+            : "bg-surface-container-high text-on-surface border-outline-variant/30 hover:border-outline"
+        }`}
+      >
+        <span class="accordion-action-text">{initialOpen ? "Plegar servicio" : "Ver demostración"}</span>
+        <span
+          class={`material-symbols-outlined text-base accordion-chevron transition-transform duration-300 ${
+            initialOpen ? "rotate-180" : ""
+          }`}
+        >
+          expand_more
+        </span>
+      </div>
+    </div>
+  </button>
+
+  <!-- Contenedor Desplegable (CSS Grid-Template-Rows para apertura suave) -->
+  <div
+    id={`service-content-${servicio.id}`}
+    class={`service-accordion-collapse grid transition-[grid-template-rows] duration-500 ease-in-out border-t border-outline-variant/20 ${
+      initialOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+    }`}
+  >
+    <div class="overflow-hidden min-h-0">
+      <!-- Módulo Showcase Panorámico de 2 Columnas -->
+      <div
+        class="service-showcase-container grid grid-cols-1 lg:grid-cols-12 bg-surface"
+        data-player-id={servicio.id}
+      >
+        <!-- Columna Izquierda: Reproductor Secuencial (lg:col-span-7) -->
+        <div class="lg:col-span-7 bg-neutral-950 relative overflow-hidden flex flex-col justify-between min-h-[360px] sm:min-h-[440px] lg:min-h-[500px]">
+          <!-- Contenedor de Diapositivas Multimedia -->
+          <div class="service-slides-box relative w-full h-full flex-grow flex items-center justify-center bg-black overflow-hidden">
+            {servicio.slides.map((slide, sIndex) => (
+              <div
+                class={`service-slide absolute inset-0 transition-opacity duration-700 flex items-center justify-center ${
+                  sIndex === 0
+                    ? "opacity-100 pointer-events-auto"
+                    : "opacity-0 pointer-events-none"
+                }`}
+                data-slide-index={sIndex}
+                data-type={slide.tipo}
+                data-duration={slide.duracion || 4500}
+                data-badge={slide.badge}
+                data-title={slide.titulo}
+              >
+                {slide.tipo === "video" ? (
+                  <video
+                    src={url(slide.src)}
+                    class="w-full h-full object-contain"
+                    muted
+                    playsinline
+                    preload="metadata"
+                  />
+                ) : (
+                  <img
+                    src={url(slide.src)}
+                    alt={slide.titulo}
+                    class="w-full h-full object-contain"
+                    loading="lazy"
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+
+          <!-- Capa Superior: Badge de paso dinámico y controles de sonido/play -->
+          <div class="absolute top-4 left-4 right-4 z-20 flex items-center justify-between pointer-events-none">
+            <span class="service-player-badge bg-black/75 backdrop-blur-md text-white font-label-caps text-xs px-3.5 py-1.5 rounded-full border border-white/20 shadow-lg flex items-center gap-2">
+              <span
+                class={`w-2 h-2 rounded-full animate-pulse ${
+                  isAgricola ? "bg-primary" : "bg-secondary"
+                }`}
+              />
+              <span class="service-badge-text">
+                {servicio.slides[0]?.badge || "Paso 1"}
+              </span>
+            </span>
+
+            <div class="flex items-center gap-2 pointer-events-auto">
+              <!-- Botón Silencio / Sonido (solo si hay algún vídeo) -->
+              {servicio.slides.some((s) => s.tipo === "video") && (
+                <button
+                  type="button"
+                  class="service-btn-sound w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/70 hover:bg-black/90 backdrop-blur-md text-white border border-white/20 flex items-center justify-center shadow-lg transition-all active:scale-95 cursor-pointer"
+                  title="Activar/Silenciar sonido de vídeos"
+                  aria-label="Activar o silenciar sonido"
+                >
+                  <span class="material-symbols-outlined text-base sm:text-lg service-sound-icon">
+                    volume_off
+                  </span>
+                </button>
+              )}
+              <!-- Botón Pausa / Play / Replay -->
+              <button
+                type="button"
+                class="service-btn-play w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/70 hover:bg-black/90 backdrop-blur-md text-white border border-white/20 flex items-center justify-center shadow-lg transition-all active:scale-95 cursor-pointer"
+                title="Pausar o reanudar reproducción automática"
+                aria-label="Pausar o reanudar"
+              >
+                <span class="material-symbols-outlined text-base sm:text-lg service-play-icon">
+                  pause
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Capa Inferior: Barra de Progreso y Navegación Anterior/Siguiente -->
+          <div class="absolute bottom-0 inset-x-0 z-20 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-4 pt-8">
+            <div class="flex items-center justify-between mb-2">
+              <button
+                type="button"
+                class="service-btn-prev px-2.5 py-1 rounded bg-white/15 hover:bg-white/30 text-white text-[11px] font-label-caps flex items-center gap-1 transition-all cursor-pointer select-none"
+                title="Paso anterior"
+              >
+                <span class="material-symbols-outlined text-sm">arrow_back</span>
+                <span>ANTERIOR</span>
+              </button>
+              <span class="service-counter text-white/80 font-label-caps text-[11px] tracking-widest font-semibold">
+                1 / {servicio.slides.length}
+              </span>
+              <button
+                type="button"
+                class="service-btn-next px-2.5 py-1 rounded bg-white/15 hover:bg-white/30 text-white text-[11px] font-label-caps flex items-center gap-1 transition-all cursor-pointer select-none"
+                title="Siguiente paso"
+              >
+                <span>SIGUIENTE</span>
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+              </button>
+            </div>
+            <!-- Barra de Progreso -->
+            <div class="w-full h-1.5 bg-white/20 rounded-full overflow-hidden">
+              <div
+                class={`service-progress-bar h-full rounded-full transition-all duration-100 ease-linear ${
+                  isAgricola ? "bg-primary" : "bg-secondary"
+                }`}
+                style="width: 0%;"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna Derecha: Información Técnica y Pasos (lg:col-span-5) -->
+        <div class="lg:col-span-5 p-6 sm:p-8 flex flex-col justify-between h-full bg-surface-container-lowest border-t lg:border-t-0 lg:border-l border-outline-variant/20">
+          <div>
+            <div
+              class={`inline-flex items-center gap-2 mb-2 font-label-caps text-xs font-bold ${
+                isAgricola ? "text-primary" : "text-secondary"
+              }`}
+            >
+              <span class="material-symbols-outlined text-base">video_library</span>
+              <span>PROCESO REAL EN CAMPO</span>
+            </div>
+            <h4 class="font-headline-md text-xl sm:text-2xl font-bold text-on-surface mb-2 leading-tight">
+              {servicio.titulo}
+            </h4>
+            <p class="font-body-md text-xs sm:text-sm text-on-surface-variant mb-5 leading-relaxed">
+              {servicio.descripcionLarga}
+            </p>
+
+            <!-- Lista de Pasos Interactivos Clicables -->
+            <div class="space-y-1.5 mb-5 service-step-tabs">
+              {servicio.pasos.map((paso, pIndex) => (
+                <button
+                  type="button"
+                  class={`service-step-btn w-full text-left p-2.5 rounded-lg border transition-all flex items-center justify-between gap-3 cursor-pointer ${
+                    pIndex === 0
+                      ? isAgricola
+                        ? "bg-primary/10 border-primary/40 text-on-surface font-semibold shadow-2xs"
+                        : "bg-secondary/10 border-secondary/40 text-on-surface font-semibold shadow-2xs"
+                      : "bg-surface border-outline-variant/30 text-on-surface-variant hover:border-outline"
+                  }`}
+                  data-step-index={pIndex}
+                >
+                  <div class="flex items-center gap-2.5 min-w-0">
+                    <span
+                      class={`step-num-badge w-5 h-5 rounded-full text-[10px] font-bold flex items-center justify-center flex-shrink-0 ${
+                        pIndex === 0
+                          ? isAgricola
+                            ? "bg-primary text-on-primary"
+                            : "bg-secondary text-on-secondary"
+                          : "bg-surface-container-high text-on-surface-variant"
+                      }`}
+                    >
+                      {paso.numero}
+                    </span>
+                    <span class="text-xs truncate font-medium">
+                      {paso.titulo}{" "}
+                      {paso.esVideo && (
+                        <strong
+                          class={isAgricola ? "text-primary font-bold" : "text-secondary font-bold"}
+                        >
+                          (Vídeo)
+                        </strong>
+                      )}
+                    </span>
+                  </div>
+                  <span
+                    class={`material-symbols-outlined text-sm flex-shrink-0 ${
+                      pIndex === 0
+                        ? isAgricola
+                          ? "text-primary"
+                          : "text-secondary"
+                        : "text-outline"
+                    }`}
+                  >
+                    {paso.icono}
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <!-- Maquinaria y CTA -->
+          <div>
+            <div class="bg-surface-container p-3.5 rounded-md mb-4 border border-outline-variant/20 flex items-center gap-3">
+              <span
+                class={`material-symbols-outlined text-2xl flex-shrink-0 ${
+                  isAgricola ? "text-primary" : "text-secondary"
+                }`}
+              >
+                precision_manufacturing
+              </span>
+              <div class="min-w-0">
+                <span
+                  class={`font-label-caps text-[10px] uppercase block font-bold ${
+                    isAgricola ? "text-primary" : "text-secondary"
+                  }`}
+                >
+                  Maquinaria empleada
+                </span>
+                <span class="font-body-md text-xs sm:text-sm font-medium text-on-surface truncate block">
+                  {servicio.maquinariaDetalle}
+                </span>
+              </div>
+            </div>
+
+            <a href={url("/contacto")} class={`${btnClass} w-full mt-auto`}>
+              <span>{servicio.ctaTexto}</span>
+              <span class="material-symbols-outlined ml-2 text-sm">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
