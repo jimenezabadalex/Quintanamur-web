@@ -467,16 +467,16 @@ import { url } from "../utils/url";
         class="mt-8 bg-surface border border-secondary/30 rounded-lg overflow-hidden sharp-shadow hover:sharp-shadow-hover transition-all grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center"
       >
         <div
-          class="lg:col-span-5 aspect-[16/10] lg:aspect-auto lg:h-full bg-surface-container-lowest overflow-hidden relative min-h-[220px]"
+          class="lg:col-span-5 aspect-square sm:max-h-[460px] lg:max-h-none bg-surface-container-lowest overflow-hidden relative flex items-center justify-center min-h-[260px]"
         >
           <img
             alt="Tractor Fendt 211 Vario especialista en hilerado de piedras"
-            class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
+            class="w-full h-full object-contain hover:scale-105 transition-transform duration-500"
             src={url("/images/maquinaria/tractor-fendt-211.webp")}
             loading="lazy"
           />
           <div
-            class="absolute top-4 left-4 bg-secondary text-on-secondary px-3 py-1 font-label-caps text-label-caps rounded-xl shadow-sm"
+            class="absolute top-4 left-4 bg-secondary text-on-secondary px-3 py-1 font-label-caps text-label-caps rounded-xl shadow-sm z-10"
           >
             FENDT 211 VARIO
           </div>
