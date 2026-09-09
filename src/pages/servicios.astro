@@ -290,7 +290,7 @@ const serviciosObraCivil = SERVICIOS.filter((s) => s.categoria === "obra-civil")
         function updateStepTabs(index: number) {
           stepTabs.forEach((tab, i) => {
             const numBadge = tab.querySelector<HTMLElement>(".step-num-badge");
-            const icon = tab.querySelector<HTMLElement>(".material-symbols-outlined");
+            const videoBadge = tab.querySelector<HTMLElement>(".step-video-badge");
 
             if (i === index) {
               tab.className = isAgricola
@@ -301,9 +301,10 @@ const serviciosObraCivil = SERVICIOS.filter((s) => s.categoria === "obra-civil")
                   ? "step-num-badge w-5 h-5 rounded-full text-[10px] font-bold flex items-center justify-center flex-shrink-0 bg-primary text-on-primary"
                   : "step-num-badge w-5 h-5 rounded-full text-[10px] font-bold flex items-center justify-center flex-shrink-0 bg-secondary text-on-secondary";
               }
-              if (icon) {
-                icon.classList.remove("text-outline");
-                icon.classList.add(isAgricola ? "text-primary" : "text-secondary");
+              if (videoBadge) {
+                videoBadge.className = isAgricola
+                  ? "step-video-badge text-[10px] font-label-caps font-bold px-1.5 py-0.5 rounded border flex-shrink-0 bg-primary/20 text-primary border-primary/30"
+                  : "step-video-badge text-[10px] font-label-caps font-bold px-1.5 py-0.5 rounded border flex-shrink-0 bg-secondary/20 text-secondary border-secondary/30";
               }
             } else {
               tab.className =
@@ -312,9 +313,9 @@ const serviciosObraCivil = SERVICIOS.filter((s) => s.categoria === "obra-civil")
                 numBadge.className =
                   "step-num-badge w-5 h-5 rounded-full text-[10px] font-bold flex items-center justify-center flex-shrink-0 bg-surface-container-high text-on-surface-variant";
               }
-              if (icon) {
-                icon.classList.remove("text-primary", "text-secondary");
-                icon.classList.add("text-outline");
+              if (videoBadge) {
+                videoBadge.className =
+                  "step-video-badge text-[10px] font-label-caps font-bold px-1.5 py-0.5 rounded border flex-shrink-0 bg-surface-container text-on-surface-variant border-outline-variant/30";
               }
             }
           });

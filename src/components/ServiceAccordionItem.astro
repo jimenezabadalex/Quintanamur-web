@@ -23,49 +23,25 @@ const btnClass = isAgricola ? "btn-agricola" : "btn-obra";
   <!-- Cabecera / Fila Resumen Clicable -->
   <button
     type="button"
-    class="service-accordion-trigger w-full text-left p-4 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-pointer select-none transition-colors hover:bg-surface-container/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+    class="service-accordion-trigger w-full text-left p-4 sm:p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-pointer select-none transition-colors hover:bg-surface-container/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
     aria-expanded={initialOpen ? "true" : "false"}
     aria-controls={`service-content-${servicio.id}`}
   >
-    <div class="flex items-start sm:items-center gap-4 min-w-0 flex-grow">
-      <!-- Número e Icono -->
-      <div class="flex items-center gap-3 flex-shrink-0">
-        <span
-          class={`font-label-caps text-xs font-bold px-2.5 py-1 rounded-md border ${
-            isAgricola
-              ? "bg-primary/10 border-primary/20 text-primary"
-              : "bg-secondary/10 border-secondary/20 text-secondary"
-          }`}
-        >
-          {servicio.numero}
-        </span>
-        <div
-          class={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
-            isAgricola
-              ? "bg-primary/15 text-primary"
-              : "bg-secondary/15 text-secondary"
-          }`}
-        >
-          <span class="material-symbols-outlined text-xl">{servicio.icono}</span>
-        </div>
-      </div>
+    <div class="flex items-start sm:items-center gap-3.5 min-w-0 flex-grow">
+      <!-- Numeración Tipográfica Limpia -->
+      <span
+        class={`font-display-md text-base sm:text-lg font-bold flex-shrink-0 select-none ${
+          isAgricola ? "text-primary/70" : "text-secondary/70"
+        }`}
+      >
+        {servicio.numero}
+      </span>
 
       <!-- Título y Frase Corta -->
       <div class="min-w-0 flex-grow">
-        <div class="flex flex-wrap items-center gap-2 mb-1">
-          <h3 class="font-headline-md text-base sm:text-lg font-bold text-on-surface leading-snug">
-            {servicio.titulo}
-          </h3>
-          <span
-            class={`font-label-caps text-[11px] font-semibold px-2 py-0.5 rounded-full ${
-              isAgricola
-                ? "bg-primary/10 text-primary"
-                : "bg-secondary/10 text-secondary"
-            }`}
-          >
-            {servicio.badgeCategoria}
-          </span>
-        </div>
+        <h3 class="font-headline-md text-base sm:text-lg font-bold text-on-surface leading-snug mb-0.5">
+          {servicio.titulo}
+        </h3>
         <p class="font-body-md text-xs sm:text-sm text-on-surface-variant leading-relaxed">
           {servicio.fraseCorta}
         </p>
@@ -74,23 +50,22 @@ const btnClass = isAgricola ? "btn-agricola" : "btn-obra";
 
     <!-- Metadatos y Botón Desplegar -->
     <div class="flex items-center justify-between sm:justify-end gap-3 flex-shrink-0 border-t sm:border-t-0 pt-3 sm:pt-0 border-outline-variant/15">
-      <!-- Píldora Maquinaria -->
-      <div class="hidden lg:flex items-center gap-2 bg-surface-container px-3 py-1.5 rounded-md border border-outline-variant/20 text-xs text-on-surface-variant max-w-[220px]">
-        <span class="material-symbols-outlined text-base text-outline">agriculture</span>
+      <!-- Maquinaria Principal (Limpia, sin icono redundante) -->
+      <div class="hidden xl:flex items-center bg-surface-container/60 px-2.5 py-1 rounded text-xs text-on-surface-variant max-w-[200px]">
         <span class="truncate font-medium">{servicio.maquinaria}</span>
       </div>
 
       <!-- Botón de Estado / Indicador -->
       <div
-        class={`accordion-action-pill flex items-center gap-1.5 px-3.5 py-2 rounded-lg font-label-caps text-xs font-bold border transition-all ${
+        class={`accordion-action-pill flex items-center gap-1 px-3 py-1.5 rounded-lg font-label-caps text-xs font-semibold border transition-all ${
           initialOpen
             ? isAgricola
               ? "bg-primary text-on-primary border-primary"
               : "bg-secondary text-on-secondary border-secondary"
-            : "bg-surface-container-high text-on-surface border-outline-variant/30 hover:border-outline"
+            : "bg-surface-container-high/60 text-on-surface-variant border-outline-variant/30 hover:border-outline"
         }`}
       >
-        <span class="accordion-action-text">{initialOpen ? "Plegar servicio" : "Ver demostración"}</span>
+        <span class="accordion-action-text">{initialOpen ? "Plegar" : "Ver detalle"}</span>
         <span
           class={`material-symbols-outlined text-base accordion-chevron transition-transform duration-300 ${
             initialOpen ? "rotate-180" : ""
@@ -156,7 +131,7 @@ const btnClass = isAgricola ? "btn-agricola" : "btn-obra";
           <div class="absolute top-4 left-4 right-4 z-20 flex items-center justify-between pointer-events-none">
             <span class="service-player-badge bg-black/75 backdrop-blur-md text-white font-label-caps text-xs px-3.5 py-1.5 rounded-full border border-white/20 shadow-lg flex items-center gap-2">
               <span
-                class={`w-2 h-2 rounded-full animate-pulse ${
+                class={`w-2 h-2 rounded-full ${
                   isAgricola ? "bg-primary" : "bg-secondary"
                 }`}
               />
@@ -231,14 +206,13 @@ const btnClass = isAgricola ? "btn-agricola" : "btn-obra";
         <!-- Columna Derecha: Información Técnica y Pasos (lg:col-span-5) -->
         <div class="lg:col-span-5 p-6 sm:p-8 flex flex-col justify-between h-full bg-surface-container-lowest border-t lg:border-t-0 lg:border-l border-outline-variant/20">
           <div>
-            <div
-              class={`inline-flex items-center gap-2 mb-2 font-label-caps text-xs font-bold ${
+            <span
+              class={`font-label-caps text-[11px] tracking-wider uppercase block mb-1.5 font-bold ${
                 isAgricola ? "text-primary" : "text-secondary"
               }`}
             >
-              <span class="material-symbols-outlined text-base">video_library</span>
-              <span>PROCESO REAL EN CAMPO</span>
-            </div>
+              Proceso en Campo
+            </span>
             <h4 class="font-headline-md text-xl sm:text-2xl font-bold text-on-surface mb-2 leading-tight">
               {servicio.titulo}
             </h4>
@@ -273,27 +247,22 @@ const btnClass = isAgricola ? "btn-agricola" : "btn-obra";
                       {paso.numero}
                     </span>
                     <span class="text-xs truncate font-medium">
-                      {paso.titulo}{" "}
-                      {paso.esVideo && (
-                        <strong
-                          class={isAgricola ? "text-primary font-bold" : "text-secondary font-bold"}
-                        >
-                          (Vídeo)
-                        </strong>
-                      )}
+                      {paso.titulo}
                     </span>
                   </div>
-                  <span
-                    class={`material-symbols-outlined text-sm flex-shrink-0 ${
-                      pIndex === 0
-                        ? isAgricola
-                          ? "text-primary"
-                          : "text-secondary"
-                        : "text-outline"
-                    }`}
-                  >
-                    {paso.icono}
-                  </span>
+                  {paso.esVideo && (
+                    <span
+                      class={`step-video-badge text-[10px] font-label-caps font-bold px-1.5 py-0.5 rounded border flex-shrink-0 ${
+                        pIndex === 0
+                          ? isAgricola
+                            ? "bg-primary/20 text-primary border-primary/30"
+                            : "bg-secondary/20 text-secondary border-secondary/30"
+                          : "bg-surface-container text-on-surface-variant border-outline-variant/30"
+                      }`}
+                    >
+                      VÍDEO
+                    </span>
+                  )}
                 </button>
               ))}
             </div>
@@ -301,26 +270,17 @@ const btnClass = isAgricola ? "btn-agricola" : "btn-obra";
 
           <!-- Maquinaria y CTA -->
           <div>
-            <div class="bg-surface-container p-3.5 rounded-md mb-4 border border-outline-variant/20 flex items-center gap-3">
+            <div class="bg-surface-container/60 px-3.5 py-2.5 rounded-md mb-4 border border-outline-variant/20">
               <span
-                class={`material-symbols-outlined text-2xl flex-shrink-0 ${
+                class={`font-label-caps text-[10px] uppercase block font-bold mb-0.5 ${
                   isAgricola ? "text-primary" : "text-secondary"
                 }`}
               >
-                precision_manufacturing
+                Maquinaria empleada
               </span>
-              <div class="min-w-0">
-                <span
-                  class={`font-label-caps text-[10px] uppercase block font-bold ${
-                    isAgricola ? "text-primary" : "text-secondary"
-                  }`}
-                >
-                  Maquinaria empleada
-                </span>
-                <span class="font-body-md text-xs sm:text-sm font-medium text-on-surface truncate block">
-                  {servicio.maquinariaDetalle}
-                </span>
-              </div>
+              <span class="font-body-md text-xs sm:text-sm font-medium text-on-surface block">
+                {servicio.maquinariaDetalle}
+              </span>
             </div>
 
             <a href={url("/contacto")} class={`${btnClass} w-full mt-auto`}>
