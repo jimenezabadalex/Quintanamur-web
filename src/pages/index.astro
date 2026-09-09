@@ -19,7 +19,7 @@ import { url } from "../utils/url";
       <video
         id="home-video-forward"
         class="w-full h-full hero-video-responsive transition-opacity duration-700 opacity-100"
-        src={url("/images/home/hero-home-panoramic.mp4")}
+        src={url("/images/home/hero-home-dust.mp4")}
         autoplay
         muted
         playsinline
@@ -28,7 +28,7 @@ import { url } from "../utils/url";
       <video
         id="home-video-reverse"
         class="absolute inset-0 w-full h-full hero-video-responsive transition-opacity duration-700 opacity-0"
-        src={url("/images/home/hero-home-panoramic-reverse.mp4")}
+        src={url("/images/home/hero-home-dust-reverse.mp4")}
         muted
         playsinline
         preload="auto"
@@ -599,10 +599,11 @@ import { url } from "../utils/url";
     .hero-dust-gradient {
       background: linear-gradient(
         to right,
-        rgba(214, 200, 182, 0.92) 0%,
-        rgba(214, 200, 182, 0.7) 32%,
-        rgba(214, 200, 182, 0.25) 46%,
-        transparent 56%
+        #d6c8b6 0%,
+        #d6c8b6 35%,
+        rgba(214, 200, 182, 0.8) 48%,
+        rgba(214, 200, 182, 0.25) 58%,
+        transparent 65%
       );
     }
     .hero-dust-mobile {
@@ -632,9 +633,10 @@ import { url } from "../utils/url";
       .hero-dust-gradient {
         background: linear-gradient(
           to right,
-          rgba(16, 13, 11, 0.92) 0%,
-          rgba(16, 13, 11, 0.5) 55%,
-          transparent 100%
+          rgba(16, 13, 11, 0.95) 0%,
+          rgba(16, 13, 11, 0.7) 40%,
+          rgba(16, 13, 11, 0.2) 58%,
+          transparent 68%
         );
       }
       .hero-dust-mobile {
