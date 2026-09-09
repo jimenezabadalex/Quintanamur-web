@@ -9,10 +9,10 @@ import { url } from "../utils/url";
   description="Servicios de excavación, movimiento de tierras, trituración forestal, despedregado y plantación GPS en Yecla y comarca. "
   activePage="inicio"
 >
-  <!-- Hero Section con Vídeo Panorámico Cinemático Pre-renderizado (Responsive: Móvil, Tablet y Desktop) -->
+  <!-- Hero Section con Vídeo Panorámico Cinemático (Fondo y Degradado en tono Polvo de la Tierra en Modo Claro) -->
   <header
     id="home-hero"
-    class="bg-inverse-surface relative overflow-hidden min-h-[580px] sm:min-h-[640px] md:min-h-[720px] lg:min-h-[780px] xl:min-h-[820px] flex items-center py-20 sm:py-24 md:py-28 lg:py-32"
+    class="hero-dust-bg relative overflow-hidden min-h-[580px] sm:min-h-[640px] md:min-h-[720px] lg:min-h-[780px] xl:min-h-[820px] flex items-center py-20 sm:py-24 md:py-28 lg:py-32 transition-colors duration-300"
   >
     <!-- Background Video Layer (Aceleración por Hardware Directa, 60 FPS) -->
     <div class="absolute inset-0 pointer-events-none overflow-hidden z-0">
@@ -34,21 +34,21 @@ import { url } from "../utils/url";
         preload="auto"
       ></video>
 
-      <!-- Gradient Overlay lateral de la izquierda en PC: transición orgánica y suave que armoniza en modo claro y noche -->
+      <!-- Gradient Overlay lateral de la izquierda: Tono polvo del vídeo en modo claro, oscuro en modo noche -->
       <div
-        class="hidden lg:block absolute inset-0 bg-gradient-to-r from-inverse-surface/85 via-inverse-surface/45 to-transparent pointer-events-none"
+        class="hidden lg:block absolute inset-0 hero-dust-gradient pointer-events-none"
       >
       </div>
 
-      <!-- Velo suave mínimo en móvil y tablet para contraste de texto sin oscurecer el vídeo -->
+      <!-- Velo suave mínimo en móvil y tablet para contraste armónico -->
       <div
-        class="lg:hidden absolute inset-0 bg-gradient-to-t from-inverse-surface/60 via-transparent to-transparent pointer-events-none"
+        class="lg:hidden absolute inset-0 hero-dust-mobile pointer-events-none"
       >
       </div>
 
       <!-- Fusión suave y transparente continua hacia la siguiente sección (bg-surface) -->
       <div
-        class="absolute bottom-0 inset-x-0 h-28 sm:h-40 md:h-60 bg-gradient-to-t from-surface via-surface/70 to-transparent pointer-events-none"
+        class="absolute bottom-0 inset-x-0 h-28 sm:h-40 md:h-60 bg-gradient-to-t from-surface via-surface/75 to-transparent pointer-events-none"
       >
       </div>
     </div>
@@ -59,17 +59,17 @@ import { url } from "../utils/url";
     >
       <div class="max-w-2xl lg:max-w-3xl">
         <span
-          class="font-label-caps text-label-caps text-secondary-fixed uppercase tracking-widest block mb-3 sm:mb-4 drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]"
+          class="font-label-caps text-label-caps hero-dust-badge uppercase tracking-widest block mb-3 sm:mb-4 font-bold"
         >
           Maquinaria propia. No somos intermediarios
         </span>
         <h1
-          class="font-display-lg text-[32px] sm:text-[40px] md:text-display-lg lg:text-[60px] font-extrabold mb-4 sm:mb-5 text-on-primary leading-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]"
+          class="font-display-lg text-[32px] sm:text-[40px] md:text-display-lg lg:text-[60px] font-extrabold mb-4 sm:mb-5 hero-dust-h1 leading-tight"
         >
           MAQUINARIA AL SERVICIO DE LA OBRA Y EL CAMPO
         </h1>
         <p
-          class="font-body-lg text-body-lg sm:text-[17px] md:text-[19px] text-inverse-on-surface max-w-xl leading-relaxed mb-6 sm:mb-8 drop-shadow-[0_1px_6px_rgba(0,0,0,0.5)]"
+          class="font-body-lg text-body-lg sm:text-[17px] md:text-[19px] hero-dust-p max-w-xl leading-relaxed mb-6 sm:mb-8 font-medium"
         >
           Acondicionamiento extremo de terrenos, excavaciones y plantación GPS
           en Yecla, Jumilla y comarca.
@@ -571,6 +571,7 @@ import { url } from "../utils/url";
   />
 
   <style>
+    /* Encuadre focal responsive */
     .hero-video-responsive {
       object-fit: cover;
       object-position: 95% center;
@@ -588,6 +589,70 @@ import { url } from "../utils/url";
     @media (min-width: 1600px) {
       .hero-video-responsive {
         object-position: center center;
+      }
+    }
+
+    /* Tono Polvo del Vídeo en Modo Claro (y Continuidad Nocturna) */
+    .hero-dust-bg {
+      background-color: #d6c8b6;
+    }
+    .hero-dust-gradient {
+      background: linear-gradient(
+        to right,
+        #cfc0ad 0%,
+        rgba(223, 212, 197, 0.95) 45%,
+        rgba(223, 212, 197, 0.55) 70%,
+        transparent 100%
+      );
+    }
+    .hero-dust-mobile {
+      background: linear-gradient(
+        to top,
+        rgba(214, 200, 182, 0.75) 0%,
+        rgba(214, 200, 182, 0.2) 40%,
+        transparent 70%
+      );
+    }
+    .hero-dust-h1 {
+      color: #241a13;
+      text-shadow: 0 1px 3px rgba(255, 255, 255, 0.4);
+    }
+    .hero-dust-p {
+      color: #44352a;
+    }
+    .hero-dust-badge {
+      color: #6e4720;
+    }
+
+    /* Modo Noche (Preferencia del sistema) */
+    @media (prefers-color-scheme: dark) {
+      .hero-dust-bg {
+        background-color: var(--color-inverse-surface, #100d0b);
+      }
+      .hero-dust-gradient {
+        background: linear-gradient(
+          to right,
+          rgba(16, 13, 11, 0.92) 0%,
+          rgba(16, 13, 11, 0.5) 55%,
+          transparent 100%
+        );
+      }
+      .hero-dust-mobile {
+        background: linear-gradient(
+          to top,
+          rgba(16, 13, 11, 0.8) 0%,
+          transparent 65%
+        );
+      }
+      .hero-dust-h1 {
+        color: #ffffff;
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
+      }
+      .hero-dust-p {
+        color: #ede6de;
+      }
+      .hero-dust-badge {
+        color: #f4dcb8;
       }
     }
   </style>
