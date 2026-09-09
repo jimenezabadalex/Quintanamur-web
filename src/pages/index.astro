@@ -9,16 +9,16 @@ import { url } from "../utils/url";
   description="Servicios de excavación, movimiento de tierras, trituración forestal, despedregado y plantación GPS en Yecla y comarca. "
   activePage="inicio"
 >
-  <!-- Hero Section con Vídeo Panorámico Cinemático Pre-renderizado (Bucle Directo / Reversa) -->
+  <!-- Hero Section con Vídeo Panorámico Cinemático Pre-renderizado (Responsive: Móvil, Tablet y Desktop) -->
   <header
     id="home-hero"
-    class="bg-inverse-surface relative overflow-hidden min-h-[640px] md:min-h-[720px] lg:min-h-[780px] xl:min-h-[820px] flex items-center py-24 md:py-32"
+    class="bg-inverse-surface relative overflow-hidden min-h-[580px] sm:min-h-[640px] md:min-h-[720px] lg:min-h-[780px] xl:min-h-[820px] flex items-center py-20 sm:py-24 md:py-28 lg:py-32"
   >
     <!-- Background Video Layer (Aceleración por Hardware Directa, 60 FPS) -->
     <div class="absolute inset-0 pointer-events-none overflow-hidden z-0">
       <video
         id="home-video-forward"
-        class="w-full h-full object-cover object-center transition-opacity duration-700 opacity-100"
+        class="w-full h-full hero-video-responsive transition-opacity duration-700 opacity-100"
         src={url("/images/home/hero-home-panoramic.mp4")}
         autoplay
         muted
@@ -27,22 +27,22 @@ import { url } from "../utils/url";
       ></video>
       <video
         id="home-video-reverse"
-        class="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 opacity-0"
+        class="absolute inset-0 w-full h-full hero-video-responsive transition-opacity duration-700 opacity-0"
         src={url("/images/home/hero-home-panoramic-reverse.mp4")}
         muted
         playsinline
         preload="auto"
       ></video>
 
-      <!-- Gradient Overlay lateral sutil para contraste del texto en pantallas pequeñas -->
+      <!-- Gradient Overlay adaptativo: vertical en móvil/tablet y lateral en desktop -->
       <div
-        class="absolute inset-0 bg-gradient-to-r from-inverse-surface via-inverse-surface/80 to-transparent pointer-events-none md:via-inverse-surface/60"
+        class="absolute inset-0 bg-gradient-to-t from-inverse-surface via-inverse-surface/85 to-inverse-surface/30 md:bg-gradient-to-r md:from-inverse-surface md:via-inverse-surface/80 md:to-transparent pointer-events-none"
       >
       </div>
 
       <!-- Fusión suave y transparente continua hacia la siguiente sección (bg-surface) -->
       <div
-        class="absolute bottom-0 inset-x-0 h-32 sm:h-44 md:h-56 bg-gradient-to-t from-surface via-surface/60 to-transparent pointer-events-none"
+        class="absolute bottom-0 inset-x-0 h-24 sm:h-36 md:h-56 bg-gradient-to-t from-surface via-surface/60 to-transparent pointer-events-none"
       >
       </div>
     </div>
@@ -53,22 +53,22 @@ import { url } from "../utils/url";
     >
       <div class="max-w-2xl lg:max-w-3xl">
         <span
-          class="font-label-caps text-label-caps text-secondary-fixed-dim uppercase tracking-widest block mb-4"
+          class="font-label-caps text-label-caps text-secondary-fixed-dim uppercase tracking-widest block mb-3 sm:mb-4"
         >
           Maquinaria propia. No somos intermediarios
         </span>
         <h1
-          class="font-display-lg text-headline-lg-mobile md:text-display-lg lg:text-[60px] font-extrabold mb-5 text-on-primary leading-tight"
+          class="font-display-lg text-[32px] sm:text-[40px] md:text-display-lg lg:text-[60px] font-extrabold mb-4 sm:mb-5 text-on-primary leading-tight"
         >
           MAQUINARIA AL SERVICIO DE LA OBRA Y EL CAMPO
         </h1>
         <p
-          class="font-body-lg text-body-lg md:text-[19px] text-inverse-on-surface max-w-xl leading-relaxed mb-8"
+          class="font-body-lg text-body-lg sm:text-[17px] md:text-[19px] text-inverse-on-surface max-w-xl leading-relaxed mb-6 sm:mb-8"
         >
           Acondicionamiento extremo de terrenos, excavaciones y plantación GPS
           en Yecla, Jumilla y comarca.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4">
+        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
           <a
             class="btn-agricola w-full sm:w-auto text-center"
             href={url("/maquinaria")}
@@ -563,6 +563,18 @@ import { url } from "../utils/url";
     description="Servicio en Yecla, Jumilla, Villena y comarcas limítrofes. Maquinaria propia sin intermediarios."
     showContactPage={true}
   />
+
+  <style>
+    .hero-video-responsive {
+      object-fit: cover;
+      object-position: 79% center;
+    }
+    @media (min-width: 1024px) {
+      .hero-video-responsive {
+        object-position: center center;
+      }
+    }
+  </style>
 
   <script>
     function setupHomeHeroVideo() {
