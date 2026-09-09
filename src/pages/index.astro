@@ -9,71 +9,42 @@ import { url } from "../utils/url";
   description="Servicios de excavación, movimiento de tierras, trituración forestal, despedregado y plantación GPS en Yecla y comarca. "
   activePage="inicio"
 >
-  <!-- Hero Section Cinemático: Ambient Glow + Vídeo Íntegro a la Derecha sin Cortes (Bucle Directo / Reversa) -->
+  <!-- Hero Section con Vídeo Panorámico Cinemático Pre-renderizado (Bucle Directo / Reversa) -->
   <header
     id="home-hero"
     class="bg-inverse-surface relative overflow-hidden min-h-[640px] md:min-h-[720px] lg:min-h-[780px] xl:min-h-[820px] flex items-center py-24 md:py-32"
   >
-    <!-- Capa 1: Ambient Glow Dinámico de Fondo (Reflejo cinemático en tiempo real) -->
+    <!-- Background Video Layer (Aceleración por Hardware Directa, 60 FPS) -->
     <div class="absolute inset-0 pointer-events-none overflow-hidden z-0">
       <video
-        id="home-ambient-forward"
-        class="absolute inset-0 w-full h-full object-cover object-center scale-125 filter blur-[60px] md:blur-[100px] opacity-30 md:opacity-40 transition-opacity duration-700"
-        src={url("/images/home/hero-home-square.mp4")}
+        id="home-video-forward"
+        class="w-full h-full object-cover object-center transition-opacity duration-700 opacity-100"
+        src={url("/images/home/hero-home-panoramic.mp4")}
         autoplay
         muted
         playsinline
         preload="auto"
-        aria-hidden="true"
-        tabindex="-1"
       ></video>
       <video
-        id="home-ambient-reverse"
-        class="absolute inset-0 w-full h-full object-cover object-center scale-125 filter blur-[60px] md:blur-[100px] opacity-0 transition-opacity duration-700"
-        src={url("/images/home/hero-home-reverse.mp4")}
+        id="home-video-reverse"
+        class="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-700 opacity-0"
+        src={url("/images/home/hero-home-panoramic-reverse.mp4")}
         muted
         playsinline
         preload="auto"
-        aria-hidden="true"
-        tabindex="-1"
       ></video>
-    </div>
 
-    <!-- Capa 2: Vídeo Principal Íntegro a la Derecha (Sin Cortes en sus 4 Lados, Bucle Directo / Reversa) -->
-    <div
-      class="absolute inset-y-0 right-0 w-full md:w-3/5 lg:w-1/2 flex items-center justify-end pointer-events-none z-1 overflow-hidden"
-    >
-      <div class="relative h-full aspect-square flex items-center justify-end">
-        <video
-          id="home-video-forward"
-          class="h-full w-auto aspect-square object-contain object-right hero-video-mask transition-opacity duration-700 opacity-100"
-          src={url("/images/home/hero-home-square.mp4")}
-          autoplay
-          muted
-          playsinline
-          preload="auto"
-        ></video>
-        <video
-          id="home-video-reverse"
-          class="absolute inset-0 h-full w-auto aspect-square object-contain object-right hero-video-mask transition-opacity duration-700 opacity-0"
-          src={url("/images/home/hero-home-reverse.mp4")}
-          muted
-          playsinline
-          preload="auto"
-        ></video>
+      <!-- Gradient Overlay lateral sutil para contraste del texto en pantallas pequeñas -->
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-inverse-surface via-inverse-surface/80 to-transparent pointer-events-none md:via-inverse-surface/60"
+      >
       </div>
-    </div>
 
-    <!-- Capa 3: Gradient Overlay Lateral de Alto Contraste para el Texto -->
-    <div
-      class="absolute inset-0 bg-gradient-to-r from-inverse-surface via-inverse-surface/85 to-inverse-surface/40 md:via-inverse-surface/80 md:to-transparent pointer-events-none z-2"
-    >
-    </div>
-
-    <!-- Capa 4: Fusión Transparente Continua hacia la Siguiente Sección (bg-surface) -->
-    <div
-      class="absolute bottom-0 inset-x-0 h-32 sm:h-44 md:h-56 bg-gradient-to-t from-surface via-surface/60 to-transparent pointer-events-none z-3"
-    >
+      <!-- Fusión suave y transparente continua hacia la siguiente sección (bg-surface) -->
+      <div
+        class="absolute bottom-0 inset-x-0 h-32 sm:h-44 md:h-56 bg-gradient-to-t from-surface via-surface/60 to-transparent pointer-events-none"
+      >
+      </div>
     </div>
 
     <!-- Foreground Content -->
@@ -593,19 +564,10 @@ import { url } from "../utils/url";
     showContactPage={true}
   />
 
-  <style>
-    .hero-video-mask {
-      -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 15%, black 35%, black 100%);
-      mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.4) 15%, black 35%, black 100%);
-    }
-  </style>
-
   <script>
     function setupHomeHeroVideo() {
       const videoFwd = document.getElementById("home-video-forward") as HTMLVideoElement | null;
       const videoRev = document.getElementById("home-video-reverse") as HTMLVideoElement | null;
-      const ambientFwd = document.getElementById("home-ambient-forward") as HTMLVideoElement | null;
-      const ambientRev = document.getElementById("home-ambient-reverse") as HTMLVideoElement | null;
       const hero = document.getElementById("home-hero");
       if (!videoFwd || !videoRev || !hero) return;
 
@@ -617,67 +579,39 @@ import { url } from "../utils/url";
       function showAndPlay(dir: "forward" | "reverse") {
         currentDirection = dir;
         if (dir === "forward") {
-          // Mostrar activo
           videoFwd.classList.remove("opacity-0");
           videoFwd.classList.add("opacity-100");
           videoRev.classList.remove("opacity-100");
           videoRev.classList.add("opacity-0");
 
-          if (ambientFwd && ambientRev) {
-            ambientFwd.classList.remove("opacity-0");
-            ambientFwd.classList.add("opacity-30", "md:opacity-40");
-            ambientRev.classList.remove("opacity-30", "md:opacity-40");
-            ambientRev.classList.add("opacity-0");
-          }
-
           videoFwd.currentTime = 0;
           videoFwd.play().catch(() => {});
-          if (ambientFwd) {
-            ambientFwd.currentTime = 0;
-            ambientFwd.play().catch(() => {});
-          }
         } else {
-          // Mostrar reverso
           videoRev.classList.remove("opacity-0");
           videoRev.classList.add("opacity-100");
           videoFwd.classList.remove("opacity-100");
           videoFwd.classList.add("opacity-0");
 
-          if (ambientFwd && ambientRev) {
-            ambientRev.classList.remove("opacity-0");
-            ambientRev.classList.add("opacity-30", "md:opacity-40");
-            ambientFwd.classList.remove("opacity-30", "md:opacity-40");
-            ambientFwd.classList.add("opacity-0");
-          }
-
           videoRev.currentTime = 0;
           videoRev.play().catch(() => {});
-          if (ambientRev) {
-            ambientRev.currentTime = 0;
-            ambientRev.play().catch(() => {});
-          }
         }
       }
 
       function pauseAll() {
         videoFwd?.pause();
         videoRev?.pause();
-        ambientFwd?.pause();
-        ambientRev?.pause();
       }
 
       function resumeCurrent() {
         if (isUserScrolledDown) return;
         if (currentDirection === "forward") {
           videoFwd?.play().catch(() => {});
-          ambientFwd?.play().catch(() => {});
         } else {
           videoRev?.play().catch(() => {});
-          ambientRev?.play().catch(() => {});
         }
       }
 
-      // Alternar al finalizar un vídeo: espera 4 segundos y lanza la dirección contraria
+      // Alternar al finalizar un vídeo: espera 4 segundos y reproduce la dirección contraria
       function handleVideoEnded(endedDirection: "forward" | "reverse") {
         if (isUserScrolledDown || endedDirection !== currentDirection) return;
         if (pauseTimeout) clearTimeout(pauseTimeout);
