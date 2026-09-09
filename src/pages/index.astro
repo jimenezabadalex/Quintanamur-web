@@ -34,9 +34,15 @@ import { url } from "../utils/url";
         preload="auto"
       ></video>
 
-      <!-- Gradient Overlay adaptativo: vertical en móvil/tablet y lateral en desktop -->
+      <!-- Gradient Overlay lateral de la izquierda: aplicado en PC (en móvil y tablet reducido al mínimo) -->
       <div
-        class="absolute inset-0 bg-gradient-to-t from-inverse-surface via-inverse-surface/85 to-inverse-surface/30 md:bg-gradient-to-r md:from-inverse-surface md:via-inverse-surface/80 md:to-transparent pointer-events-none"
+        class="hidden lg:block absolute inset-0 bg-gradient-to-r from-inverse-surface via-inverse-surface/85 to-transparent pointer-events-none"
+      >
+      </div>
+
+      <!-- Velo suave mínimo en móvil y tablet para contraste de texto sin oscurecer el vídeo -->
+      <div
+        class="lg:hidden absolute inset-0 bg-gradient-to-t from-inverse-surface/60 via-transparent to-transparent pointer-events-none"
       >
       </div>
 
@@ -567,7 +573,12 @@ import { url } from "../utils/url";
   <style>
     .hero-video-responsive {
       object-fit: cover;
-      object-position: 79% center;
+      object-position: 95% center;
+    }
+    @media (min-width: 640px) {
+      .hero-video-responsive {
+        object-position: 88% center;
+      }
     }
     @media (min-width: 1024px) {
       .hero-video-responsive {
