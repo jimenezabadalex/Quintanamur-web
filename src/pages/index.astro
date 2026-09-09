@@ -34,9 +34,9 @@ import { url } from "../utils/url";
         preload="auto"
       ></video>
 
-      <!-- Gradient Overlay lateral de la izquierda: aplicado en PC (en móvil y tablet reducido al mínimo) -->
+      <!-- Gradient Overlay lateral de la izquierda en PC: transición orgánica y suave que armoniza en modo claro y noche -->
       <div
-        class="hidden lg:block absolute inset-0 bg-gradient-to-r from-inverse-surface via-inverse-surface/85 to-transparent pointer-events-none"
+        class="hidden lg:block absolute inset-0 bg-gradient-to-r from-inverse-surface/85 via-inverse-surface/45 to-transparent pointer-events-none"
       >
       </div>
 
@@ -48,7 +48,7 @@ import { url } from "../utils/url";
 
       <!-- Fusión suave y transparente continua hacia la siguiente sección (bg-surface) -->
       <div
-        class="absolute bottom-0 inset-x-0 h-24 sm:h-36 md:h-56 bg-gradient-to-t from-surface via-surface/60 to-transparent pointer-events-none"
+        class="absolute bottom-0 inset-x-0 h-28 sm:h-40 md:h-60 bg-gradient-to-t from-surface via-surface/70 to-transparent pointer-events-none"
       >
       </div>
     </div>
@@ -59,17 +59,17 @@ import { url } from "../utils/url";
     >
       <div class="max-w-2xl lg:max-w-3xl">
         <span
-          class="font-label-caps text-label-caps text-secondary-fixed-dim uppercase tracking-widest block mb-3 sm:mb-4"
+          class="font-label-caps text-label-caps text-secondary-fixed uppercase tracking-widest block mb-3 sm:mb-4 drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]"
         >
           Maquinaria propia. No somos intermediarios
         </span>
         <h1
-          class="font-display-lg text-[32px] sm:text-[40px] md:text-display-lg lg:text-[60px] font-extrabold mb-4 sm:mb-5 text-on-primary leading-tight"
+          class="font-display-lg text-[32px] sm:text-[40px] md:text-display-lg lg:text-[60px] font-extrabold mb-4 sm:mb-5 text-on-primary leading-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]"
         >
           MAQUINARIA AL SERVICIO DE LA OBRA Y EL CAMPO
         </h1>
         <p
-          class="font-body-lg text-body-lg sm:text-[17px] md:text-[19px] text-inverse-on-surface max-w-xl leading-relaxed mb-6 sm:mb-8"
+          class="font-body-lg text-body-lg sm:text-[17px] md:text-[19px] text-inverse-on-surface max-w-xl leading-relaxed mb-6 sm:mb-8 drop-shadow-[0_1px_6px_rgba(0,0,0,0.5)]"
         >
           Acondicionamiento extremo de terrenos, excavaciones y plantación GPS
           en Yecla, Jumilla y comarca.
@@ -581,6 +581,11 @@ import { url } from "../utils/url";
       }
     }
     @media (min-width: 1024px) {
+      .hero-video-responsive {
+        object-position: 72% center;
+      }
+    }
+    @media (min-width: 1600px) {
       .hero-video-responsive {
         object-position: center center;
       }
