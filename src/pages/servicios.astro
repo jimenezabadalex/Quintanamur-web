@@ -16,7 +16,7 @@ const serviciosObraCivil = SERVICIOS.filter((s) => s.categoria === "obra-civil")
 >
   <!-- Header / Hero Section idéntico a Maquinaria -->
   <header
-    class="bg-inverse-surface text-on-primary py-24 md:py-32 px-margin-mobile md:px-margin-desktop relative overflow-hidden"
+    class="bg-inverse-surface text-on-primary relative overflow-hidden min-h-[580px] sm:min-h-[640px] md:min-h-[720px] lg:min-h-[780px] flex items-center py-20 sm:py-24 md:py-28 lg:py-32"
   >
     <!-- Background Layers -->
     <div class="absolute inset-0 pointer-events-none overflow-hidden">
@@ -36,22 +36,28 @@ const serviciosObraCivil = SERVICIOS.filter((s) => s.categoria === "obra-civil")
       >
       </div>
 
-      <!-- Gradient overlay idéntico a Maquinaria: tono oscuro sólido en el lado del texto, abierto en el lado de la maquinaria -->
+      <!-- Gradient overlay: vertical en móvil para máxima legibilidad, horizontal en desktop -->
       <div
-        class="absolute inset-0 bg-gradient-to-r from-inverse-surface via-inverse-surface/85 to-inverse-surface/40 md:to-transparent"
+        class="absolute inset-0 bg-gradient-to-t from-inverse-surface via-inverse-surface/85 to-inverse-surface/40 md:bg-gradient-to-r md:from-inverse-surface md:via-inverse-surface/85 md:to-transparent"
+      >
+      </div>
+
+      <!-- Fusión suave continua hacia la siguiente sección (bg-surface) -->
+      <div
+        class="absolute bottom-0 inset-x-0 h-24 sm:h-36 md:h-56 bg-gradient-to-t from-surface via-surface/75 to-transparent pointer-events-none"
       >
       </div>
     </div>
 
     <div
-      class="max-w-max-width mx-auto relative z-10 flex flex-col md:flex-row items-center"
+      class="relative max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop z-10 w-full"
     >
       <div class="w-full md:w-8/12 lg:w-7/12">
         <div class="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center mb-6 text-primary-fixed-dim shadow-xs">
           <span class="material-symbols-outlined text-2xl">construction</span>
         </div>
         <h1
-          class="font-display-lg text-headline-lg-mobile md:text-display-lg lg:text-[60px] font-extrabold mb-6 sm:mb-8 text-on-primary leading-[1.16] sm:leading-[1.18]"
+          class="font-display-lg text-[30px] sm:text-[38px] md:text-display-lg lg:text-[60px] font-extrabold mb-6 sm:mb-8 text-on-primary leading-[1.16] sm:leading-[1.18]"
         >
           CATÁLOGO DE SERVICIOS<br />
           <span class="text-primary-fixed-dim">AGRÍCOLAS Y OBRA CIVIL</span>
@@ -69,10 +75,10 @@ const serviciosObraCivil = SERVICIOS.filter((s) => s.categoria === "obra-civil")
           maquinaria propia de última generación. Elige tu sector para descubrir
           cómo podemos ayudarte.
         </p>
-        <div class="hidden md:flex flex-row gap-4 sm:gap-5 pt-1">
+        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-1">
           <a
             id="btn-nav-agricola"
-            class="btn-agricola group"
+            class="btn-agricola w-full sm:w-auto text-center justify-center group"
             href="#servicios-agricolas"
           >
             <span
@@ -81,7 +87,11 @@ const serviciosObraCivil = SERVICIOS.filter((s) => s.categoria === "obra-civil")
             >
             VER SERVICIOS AGRÍCOLAS
           </a>
-          <a id="btn-nav-obra-civil" class="btn-obra group" href="#obra-civil">
+          <a
+            id="btn-nav-obra-civil"
+            class="btn-obra w-full sm:w-auto text-center justify-center group"
+            href="#obra-civil"
+          >
             <span
               class="material-symbols-outlined mr-2 group-hover:translate-y-0.5 transition-transform"
               >arrow_downward</span

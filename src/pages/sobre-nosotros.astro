@@ -10,30 +10,33 @@ import { url } from '../utils/url';
   activePage="sobre-nosotros"
 >
   <!-- Hero Section idéntico a Maquinaria -->
-  <header class="bg-inverse-surface text-on-primary py-24 md:py-32 px-margin-mobile md:px-margin-desktop relative overflow-hidden">
+  <header class="bg-inverse-surface text-on-primary relative overflow-hidden min-h-[540px] sm:min-h-[600px] md:min-h-[680px] lg:min-h-[740px] flex items-center py-20 sm:py-24 md:py-28 lg:py-32">
     <div
       class="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none"
       style={`background-image: url('${url('/images/sobre-nosotros/hero-nosotros-bg.webp')}');`}
     >
-      <!-- Gradient overlay: strong dark tone on text side, completely open on image side -->
-      <div class="absolute inset-0 bg-gradient-to-r from-inverse-surface via-inverse-surface/85 to-inverse-surface/40 md:to-transparent"></div>
+      <!-- Gradient overlay: vertical en móvil para máxima legibilidad, horizontal en desktop -->
+      <div class="absolute inset-0 bg-gradient-to-t from-inverse-surface via-inverse-surface/85 to-inverse-surface/40 md:bg-gradient-to-r md:from-inverse-surface md:via-inverse-surface/85 md:to-transparent"></div>
+
+      <!-- Fusión suave continua hacia la siguiente sección (bg-surface) -->
+      <div class="absolute bottom-0 inset-x-0 h-24 sm:h-36 md:h-56 bg-gradient-to-t from-surface via-surface/75 to-transparent pointer-events-none"></div>
     </div>
-    <div class="max-w-max-width mx-auto relative z-10 flex flex-col md:flex-row items-center">
-      <div class="w-full md:w-7/12 lg:w-1/2">
+    <div class="relative max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop z-10 w-full">
+      <div class="w-full md:w-8/12 lg:w-7/12">
         <div class="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center mb-6 text-secondary-fixed-dim shadow-xs">
           <span class="material-symbols-outlined text-2xl">workspace_premium</span>
         </div>
-        <h1 class="font-display-lg text-headline-lg-mobile md:text-display-lg lg:text-[60px] font-extrabold mb-6 sm:mb-8 text-on-primary leading-[1.16] sm:leading-[1.18]">
+        <h1 class="font-display-lg text-[30px] sm:text-[38px] md:text-display-lg lg:text-[60px] font-extrabold mb-6 sm:mb-8 text-on-primary leading-[1.16] sm:leading-[1.18]">
           DE LA CASA QUINTANA<br />
           <span class="text-secondary-fixed-dim">A LA ALTA TECNOLOGÍA</span>
         </h1>
-        <p class="font-body-lg text-body-lg sm:text-[18px] md:text-[20px] text-inverse-on-surface max-w-2xl leading-relaxed mb-8 sm:mb-10">
+        <p class="font-body-lg text-body-lg sm:text-[18px] md:text-[20px] text-inverse-on-surface max-w-2xl leading-relaxed mb-8 sm:mb-10 font-medium">
           Nuestra experiencia en el terreno, desde los humildes inicios en Yecla, nos ha forjado. Nuestro objetivo principal siempre ha sido ofrecer maquinaria potente, fiable y de precisión milimétrica a agricultores y grandes constructoras de obra civil.
         </p>
-        <div class="pt-1">
+        <div class="flex flex-col sm:flex-row gap-4 pt-1">
           <a
             href="#timeline"
-            class="btn-obra group"
+            class="btn-obra w-full sm:w-auto text-center justify-center group"
           >
             <span>CONOCE NUESTRA TRAYECTORIA</span>
             <span class="material-symbols-outlined text-lg group-hover:translate-y-0.5 transition-transform">arrow_downward</span>

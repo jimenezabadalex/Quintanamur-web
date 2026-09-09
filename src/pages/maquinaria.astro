@@ -11,27 +11,33 @@ import { url } from "../utils/url";
 >
   <!-- Hero Section -->
   <header
-    class="bg-inverse-surface text-on-primary py-24 md:py-32 px-margin-mobile md:px-margin-desktop relative overflow-hidden"
+    class="bg-inverse-surface text-on-primary relative overflow-hidden min-h-[580px] sm:min-h-[640px] md:min-h-[720px] lg:min-h-[780px] flex items-center py-20 sm:py-24 md:py-28 lg:py-32"
   >
     <div
       class="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none"
       style={`background-image: url('${url("/images/maquinaria/tractores/hero-flota-bg.webp")}');`}
     >
-      <!-- Gradient overlay: strong dark tone on text side, completely open on machinery side -->
+      <!-- Gradient overlay: vertical en movil para maxima legibilidad, horizontal en desktop -->
       <div
-        class="absolute inset-0 bg-gradient-to-r from-inverse-surface via-inverse-surface/85 to-inverse-surface/40 md:to-transparent"
+        class="absolute inset-0 bg-gradient-to-t from-inverse-surface via-inverse-surface/85 to-inverse-surface/40 md:bg-gradient-to-r md:from-inverse-surface md:via-inverse-surface/85 md:to-transparent"
+      >
+      </div>
+
+      <!-- Fusion suave continua hacia la siguiente seccion (bg-surface) -->
+      <div
+        class="absolute bottom-0 inset-x-0 h-24 sm:h-36 md:h-56 bg-gradient-to-t from-surface via-surface/75 to-transparent pointer-events-none"
       >
       </div>
     </div>
     <div
-      class="max-w-max-width mx-auto relative z-10 flex flex-col md:flex-row items-center"
+      class="relative max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop z-10 w-full"
     >
-      <div class="w-full md:w-7/12 lg:w-1/2">
+      <div class="w-full md:w-8/12 lg:w-7/12">
         <div class="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center mb-6 text-primary-fixed-dim shadow-xs">
           <span class="material-symbols-outlined text-2xl">agriculture</span>
         </div>
         <h1
-          class="font-display-lg text-headline-lg-mobile md:text-display-lg lg:text-[60px] font-extrabold mb-6 sm:mb-8 text-on-primary leading-[1.16] sm:leading-[1.18]"
+          class="font-display-lg text-[30px] sm:text-[38px] md:text-display-lg lg:text-[60px] font-extrabold mb-6 sm:mb-8 text-on-primary leading-[1.16] sm:leading-[1.18]"
         >
           NUESTRA FLOTA:<br />
           <span class="text-primary-fixed-dim"
@@ -39,14 +45,14 @@ import { url } from "../utils/url";
           >
         </h1>
         <p
-          class="font-body-lg text-body-lg sm:text-[18px] md:text-[20px] text-inverse-on-surface max-w-2xl leading-relaxed mb-8 sm:mb-10"
+          class="font-body-lg text-body-lg sm:text-[18px] md:text-[20px] text-inverse-on-surface max-w-2xl leading-relaxed mb-8 sm:mb-10 font-medium"
         >
           Al servicio de la obra civil y las labores agrícolas más exigentes.
           Tecnología de tracción de primer nivel (Fendt y John Deere) y
           operarios con experiencia real en los terrenos más duros.
         </p>
-        <div class="hidden md:block pt-1">
-          <a href="#categoria-a" class="btn-agricola group">
+        <div class="flex flex-col sm:flex-row gap-4 sm:gap-5 pt-1">
+          <a href="#categoria-a" class="btn-agricola w-full sm:w-auto text-center justify-center group">
             <span>VER FLOTA DE TRACTORES</span>
             <span
               class="material-symbols-outlined text-lg group-hover:translate-y-0.5 transition-transform"
