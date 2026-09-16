@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 import { neon } from '@neondatabase/serverless';
-import { env as cfEnv } from 'cloudflare:workers';
+
 
 export const prerender = false; // Ejecución dinámica en servidor
 
@@ -39,8 +39,8 @@ interface TelegramEnv {
 // 3. Helper: Notificación Instantánea a Telegram (Asíncrona y No Bloqueante)
 // =============================================================================
 async function sendTelegramNotification(payload: TelegramLeadPayload, env?: TelegramEnv): Promise<void> {
-    const botToken = env?.botToken || (cfEnv as any)?.TELEGRAM_BOT_TOKEN || import.meta.env.TELEGRAM_BOT_TOKEN || process.env?.TELEGRAM_BOT_TOKEN;
-    const chatId = env?.chatId || (cfEnv as any)?.TELEGRAM_CHAT_ID || import.meta.env.TELEGRAM_CHAT_ID || process.env?.TELEGRAM_CHAT_ID;
+    const botToken = env?.botToken || import.meta.env.TELEGRAM_BOT_TOKEN || process.env?.TELEGRAM_BOT_TOKEN;
+    const chatId = env?.chatId || import.meta.env.TELEGRAM_CHAT_ID || process.env?.TELEGRAM_CHAT_ID;
 
     if (!botToken || !chatId) {
         console.warn('[Telegram] TELEGRAM_BOT_TOKEN o TELEGRAM_CHAT_ID no configurados. Omitiendo notificación.');
@@ -135,6 +135,9 @@ async function sendTelegramNotification(payload: TelegramLeadPayload, env?: Tele
 // 4. Endpoint Principal de la API (/api/lead)
 // =============================================================================
 export const POST: APIRoute = async ({ request, locals }) => {
+    // Leer variables de entorno desde el runtime de Cloudflare (forma oficial con @astrojs/cloudflare)
+    const runtimeEnv = (locals.runtime as any)?.env;
+
     let data: any;
     try {
         data = await request.json();
@@ -207,14 +210,14 @@ export const POST: APIRoute = async ({ request, locals }) => {
             );
         }
 
-        const connectionString = (cfEnv as any)?.NEON_DATABASE_URL || import.meta.env.NEON_DATABASE_URL || process.env?.NEON_DATABASE_URL;
+        const connectionString = runtimeEnv?.NEON_DATABASE_URL || import.meta.env.NEON_DATABASE_URL || process.env?.NEON_DATABASE_URL;
         if (!connectionString) {
             throw new Error('La variable de entorno NEON_DATABASE_URL no está configurada o el servidor necesita reinicio.');
         }
 
         const telegramEnv: TelegramEnv = {
-            botToken: (cfEnv as any)?.TELEGRAM_BOT_TOKEN || import.meta.env.TELEGRAM_BOT_TOKEN || process.env?.TELEGRAM_BOT_TOKEN,
-            chatId: (cfEnv as any)?.TELEGRAM_CHAT_ID || import.meta.env.TELEGRAM_CHAT_ID || process.env?.TELEGRAM_CHAT_ID
+            botToken: runtimeEnv?.TELEGRAM_BOT_TOKEN || import.meta.env.TELEGRAM_BOT_TOKEN || process.env?.TELEGRAM_BOT_TOKEN,
+            chatId: runtimeEnv?.TELEGRAM_CHAT_ID || import.meta.env.TELEGRAM_CHAT_ID || process.env?.TELEGRAM_CHAT_ID
         };
 
         const sql = neon(connectionString);
