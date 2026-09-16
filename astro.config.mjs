@@ -13,6 +13,13 @@ export default defineConfig({
   }),
 
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    optimizeDeps: {
+      exclude: ['@neondatabase/serverless'],
+      include: ['astro/assets/services/noop']
+    },
+    ssr: {
+      external: ['@neondatabase/serverless']
+    }
   }
 });

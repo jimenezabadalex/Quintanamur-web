@@ -1,0 +1,10 @@
+name = "quintanamur-web"
+compatibility_date = "2026-09-15"
+compatibility_flags = []
+
+# Variables de entorno para desarrollo local
+# En producción, configúralas como Secrets en Cloudflare Dashboard
+[vars]
+# NEON_DATABASE_URL = "postgres://..."   # Descomenta y rellena para dev local
+# TELEGRAM_BOT_TOKEN = ""               # Descomenta y rellena para dev local
+# TELEGRAM_CHAT_ID = ""                 # Descomenta y rellena para dev local
