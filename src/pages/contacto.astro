@@ -107,7 +107,7 @@ import { url } from "../utils/url";
       </div>
 
       <!-- Map -->
-      <div id="coverage-map" class="w-full" style="height: 380px;"></div>
+      <div id="coverage-map" class="w-full relative z-0 isolate" style="height: 380px;"></div>
 
       <!-- Status Card -->
       <div id="coverage-status" class="px-6 sm:px-10 py-5 hidden">
@@ -785,9 +785,13 @@ import { url } from "../utils/url";
   <!-- is:global so Astro doesn't scope selectors - Leaflet generates DOM dynamically
        and its elements won't have the data-astro-cid attribute that scoped styles require -->
   <style is:global>
+    #coverage-map,
     .leaflet-container {
       font-family: var(--font-body-md, "Inter", sans-serif);
       background: var(--color-surface-container);
+      position: relative;
+      z-index: 0;
+      isolation: isolate;
     }
     .leaflet-popup-content-wrapper {
       background: var(--color-surface);

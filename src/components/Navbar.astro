@@ -90,7 +90,7 @@ const isCurrent = (key: string, href: string) => {
   <!-- Mobile Menu Dropdown -->
   <div
     id="mobile-menu"
-    class="hidden md:hidden bg-secondary border-t border-secondary-fixed-dim/20 px-margin-mobile py-6 shadow-xl"
+    class="hidden md:hidden bg-secondary border-t border-secondary-fixed-dim/20 px-margin-mobile py-6 shadow-xl relative z-50 max-h-[calc(100dvh-5rem)] overflow-y-auto"
   >
     <nav class="flex flex-col gap-4" aria-label="Navegación móvil">
       {navItems.map(item => {
