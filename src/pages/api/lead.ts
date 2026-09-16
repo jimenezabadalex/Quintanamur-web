@@ -29,15 +29,20 @@ function escapeHtml(str: string): string {
         .replace(/>/g, '&gt;');
 }
 
+interface TelegramEnv {
+    botToken?: string;
+    chatId?: string;
+}
+
 // =============================================================================
 // 3. Helper: Notificación Instantánea a Telegram (Asíncrona y No Bloqueante)
 // =============================================================================
-async function sendTelegramNotification(payload: TelegramLeadPayload): Promise<void> {
-    const botToken = import.meta.env.TELEGRAM_BOT_TOKEN || process.env.TELEGRAM_BOT_TOKEN;
-    const chatId = import.meta.env.TELEGRAM_CHAT_ID || process.env.TELEGRAM_CHAT_ID;
+async function sendTelegramNotification(payload: TelegramLeadPayload, env?: TelegramEnv): Promise<void> {
+    const botToken = env?.botToken || import.meta.env.TELEGRAM_BOT_TOKEN || process.env?.TELEGRAM_BOT_TOKEN;
+    const chatId = env?.chatId || import.meta.env.TELEGRAM_CHAT_ID || process.env?.TELEGRAM_CHAT_ID;
 
     if (!botToken || !chatId) {
-        console.warn('[Telegram] TELEGRAM_BOT_TOKEN o TELEGRAM_CHAT_ID no configurados en .env. Omitiendo notificación.');
+        console.warn('[Telegram] TELEGRAM_BOT_TOKEN o TELEGRAM_CHAT_ID no configurados. Omitiendo notificación.');
         return;
     }
 
@@ -128,7 +133,7 @@ async function sendTelegramNotification(payload: TelegramLeadPayload): Promise<v
 // =============================================================================
 // 4. Endpoint Principal de la API (/api/lead)
 // =============================================================================
-export const POST: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async ({ request, locals }) => {
     let data: any;
     try {
         data = await request.json();
@@ -201,10 +206,16 @@ export const POST: APIRoute = async ({ request }) => {
             );
         }
 
-        const connectionString = import.meta.env.NEON_DATABASE_URL || process.env.NEON_DATABASE_URL;
+        const runtimeEnv = (locals as any)?.runtime?.env || {};
+        const connectionString = runtimeEnv.NEON_DATABASE_URL || import.meta.env.NEON_DATABASE_URL || process.env?.NEON_DATABASE_URL;
         if (!connectionString) {
             throw new Error('La variable de entorno NEON_DATABASE_URL no está configurada o el servidor necesita reinicio.');
         }
+
+        const telegramEnv: TelegramEnv = {
+            botToken: runtimeEnv.TELEGRAM_BOT_TOKEN || import.meta.env.TELEGRAM_BOT_TOKEN || process.env?.TELEGRAM_BOT_TOKEN,
+            chatId: runtimeEnv.TELEGRAM_CHAT_ID || import.meta.env.TELEGRAM_CHAT_ID || process.env?.TELEGRAM_CHAT_ID
+        };
 
         const sql = neon(connectionString);
 
@@ -236,7 +247,7 @@ export const POST: APIRoute = async ({ request }) => {
                 userLat: data.user_lat || null,
                 userLng: data.user_lng || null,
                 isUpdate: true
-            }).catch(e => console.warn('[Telegram] Error no bloqueante:', e));
+            }, telegramEnv).catch(e => console.warn('[Telegram] Error no bloqueante:', e));
 
             return new Response(
                 JSON.stringify({
@@ -298,7 +309,7 @@ export const POST: APIRoute = async ({ request }) => {
             userLat: data.user_lat || null,
             userLng: data.user_lng || null,
             isUpdate: false
-        }).catch(e => console.warn('[Telegram] Error no bloqueante:', e));
+        }, telegramEnv).catch(e => console.warn('[Telegram] Error no bloqueante:', e));
 
         return new Response(
             JSON.stringify({
