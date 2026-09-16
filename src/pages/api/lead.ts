@@ -35,16 +35,22 @@ interface TelegramEnv {
     chatId?: string;
 }
 
+interface TelegramResult {
+    sent: boolean;
+    error?: string;
+}
+
 // =============================================================================
-// 3. Helper: Notificación Instantánea a Telegram (Asíncrona y No Bloqueante)
+// 3. Helper: Notificación Instantánea a Telegram
 // =============================================================================
-async function sendTelegramNotification(payload: TelegramLeadPayload, env?: TelegramEnv): Promise<void> {
+async function sendTelegramNotification(payload: TelegramLeadPayload, env?: TelegramEnv): Promise<TelegramResult> {
     const botToken = env?.botToken || cfEnv?.TELEGRAM_BOT_TOKEN || import.meta.env.TELEGRAM_BOT_TOKEN || process.env?.TELEGRAM_BOT_TOKEN;
     const chatId = env?.chatId || cfEnv?.TELEGRAM_CHAT_ID || import.meta.env.TELEGRAM_CHAT_ID || process.env?.TELEGRAM_CHAT_ID;
 
     if (!botToken || !chatId) {
-        console.warn('[Telegram] TELEGRAM_BOT_TOKEN o TELEGRAM_CHAT_ID no configurados. Omitiendo notificación.');
-        return;
+        const missing = [!botToken && 'TELEGRAM_BOT_TOKEN', !chatId && 'TELEGRAM_CHAT_ID'].filter(Boolean).join(', ');
+        console.warn(`[Telegram] Variables no configuradas: ${missing}. Omitiendo notificación.`);
+        return { sent: false, error: `Variables no configuradas en Cloudflare: ${missing}` };
     }
 
     const categoryLabels: Record<string, string> = {
@@ -122,12 +128,15 @@ async function sendTelegramNotification(payload: TelegramLeadPayload, env?: Tele
         if (!res.ok) {
             const errBody = await res.text();
             console.warn(`[Telegram] Respuesta no OK (Status ${res.status}):`, errBody);
+            return { sent: false, error: `Telegram HTTP ${res.status}: ${errBody}` };
         } else {
             console.log(`[Telegram] Notificación enviada con éxito para lead #${payload.leadId}`);
+            return { sent: true };
         }
     } catch (err: any) {
         clearTimeout(timeoutId);
         console.warn('[Telegram] Excepción al despachar notificación:', err?.message || err);
+        return { sent: false, error: err?.message || String(err) };
     }
 }
 
@@ -236,8 +245,8 @@ export const POST: APIRoute = async ({ request }) => {
         WHERE lead_id = ${recentDuplicate[0].lead_id};
       `;
 
-            // Disparo de notificación Telegram no bloqueante
-            sendTelegramNotification({
+            // Disparo de notificación Telegram con await para garantizar que Cloudflare Workers no aborte la conexión
+            const telegramResult = await sendTelegramNotification({
                 leadId: recentDuplicate[0].lead_id,
                 clientName,
                 clientPhone,
@@ -248,13 +257,14 @@ export const POST: APIRoute = async ({ request }) => {
                 userLat: data.user_lat || null,
                 userLng: data.user_lng || null,
                 isUpdate: true
-            }, telegramEnv).catch(e => console.warn('[Telegram] Error no bloqueante:', e));
+            }, telegramEnv);
 
             return new Response(
                 JSON.stringify({
                     success: true,
                     lead_id: recentDuplicate[0].lead_id,
-                    message: 'Solicitud actualizada correctamente.'
+                    message: 'Solicitud actualizada correctamente.',
+                    telegram: telegramResult
                 }),
                 { status: 200, headers: { 'Content-Type': 'application/json' } }
             );
@@ -298,8 +308,8 @@ export const POST: APIRoute = async ({ request }) => {
 
         const leadId = result[0].lead_id;
 
-        // Disparo de notificación Telegram no bloqueante
-        sendTelegramNotification({
+        // Disparo de notificación Telegram con await para garantizar entrega en Cloudflare Workers
+        const telegramResult = await sendTelegramNotification({
             leadId,
             clientName,
             clientPhone,
@@ -310,13 +320,14 @@ export const POST: APIRoute = async ({ request }) => {
             userLat: data.user_lat || null,
             userLng: data.user_lng || null,
             isUpdate: false
-        }, telegramEnv).catch(e => console.warn('[Telegram] Error no bloqueante:', e));
+        }, telegramEnv);
 
         return new Response(
             JSON.stringify({
                 success: true,
                 lead_id: leadId,
-                message: 'Solicitud registrada correctamente.'
+                message: 'Solicitud registrada correctamente.',
+                telegram: telegramResult
             }),
             { status: 200, headers: { 'Content-Type': 'application/json' } }
         );
@@ -332,4 +343,50 @@ export const POST: APIRoute = async ({ request }) => {
             { status: 500, headers: { 'Content-Type': 'application/json' } }
         );
     }
+};
+
+// =============================================================================
+// 5. Endpoint GET de Diagnóstico (/api/lead) para auditar variables y conectividad
+// =============================================================================
+export const GET: APIRoute = async () => {
+    const token = cfEnv?.TELEGRAM_BOT_TOKEN || import.meta.env.TELEGRAM_BOT_TOKEN || process.env?.TELEGRAM_BOT_TOKEN || '';
+    const chatId = cfEnv?.TELEGRAM_CHAT_ID || import.meta.env.TELEGRAM_CHAT_ID || process.env?.TELEGRAM_CHAT_ID || '';
+    const dbUrl = cfEnv?.NEON_DATABASE_URL || import.meta.env.NEON_DATABASE_URL || process.env?.NEON_DATABASE_URL || '';
+
+    let telegramCheck = 'No ejecutado (faltan variables)';
+    if (token && chatId) {
+        try {
+            const testUrl = `https://api.telegram.org/bot${token}/sendMessage`;
+            const testRes = await fetch(testUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: '🛠️ <b>Test de diagnóstico desde Cloudflare Worker</b>\nSi lees este mensaje, la conexión con Telegram funciona al 100% en producción ✅',
+                    parse_mode: 'HTML'
+                })
+            });
+            const bodyText = await testRes.text();
+            telegramCheck = testRes.ok
+                ? 'Mensaje de prueba entregado con éxito ✅'
+                : `Error de Telegram (Status ${testRes.status}): ${bodyText}`;
+        } catch (e: any) {
+            telegramCheck = `Excepción al conectar con Telegram: ${e?.message || e}`;
+        }
+    }
+
+    return new Response(
+        JSON.stringify({
+            status: 'ok',
+            variables: {
+                has_neon_db: !!dbUrl,
+                has_telegram_token: !!token,
+                telegram_token_preview: token ? `${token.slice(0, 6)}...${token.slice(-4)}` : '(no configurada en Cloudflare)',
+                has_telegram_chat_id: !!chatId,
+                telegram_chat_id_preview: chatId ? `${chatId.slice(0, 3)}...${chatId.slice(-2)}` : '(no configurada en Cloudflare)'
+            },
+            telegram_test_result: telegramCheck
+        }, null, 2),
+        { status: 200, headers: { 'Content-Type': 'application/json; charset=utf-8' } }
+    );
 };
