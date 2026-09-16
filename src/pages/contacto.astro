@@ -260,7 +260,7 @@ import { url } from "../utils/url";
               Rellena los detalles a continuación y te contactaremos en menos de
               24 horas laborables.
             </p>
-            <form class="flex flex-col gap-6" id="lead-form">
+            <form class="flex flex-col gap-6" id="lead-form" novalidate>
               <div class="flex flex-col gap-2">
                 <label
                   class="font-label-caps text-label-caps text-on-surface-variant uppercase"
@@ -286,6 +286,10 @@ import { url } from "../utils/url";
                     <span class="material-symbols-outlined">expand_more</span>
                   </div>
                 </div>
+                <span id="error-sector" class="hidden text-xs text-error font-medium flex items-center gap-1 mt-0.5">
+                  <span class="material-symbols-outlined text-sm">error</span>
+                  <span>Selecciona un sector de actuación.</span>
+                </span>
               </div>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="flex flex-col gap-2">
@@ -297,18 +301,22 @@ import { url } from "../utils/url";
                     class="w-full bg-surface-bright border border-outline-variant rounded-lg px-4 py-3 font-body-md text-on-surface placeholder:text-outline/50 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all shadow-sm"
                     id="name"
                     name="name"
-                    placeholder="Ej. Finca San José"
+                    placeholder="Ej. Finca San José / Juan Pérez"
                     type="text"
                     minlength="3"
-                    maxlength="70"
-                    pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ0-9\s.,&'-]{3,70}$"
-                    title="Introduce entre 3 y 70 caracteres alfanuméricos válidos."
+                    maxlength="40"
+                    pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ0-9\s.,&'-]{3,40}$"
+                    title="Introduce entre 3 y 40 caracteres alfanuméricos válidos."
                     autocomplete="name"
                     required
                   />
                   <span class="text-[11px] text-outline/80"
-                    >Entre 3 y 70 caracteres.</span
+                    >Entre 3 y 40 caracteres.</span
                   >
+                  <span id="error-name" class="hidden text-xs text-error font-medium flex items-center gap-1 mt-0.5">
+                    <span class="material-symbols-outlined text-sm">error</span>
+                    <span>Introduce entre 3 y 40 caracteres.</span>
+                  </span>
                 </div>
                 <div class="flex flex-col gap-2">
                   <label
@@ -319,18 +327,23 @@ import { url } from "../utils/url";
                     class="w-full bg-surface-bright border border-outline-variant rounded-lg px-4 py-3 font-body-md text-on-surface placeholder:text-outline/50 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all shadow-sm"
                     id="phone"
                     name="phone"
-                    placeholder="+34 600 00 00 00"
+                    placeholder="600000000"
                     type="tel"
+                    inputmode="numeric"
                     minlength="9"
-                    maxlength="18"
-                    pattern="^\+?[0-9\s\-()]{9,18}$"
-                    title="Introduce un teléfono válido (de 9 a 18 dígitos, admite prefijo +34)."
+                    maxlength="9"
+                    pattern="^[6789][0-9]{8}$"
+                    title="Introduce exactamente 9 dígitos numéricos (ej. 600123456)."
                     autocomplete="tel"
                     required
                   />
                   <span class="text-[11px] text-outline/80"
-                    >Solo números y prefijo (9-18 car.).</span
+                    >Exactamente 9 dígitos numéricos (ej. 600123456).</span
                   >
+                  <span id="error-phone" class="hidden text-xs text-error font-medium flex items-center gap-1 mt-0.5">
+                    <span class="material-symbols-outlined text-sm">error</span>
+                    <span>Introduce exactamente 9 dígitos numéricos (ej. 600123456).</span>
+                  </span>
                 </div>
               </div>
               <div class="flex flex-col gap-2">
@@ -350,45 +363,53 @@ import { url } from "../utils/url";
                     class="w-full bg-surface-bright border border-outline-variant rounded-lg pl-10 pr-4 py-3 font-body-md text-on-surface placeholder:text-outline/50 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all shadow-sm"
                     id="location"
                     name="location"
-                    placeholder="Indica dónde se realizará el trabajo"
+                    placeholder="Ej. Jumilla (Finca El Campillo)"
                     type="text"
                     minlength="3"
-                    maxlength="100"
+                    maxlength="50"
                     required
                   />
                 </div>
                 <span class="text-[11px] text-outline/80"
-                  >Máximo 100 caracteres.</span
+                  >Máximo 50 caracteres.</span
                 >
+                <span id="error-location" class="hidden text-xs text-error font-medium flex items-center gap-1 mt-0.5">
+                  <span class="material-symbols-outlined text-sm">error</span>
+                  <span>Indica una población o finca (máximo 50 caracteres).</span>
+                </span>
               </div>
               <div class="flex flex-col gap-2">
                 <div class="flex justify-between items-center">
                   <label
                     class="font-label-caps text-label-caps text-on-surface-variant uppercase"
-                    for="message">Cuéntanos qué necesitas (Breve)</label
+                    for="message">Cuéntanos qué necesitas (Resumen)</label
                   >
                   <span
                     id="message-counter"
                     class="text-xs font-mono text-outline transition-colors"
-                    >0 / 500</span
+                    >0 / 200</span
                   >
                 </div>
                 <textarea
                   class="w-full bg-surface-bright border border-outline-variant rounded-lg px-4 py-3 font-body-md text-on-surface placeholder:text-outline/50 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all shadow-sm resize-none"
                   id="message"
                   name="message"
-                  placeholder="Desbroce de 20 hectáreas, zanjeo para tuberías..."
-                  rows="4"
+                  placeholder="Ej. Despedregado de 15 ha con rulo antes de siembra de almendros."
+                  rows="3"
                   minlength="10"
-                  maxlength="500"
+                  maxlength="200"
                   required></textarea>
                 <span class="text-[11px] text-outline/80"
-                  >Mínimo 10 y máximo 500 caracteres.</span
+                  >Mínimo 10 y máximo 200 caracteres. Resume tu necesidad técnica.</span
                 >
+                <span id="error-message" class="hidden text-xs text-error font-medium flex items-center gap-1 mt-0.5">
+                  <span class="material-symbols-outlined text-sm">error</span>
+                  <span>Describe brevemente tu solicitud (entre 10 y 200 caracteres).</span>
+                </span>
               </div>
 
               <!-- Checkbox RGPD obligatorio -->
-              <div class="flex flex-col gap-2 pt-1">
+              <div class="flex flex-col gap-1 pt-1">
                 <label
                   class="flex items-start gap-3 cursor-pointer group select-none"
                 >
@@ -416,6 +437,10 @@ import { url } from "../utils/url";
                     >
                   </span>
                 </label>
+                <span id="error-privacy" class="hidden text-xs text-error font-medium flex items-center gap-1 mt-0.5">
+                  <span class="material-symbols-outlined text-sm">error</span>
+                  <span>Debes aceptar la política de privacidad para procesar la valoración.</span>
+                </span>
               </div>
 
               <div class="mt-2">
@@ -671,7 +696,7 @@ import { url } from "../utils/url";
       }
 
       // =========================================================================
-      // Control, Validación Ligera y Resiliencia en 4 Niveles (Vanilla JS Nativo)
+      // Control, Validación Empática y Resiliencia en 4 Niveles (Vanilla JS Nativo)
       // =========================================================================
       const leadForm = document.getElementById("lead-form");
       const sectorInput = document.getElementById("sector");
@@ -684,8 +709,39 @@ import { url } from "../utils/url";
       const submitBtn = document.getElementById("submit-lead-btn");
       const feedbackArea = document.getElementById("form-feedback-area");
 
+      // Contenedores de errores inline
+      const errorSector = document.getElementById("error-sector");
+      const errorName = document.getElementById("error-name");
+      const errorPhone = document.getElementById("error-phone");
+      const errorLocation = document.getElementById("error-location");
+      const errorMessage = document.getElementById("error-message");
+      const errorPrivacy = document.getElementById("error-privacy");
+
       const DRAFT_KEY = "quintanamur_lead_draft";
       const DRAFT_TTL_MS = 24 * 60 * 60 * 1000; // 24 horas
+
+      // Helpers para gestionar errores visuales empáticos
+      const setFieldError = (inputEl, errorEl, msg) => {
+        if (inputEl) {
+          inputEl.classList.add("!border-error", "focus:!border-error", "focus:!ring-error/20");
+        }
+        if (errorEl) {
+          if (msg) {
+            const textSpan = errorEl.querySelector("span:last-child");
+            if (textSpan) textSpan.textContent = msg;
+          }
+          errorEl.classList.remove("hidden");
+        }
+      };
+
+      const clearFieldError = (inputEl, errorEl) => {
+        if (inputEl) {
+          inputEl.classList.remove("!border-error", "focus:!border-error", "focus:!ring-error/20");
+        }
+        if (errorEl) {
+          errorEl.classList.add("hidden");
+        }
+      };
 
       // 0. Nivel 4: Restauración Inteligente de Borradores con TTL de 24 horas
       try {
@@ -720,33 +776,54 @@ import { url } from "../utils/url";
         console.warn("Error leyendo borrador local:", e);
       }
 
-      // 1. Control reactivo de Teléfono: filtrar en vivo caracteres no telefónicos
+      // Limpieza proactiva de errores en cuanto el usuario corrige el campo
+      sectorInput?.addEventListener("change", () => {
+        if (sectorInput.value) clearFieldError(sectorInput, errorSector);
+      });
+      nameInput?.addEventListener("input", () => {
+        if (nameInput.value.trim().length >= 3 && nameInput.value.trim().length <= 40) {
+          clearFieldError(nameInput, errorName);
+        }
+      });
+      locationInput?.addEventListener("input", () => {
+        if (locationInput.value.trim().length <= 50) {
+          clearFieldError(locationInput, errorLocation);
+        }
+      });
+      consentInput?.addEventListener("change", () => {
+        if (consentInput.checked) clearFieldError(consentInput, errorPrivacy);
+      });
+
+      // 1. Control reactivo de Teléfono: estrictamente 9 dígitos numéricos en tiempo real
       if (phoneInput) {
         phoneInput.addEventListener("input", () => {
-          // Conserva solo dígitos, +, -, paréntesis y espacios
-          const cleaned = phoneInput.value.replace(/[^0-9+\s\-()]/g, "");
-          if (phoneInput.value !== cleaned) {
-            phoneInput.value = cleaned;
+          // Filtrar instantáneamente cualquier caracter no numérico y recortar a máximo 9 dígitos
+          const digitsOnly = phoneInput.value.replace(/\D/g, "").slice(0, 9);
+          if (phoneInput.value !== digitsOnly) {
+            phoneInput.value = digitsOnly;
           }
-          // Verificar mínimo de dígitos numéricos reales
-          const digitsOnly = phoneInput.value.replace(/\D/g, "");
-          if (digitsOnly.length > 0 && digitsOnly.length < 9) {
-            phoneInput.setCustomValidity(
-              "Introduce un teléfono válido con al menos 9 dígitos.",
-            );
+
+          if (digitsOnly.length === 9) {
+            if (!/^[6789]/.test(digitsOnly)) {
+              setFieldError(phoneInput, errorPhone, "El teléfono español debe comenzar por 6, 7, 8 o 9.");
+            } else {
+              clearFieldError(phoneInput, errorPhone);
+            }
+          } else if (digitsOnly.length > 0) {
+            setFieldError(phoneInput, errorPhone, `Llevas ${digitsOnly.length} de 9 dígitos numéricos.`);
           } else {
-            phoneInput.setCustomValidity("");
+            clearFieldError(phoneInput, errorPhone);
           }
         });
       }
 
-      // 2. Contador reactivo y límites del campo Mensaje (10 - 500 caracteres)
+      // 2. Contador reactivo y límites del campo Mensaje (10 - 200 caracteres para resumen ágil)
       if (messageInput && messageCounter) {
         const updateMessageCounter = () => {
           const len = messageInput.value.length;
-          messageCounter.textContent = `${len} / 500`;
+          messageCounter.textContent = `${len} / 200`;
 
-          if (len >= 480) {
+          if (len >= 185) {
             messageCounter.className =
               "text-xs font-mono text-error font-bold transition-colors";
           } else if (len >= 10) {
@@ -757,12 +834,8 @@ import { url } from "../utils/url";
               "text-xs font-mono text-outline transition-colors";
           }
 
-          if (len > 0 && len < 10) {
-            messageInput.setCustomValidity(
-              "Describe tu necesidad con al menos 10 caracteres.",
-            );
-          } else {
-            messageInput.setCustomValidity("");
+          if (len >= 10 && len <= 200) {
+            clearFieldError(messageInput, errorMessage);
           }
         };
 
@@ -797,34 +870,50 @@ import { url } from "../utils/url";
               .replace(/\s+/g, " ");
           if (messageInput) messageInput.value = messageInput.value.trim();
 
-          const digits = phoneInput ? phoneInput.value.replace(/\D/g, "") : "";
-          if (digits.length < 9) {
-            phoneInput?.focus();
-            alert(
-              "Por favor, introduce un número de teléfono válido con al menos 9 dígitos.",
-            );
-            return;
+          // Validación empática integral en cliente (sin alerts intrusivos)
+          let firstInvalid = null;
+          const markInvalid = (inputEl, errorEl, msg) => {
+            setFieldError(inputEl, errorEl, msg);
+            if (!firstInvalid && inputEl) firstInvalid = inputEl;
+          };
+
+          if (!sectorInput || !sectorInput.value) {
+            markInvalid(sectorInput, errorSector, "Selecciona si tu necesidad es de Servicios Agrícolas, Obra Civil u Otro.");
           }
 
-          if (messageInput && messageInput.value.length < 10) {
-            messageInput.focus();
-            alert(
-              "Por favor, cuéntanos qué necesitas con al menos 10 caracteres.",
-            );
-            return;
+          const nameVal = nameInput ? nameInput.value.trim() : "";
+          if (!nameVal || nameVal.length < 3 || nameVal.length > 40) {
+            markInvalid(nameInput, errorName, "Por favor, introduce tu nombre o el de tu empresa (entre 3 y 40 caracteres).");
           }
 
-          if (consentInput && !consentInput.checked) {
-            consentInput.focus();
-            alert(
-              "Debes aceptar la política de privacidad para enviar tu solicitud.",
-            );
+          const phoneDigits = phoneInput ? phoneInput.value.replace(/\D/g, "") : "";
+          if (!/^[6789]\d{8}$/.test(phoneDigits)) {
+            markInvalid(phoneInput, errorPhone, "Introduce un teléfono español válido de 9 dígitos comenzando por 6, 7, 8 o 9.");
+          }
+
+          const locVal = locationInput ? locationInput.value.trim() : "";
+          if (locVal.length > 50) {
+            markInvalid(locationInput, errorLocation, "La ubicación no puede exceder los 50 caracteres.");
+          }
+
+          const msgVal = messageInput ? messageInput.value.trim() : "";
+          if (!msgVal || msgVal.length < 10 || msgVal.length > 200) {
+            markInvalid(messageInput, errorMessage, "Describe brevemente tu solicitud técnica (mínimo 10 y máximo 200 caracteres).");
+          }
+
+          if (!consentInput || !consentInput.checked) {
+            markInvalid(consentInput, errorPrivacy, "Es necesario marcar la casilla de política de privacidad para procesar la valoración.");
+          }
+
+          if (firstInvalid) {
+            firstInvalid.focus();
+            firstInvalid.scrollIntoView({ behavior: "smooth", block: "center" });
             return;
           }
 
           const payload = {
             client_name: nameInput ? nameInput.value.trim() : "",
-            client_phone: phoneInput ? phoneInput.value.trim() : "",
+            client_phone: phoneDigits,
             client_email: null,
             service_category: sectorInput ? sectorInput.value : "agricola",
             machinery_interest: null,
@@ -889,8 +978,15 @@ import { url } from "../utils/url";
               }
 
               leadForm.reset();
+              clearFieldError(sectorInput, errorSector);
+              clearFieldError(nameInput, errorName);
+              clearFieldError(phoneInput, errorPhone);
+              clearFieldError(locationInput, errorLocation);
+              clearFieldError(messageInput, errorMessage);
+              clearFieldError(consentInput, errorPrivacy);
+
               if (messageCounter) {
-                messageCounter.textContent = "0 / 500";
+                messageCounter.textContent = "0 / 200";
                 messageCounter.className =
                   "text-xs font-mono text-outline transition-colors";
               }
@@ -898,7 +994,7 @@ import { url } from "../utils/url";
               submitBtn.disabled = false;
             } else {
               throw new Error(
-                resData.error || "Error en el procesamiento del servidor.",
+                resData.error || "No pudimos procesar la solicitud en el servidor.",
               );
             }
           } catch (error) {

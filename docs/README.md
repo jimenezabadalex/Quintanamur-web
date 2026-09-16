@@ -15,6 +15,8 @@ docs/
 │   └── FLUJO_DATOS_Y_EJEMPLO_NEON.md
 ├── 📁 formulario/              # Experiencia de Usuario, Validación y Resiliencia
 │   └── PROTOCOLO_GESTION_FALLOS_FORMULARIO.md
+├── 📁 notificaciones/          # Alertas en Tiempo Real y Bots de Mensajería
+│   └── PLAN_INTEGRACION_TELEGRAM_NOTIFICACIONES.md
 ├── 📁 legal/                   # Cumplimiento Normativo y Privacidad
 │   └── PLAN_CUMPLIMIENTO_RGPD_PRIVACIDAD.md
 ├── 📁 portfolio/               # Casos de Uso y Portfolio para Consultoría
@@ -54,7 +56,16 @@ Documentación sobre la experiencia del usuario, control de entradas y toleranci
 
 ---
 
-## 📂 3. Cumplimiento Legal y Privacidad (`docs/legal/`)
+## 📂 3. Notificaciones y Alertas Inmediatas (`docs/notificaciones/`)
+
+Documentación sobre el sistema de aviso instantáneo móvil para comerciales:
+
+* 📖 [**`PLAN_INTEGRACION_TELEGRAM_NOTIFICACIONES.md`**](file:///c:/Users/alexj/Quintanamur-web/docs/notificaciones/PLAN_INTEGRACION_TELEGRAM_NOTIFICACIONES.md)  
+  *Integración con Telegram Bot API:* Arquitectura asíncrona no bloqueante, plantilla visual con botones interactivos de llamada directa (`tel:`) y WhatsApp, resiliencia ante cortes de red y guía de configuración individual o para grupos de empresa.
+
+---
+
+## 📂 4. Cumplimiento Legal y Privacidad (`docs/legal/`)
 
 Documentación sobre gobernanza de datos y adecuación jurídica:
 
@@ -63,7 +74,7 @@ Documentación sobre gobernanza de datos y adecuación jurídica:
 
 ---
 
-## 📂 4. Portfolio Técnico y Consultoría (`docs/portfolio/`)
+## 📂 5. Portfolio Técnico y Consultoría (`docs/portfolio/`)
 
 Estrategia analítica y presentación de proyectos para procesos de selección:
 
