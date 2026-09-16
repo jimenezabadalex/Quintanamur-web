@@ -420,6 +420,7 @@ import { url } from "../utils/url";
 
               <div class="mt-2">
                 <button
+                  id="submit-lead-btn"
                   class="btn-agricola w-full py-4 text-base group cursor-pointer"
                   type="submit"
                 >
@@ -434,6 +435,9 @@ import { url } from "../utils/url";
                   laborables.
                 </p>
               </div>
+
+              <!-- Contenedor de Mensajes y Fallback de Resiliencia -->
+              <div id="form-feedback-area" class="hidden"></div>
             </form>
           </div>
         </div>
@@ -667,15 +671,54 @@ import { url } from "../utils/url";
       }
 
       // =========================================================================
-      // Control, Validación Ligera y Sanitización de Formulario (Vanilla JS Nativo)
+      // Control, Validación Ligera y Resiliencia en 4 Niveles (Vanilla JS Nativo)
       // =========================================================================
       const leadForm = document.getElementById("lead-form");
+      const sectorInput = document.getElementById("sector");
       const nameInput = document.getElementById("name");
       const phoneInput = document.getElementById("phone");
       const locationInput = document.getElementById("location");
       const messageInput = document.getElementById("message");
       const messageCounter = document.getElementById("message-counter");
       const consentInput = document.getElementById("privacy-consent");
+      const submitBtn = document.getElementById("submit-lead-btn");
+      const feedbackArea = document.getElementById("form-feedback-area");
+
+      const DRAFT_KEY = "quintanamur_lead_draft";
+      const DRAFT_TTL_MS = 24 * 60 * 60 * 1000; // 24 horas
+
+      // 0. Nivel 4: Restauración Inteligente de Borradores con TTL de 24 horas
+      try {
+        const savedDraftRaw = localStorage.getItem(DRAFT_KEY);
+        if (savedDraftRaw) {
+          const draft = JSON.parse(savedDraftRaw);
+          const isExpired = Date.now() - (draft._timestamp || 0) > DRAFT_TTL_MS;
+
+          if (isExpired) {
+            localStorage.removeItem(DRAFT_KEY);
+          } else {
+            if (nameInput && !nameInput.value && draft.client_name)
+              nameInput.value = draft.client_name;
+            if (phoneInput && !phoneInput.value && draft.client_phone)
+              phoneInput.value = draft.client_phone;
+            if (sectorInput && !sectorInput.value && draft.service_category)
+              sectorInput.value = draft.service_category;
+            if (locationInput && !locationInput.value && draft.municipality_name)
+              locationInput.value = draft.municipality_name;
+            if (messageInput && !messageInput.value && draft.message_text) {
+              messageInput.value = draft.message_text;
+            }
+            if (draft.user_lat && draft.user_lng) {
+              window.currentUserLat = draft.user_lat;
+              window.currentUserLng = draft.user_lng;
+              window.currentDistanceKm = draft.distance_to_base_km;
+              placeUserMarker(draft.user_lat, draft.user_lng);
+            }
+          }
+        }
+      } catch (e) {
+        console.warn("Error leyendo borrador local:", e);
+      }
 
       // 1. Control reactivo de Teléfono: filtrar en vivo caracteres no telefónicos
       if (phoneInput) {
@@ -739,9 +782,13 @@ import { url } from "../utils/url";
         });
       }
 
-      // 4. Validación antes de envío
-      if (leadForm) {
-        leadForm.addEventListener("submit", (e) => {
+      // 4. Envío con Fetch a /api/lead y Protocolo de Resiliencia en 4 Niveles
+      if (leadForm && submitBtn) {
+        const originalBtnContent = submitBtn.innerHTML;
+
+        leadForm.addEventListener("submit", async (e) => {
+          e.preventDefault();
+
           if (nameInput)
             nameInput.value = nameInput.value.trim().replace(/\s+/g, " ");
           if (locationInput)
@@ -752,7 +799,6 @@ import { url } from "../utils/url";
 
           const digits = phoneInput ? phoneInput.value.replace(/\D/g, "") : "";
           if (digits.length < 9) {
-            e.preventDefault();
             phoneInput?.focus();
             alert(
               "Por favor, introduce un número de teléfono válido con al menos 9 dígitos.",
@@ -761,7 +807,6 @@ import { url } from "../utils/url";
           }
 
           if (messageInput && messageInput.value.length < 10) {
-            e.preventDefault();
             messageInput.focus();
             alert(
               "Por favor, cuéntanos qué necesitas con al menos 10 caracteres.",
@@ -770,12 +815,154 @@ import { url } from "../utils/url";
           }
 
           if (consentInput && !consentInput.checked) {
-            e.preventDefault();
             consentInput.focus();
             alert(
               "Debes aceptar la política de privacidad para enviar tu solicitud.",
             );
             return;
+          }
+
+          const payload = {
+            client_name: nameInput ? nameInput.value.trim() : "",
+            client_phone: phoneInput ? phoneInput.value.trim() : "",
+            client_email: null,
+            service_category: sectorInput ? sectorInput.value : "agricola",
+            machinery_interest: null,
+            municipality_name: locationInput
+              ? locationInput.value.trim() || null
+              : null,
+            user_lat: window.currentUserLat || null,
+            user_lng: window.currentUserLng || null,
+            distance_to_base_km: window.currentDistanceKm || null,
+            message_text: messageInput ? messageInput.value.trim() : "",
+            privacy_consent_accepted: consentInput
+              ? consentInput.checked
+              : false,
+            lead_source: "WEB_FORM",
+            _timestamp: Date.now(),
+          };
+
+          // Nivel 1: Estado de carga visual y tolerancia a Cold Start
+          submitBtn.disabled = true;
+          submitBtn.innerHTML =
+            '<span class="material-symbols-outlined text-lg animate-spin">sync</span><span>Conectando de forma segura...</span>';
+
+          if (feedbackArea) {
+            feedbackArea.classList.add("hidden");
+            feedbackArea.innerHTML = "";
+          }
+
+          // Timeout de 10 segundos para no bloquear la pantalla
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+          try {
+            const apiEndpoint = window.location.pathname.startsWith('/Quintanamur-web')
+              ? '/Quintanamur-web/api/lead'
+              : '/api/lead';
+
+            const response = await fetch(apiEndpoint, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload),
+              signal: controller.signal,
+            });
+
+            clearTimeout(timeoutId);
+            const resData = await response.json();
+
+            if (response.ok && resData.success) {
+              // Éxito: Limpiar borrador local
+              localStorage.removeItem(DRAFT_KEY);
+
+              if (feedbackArea) {
+                feedbackArea.className =
+                  "p-5 rounded-xl border border-primary/40 bg-primary/10 flex items-start gap-3 transition-all";
+                feedbackArea.innerHTML = `
+                  <span class="material-symbols-outlined text-primary text-2xl flex-shrink-0" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                  <div>
+                    <p class="font-headline-md text-primary font-bold text-base">¡Solicitud enviada correctamente!</p>
+                    <p class="font-body-md text-on-surface text-sm mt-1">Nos pondremos en contacto contigo en menos de 24 horas laborables.</p>
+                  </div>
+                `;
+                feedbackArea.classList.remove("hidden");
+              }
+
+              leadForm.reset();
+              if (messageCounter) {
+                messageCounter.textContent = "0 / 500";
+                messageCounter.className =
+                  "text-xs font-mono text-outline transition-colors";
+              }
+              submitBtn.innerHTML = originalBtnContent;
+              submitBtn.disabled = false;
+            } else {
+              throw new Error(
+                resData.error || "Error en el procesamiento del servidor.",
+              );
+            }
+          } catch (error) {
+            clearTimeout(timeoutId);
+
+            // Nivel 4: Persistir datos en localStorage para evitar pérdida
+            try {
+              localStorage.setItem(DRAFT_KEY, JSON.stringify(payload));
+            } catch (storageErr) {
+              console.warn("No se pudo guardar borrador:", storageErr);
+            }
+
+            // Nivel 2: Diagnóstico transparente
+            let diagnosticMsg =
+              error.message || "Error al conectar con el servidor.";
+            if (error.name === "AbortError") {
+              diagnosticMsg =
+                "El servidor tardó más de 10 segundos en responder (posible baja cobertura).";
+            } else if (!navigator.onLine) {
+              diagnosticMsg =
+                "Has perdido la conexión a internet. Comprueba tu cobertura móvil.";
+            }
+
+            // Nivel 3: Plan de Rescate Comercial (WhatsApp pre-redactado + Llamada directa)
+            const distStr = payload.distance_to_base_km
+              ? ` (a ${Math.round(payload.distance_to_base_km)} km de Yecla)`
+              : "";
+            const textoMensaje =
+              `Hola Quintanamur, intenté enviar presupuesto desde la web pero tuve un problema de conexión.\n` +
+              `Mis datos son:\n` +
+              `- Nombre: ${payload.client_name || "No especificado"}\n` +
+              `- Teléfono: ${payload.client_phone || "No especificado"}\n` +
+              `- Sector: ${payload.service_category}\n` +
+              `- Municipio: ${payload.municipality_name || "Zona Yecla"}${distStr}\n` +
+              `- Trabajo: ${payload.message_text || "Solicito valoración general"}`;
+
+            const whatsappUrl = `https://wa.me/34600000000?text=${encodeURIComponent(textoMensaje)}`;
+
+            if (feedbackArea) {
+              feedbackArea.className =
+                "p-5 rounded-xl border border-secondary/40 bg-secondary/10 flex flex-col gap-3 transition-all";
+              feedbackArea.innerHTML = `
+                <div class="flex items-center gap-2 text-secondary font-bold">
+                  <span class="material-symbols-outlined">warning</span>
+                  <span>Aviso: ${diagnosticMsg}</span>
+                </div>
+                <p class="text-sm text-on-surface-variant">
+                  <strong>Tus datos se han guardado y no se han borrado.</strong> Puedes volver a pulsar <em>"Reintentar Envío"</em> o enviárnoslos directamente sin esperas:
+                </p>
+                <div class="flex flex-col sm:flex-row gap-3 mt-1">
+                  <a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" class="btn-whatsapp flex-1 text-center py-3">
+                    <span>Enviar por WhatsApp</span>
+                  </a>
+                  <a href="tel:+34600000000" class="btn-agricola flex-1 text-center py-3 bg-surface border border-outline-variant text-on-surface hover:bg-surface-container transition-colors">
+                    <span>Llamar al 600 00 00 00</span>
+                  </a>
+                </div>
+              `;
+              feedbackArea.classList.remove("hidden");
+            }
+
+            submitBtn.innerHTML =
+              '<span>Reintentar Envío</span><span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">replay</span>';
+            submitBtn.disabled = false;
           }
         });
       }

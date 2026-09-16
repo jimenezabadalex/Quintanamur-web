@@ -19,8 +19,16 @@ docs/
 │   └── PLAN_CUMPLIMIENTO_RGPD_PRIVACIDAD.md
 ├── 📁 portfolio/               # Casos de Uso y Portfolio para Consultoría
 │   └── INFORME_DATOS_PORTFOLIO.md
+├── 🏆 GUIA_MAESTRA_INTEGRACION_Y_RESILIENCIA_DATOS.md # Guía Maestra Unificada End-to-End
 └── 📄 README.md                # Este índice general
 ```
+
+---
+
+## 🏆 Guía Maestra Unificada (Lectura Principal Recomendada)
+
+* 📖 [**`GUIA_MAESTRA_INTEGRACION_Y_RESILIENCIA_DATOS.md`**](file:///c:/Users/alexj/Quintanamur-web/docs/GUIA_MAESTRA_INTEGRACION_Y_RESILIENCIA_DATOS.md)  
+  **Documento unificado y transversal:** Consolida toda la arquitectura de datos (Neon Postgres, PostGIS, Python, BigQuery y Power BI) junto con el protocolo completo de resiliencia frente a fallos en el formulario web (sin reseteo de datos, idempotencia contra duplicados, tolerancia al cold start y rescate por WhatsApp).
 
 ---
 
