@@ -1,0 +1,68 @@
+{
+  "name": "Quintanamur Corporate Palette",
+  "dataColors": [
+    "#61993b",
+    "#b58753",
+    "#82ac63",
+    "#c79e6f",
+    "#447025",
+    "#8c6231",
+    "#9dbe85",
+    "#d9b891",
+    "#2d4a18",
+    "#5f421f"
+  ],
+  "background": "#f9f8f5",
+  "foreground": "#161311",
+  "tableAccent": "#61993b",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "title": [
+          {
+            "show": true,
+            "fontFamily": "Segoe UI Semibold",
+            "fontSize": 12,
+            "fontColor": { "solid": { "color": "#161311" } }
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": { "solid": { "color": "#e6e2dc" } },
+            "radius": 10
+          }
+        ],
+        "dropShadow": [
+          {
+            "show": true,
+            "color": { "solid": { "color": "#00000014" } },
+            "position": "Outer",
+            "preset": "Custom",
+            "shadowBlur": 10,
+            "shadowDistance": 3,
+            "angle": 90
+          }
+        ]
+      }
+    },
+    "card": {
+      "*": {
+        "labels": [
+          {
+            "fontFamily": "Segoe UI Bold",
+            "fontSize": 24,
+            "color": { "solid": { "color": "#61993b" } }
+          }
+        ],
+        "categoryLabels": [
+          {
+            "fontFamily": "Segoe UI",
+            "fontSize": 10,
+            "color": { "solid": { "color": "#79747e" } }
+          }
+        ]
+      }
+    }
+  }
+}

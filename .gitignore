@@ -24,3 +24,13 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Google Cloud service keys
+gcp-key.json
+*-gcp-key.json
+
+# Python environment
+.venv/
+venv/
+__pycache__/
+*.pyc
