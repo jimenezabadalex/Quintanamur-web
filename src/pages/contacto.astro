@@ -443,6 +443,23 @@ import { url } from "../utils/url";
                 </span>
               </div>
 
+              <!-- 🍯 Honeypot anti-spam (invisible para humanos y tecnologías de asistencia) -->
+              <div
+                class="hp-trap-container"
+                aria-hidden="true"
+                style="position: absolute; left: -9999px; top: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none; overflow: hidden;"
+              >
+                <label for="business_website">Página web corporativa (no rellenar si eres humano)</label>
+                <input
+                  type="text"
+                  id="business_website"
+                  name="business_website"
+                  tabindex="-1"
+                  autocomplete="off"
+                  value=""
+                />
+              </div>
+
               <div class="mt-2">
                 <button
                   id="submit-lead-btn"
@@ -927,6 +944,9 @@ import { url } from "../utils/url";
             privacy_consent_accepted: consentInput
               ? consentInput.checked
               : false,
+            business_website: (
+              (document.getElementById("business_website") as HTMLInputElement)?.value || ""
+            ).trim(),
             lead_source: "WEB_FORM",
             _timestamp: Date.now(),
           };

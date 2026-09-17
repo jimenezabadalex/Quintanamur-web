@@ -159,6 +159,20 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     try {
+        // 🍯 4.0. Control Defensivo Honeypot Anti-Bot (Tarpit / Descarte Silencioso)
+        const honeypot = typeof data.business_website === 'string' ? data.business_website.trim() : '';
+        if (honeypot.length > 0) {
+            console.warn('[Security] Honeypot activado: bot interceptado y neutralizado silenciosamente.');
+            return new Response(
+                JSON.stringify({
+                    success: true,
+                    lead_id: 0,
+                    message: 'Solicitud registrada correctamente.'
+                }),
+                { status: 200, headers: { 'Content-Type': 'application/json' } }
+            );
+        }
+
         // 4.1. Sanitización y validación estricta simétrica
         const clientName = typeof data.client_name === 'string' ? data.client_name.trim() : '';
         const clientPhone = typeof data.client_phone === 'string' ? data.client_phone.replace(/\D/g, '') : '';
@@ -346,44 +360,64 @@ export const POST: APIRoute = async ({ request }) => {
 };
 
 // =============================================================================
-// 5. Endpoint GET de Diagnóstico (/api/lead) para auditar variables y conectividad
+// 5. Endpoint GET de Diagnóstico Protegido (/api/lead)
 // =============================================================================
-export const GET: APIRoute = async () => {
+export const GET: APIRoute = async ({ request }) => {
+    const adminKey = cfEnv?.ADMIN_DIAGNOSTIC_KEY || import.meta.env.ADMIN_DIAGNOSTIC_KEY || process.env?.ADMIN_DIAGNOSTIC_KEY;
+
+    // Obtener la clave enviada por el cliente (cabecera HTTP o parámetro de URL)
+    const url = new URL(request.url);
+    const providedKey = request.headers.get('x-admin-key') || url.searchParams.get('key');
+
+    // 🛡️ Si no hay clave configurada o la provista no coincide, responder 404 Not Found
+    if (!adminKey || !providedKey || providedKey !== adminKey) {
+        return new Response(
+            JSON.stringify({ error: 'Not Found' }),
+            { status: 404, headers: { 'Content-Type': 'application/json' } }
+        );
+    }
+
     const token = cfEnv?.TELEGRAM_BOT_TOKEN || import.meta.env.TELEGRAM_BOT_TOKEN || process.env?.TELEGRAM_BOT_TOKEN || '';
     const chatId = cfEnv?.TELEGRAM_CHAT_ID || import.meta.env.TELEGRAM_CHAT_ID || process.env?.TELEGRAM_CHAT_ID || '';
     const dbUrl = cfEnv?.NEON_DATABASE_URL || import.meta.env.NEON_DATABASE_URL || process.env?.NEON_DATABASE_URL || '';
 
-    let telegramCheck = 'No ejecutado (faltan variables)';
-    if (token && chatId) {
-        try {
-            const testUrl = `https://api.telegram.org/bot${token}/sendMessage`;
-            const testRes = await fetch(testUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    chat_id: chatId,
-                    text: '🛠️ <b>Test de diagnóstico desde Cloudflare Worker</b>\nSi lees este mensaje, la conexión con Telegram funciona al 100% en producción ✅',
-                    parse_mode: 'HTML'
-                })
-            });
-            const bodyText = await testRes.text();
-            telegramCheck = testRes.ok
-                ? 'Mensaje de prueba entregado con éxito ✅'
-                : `Error de Telegram (Status ${testRes.status}): ${bodyText}`;
-        } catch (e: any) {
-            telegramCheck = `Excepción al conectar con Telegram: ${e?.message || e}`;
+    const shouldTestTelegram = url.searchParams.get('test_telegram') === 'true';
+    let telegramCheck = 'Omitido (usa ?test_telegram=true para enviar un mensaje de prueba al bot)';
+
+    if (shouldTestTelegram) {
+        if (token && chatId) {
+            try {
+                const testUrl = `https://api.telegram.org/bot${token}/sendMessage`;
+                const testRes = await fetch(testUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        text: '🛠️ <b>Test de diagnóstico seguro desde Cloudflare Worker</b>\nConexión autorizada y verificada con éxito ✅',
+                        parse_mode: 'HTML'
+                    })
+                });
+                const bodyText = await testRes.text();
+                telegramCheck = testRes.ok
+                    ? 'Mensaje de prueba entregado con éxito ✅'
+                    : `Error de Telegram (Status ${testRes.status}): ${bodyText}`;
+            } catch (e: any) {
+                telegramCheck = `Excepción al conectar con Telegram: ${e?.message || e}`;
+            }
+        } else {
+            telegramCheck = 'No ejecutado: faltan TELEGRAM_BOT_TOKEN o TELEGRAM_CHAT_ID';
         }
     }
 
     return new Response(
         JSON.stringify({
-            status: 'ok',
+            status: 'authenticated',
+            timestamp: new Date().toISOString(),
             variables: {
                 has_neon_db: !!dbUrl,
                 has_telegram_token: !!token,
-                telegram_token_preview: token ? `${token.slice(0, 6)}...${token.slice(-4)}` : '(no configurada en Cloudflare)',
                 has_telegram_chat_id: !!chatId,
-                telegram_chat_id_preview: chatId ? `${chatId.slice(0, 3)}...${chatId.slice(-2)}` : '(no configurada en Cloudflare)'
+                telegram_configured: !!(token && chatId)
             },
             telegram_test_result: telegramCheck
         }, null, 2),

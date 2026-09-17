@@ -5,6 +5,7 @@ declare module 'cloudflare:workers' {
         NEON_DATABASE_URL?: string;
         TELEGRAM_BOT_TOKEN?: string;
         TELEGRAM_CHAT_ID?: string;
+        ADMIN_DIAGNOSTIC_KEY?: string;
         SESSION?: any;
         ASSETS?: any;
         [key: string]: any;
