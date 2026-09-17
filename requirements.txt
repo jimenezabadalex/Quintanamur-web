@@ -1,5 +1,19 @@
+﻿# ============================================================
+# Quintanamur Data Stack - Dependencias Python
+# Fase 4-5: Pipeline ELT Neon PostgreSQL -> Google BigQuery
+# ============================================================
+
+# Conexion a PostgreSQL (Neon) - driver y SQLAlchemy dialect
 psycopg2-binary>=2.9.9
+sqlalchemy>=2.0.0
+
+# Google Cloud BigQuery + integracion con pandas
 google-cloud-bigquery>=3.25.0
-pandas>=2.2.0
 db-dtypes>=1.2.0
+pandas-gbq>=0.26.1
+
+# Manipulacion de datos
+pandas>=2.2.0
+
+# Variables de entorno
 python-dotenv>=1.0.0

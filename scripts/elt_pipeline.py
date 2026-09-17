@@ -8,9 +8,9 @@ Pipeline ELT Automatizado (Extract, Load, Transform) - Quintanamur S.L.
 import os
 import sys
 from pathlib import Path
-import psycopg2
 import pandas as pd
 from dotenv import load_dotenv
+from sqlalchemy import create_engine, text
 from google.cloud import bigquery
 from google.oauth2 import service_account
 
@@ -56,8 +56,9 @@ def run_elt_pipeline():
     # -------------------------------------------------------------------------
     print("\n[Paso 1/3] 🔌 Conectando a Neon PostgreSQL y extrayendo registros...")
     try:
-        conn = psycopg2.connect(NEON_URI)
-        query = """
+        # SQLAlchemy engine compatible con pandas 3.x
+        engine = create_engine(NEON_URI.replace("postgresql://", "postgresql+psycopg2://"))
+        query = text("""
         SELECT 
             lead_id,
             created_at,
@@ -77,9 +78,9 @@ def run_elt_pipeline():
             lead_status
         FROM raw_leads
         ORDER BY created_at DESC;
-        """
-        df = pd.read_sql(query, conn)
-        conn.close()
+        """)
+        with engine.connect() as conn:
+            df = pd.read_sql(query, conn)
         print(f"✅ Se han extraído {len(df)} leads desde Neon PostgreSQL.")
     except Exception as e:
         print(f"❌ Error al conectar o consultar Neon PostgreSQL: {e}")
