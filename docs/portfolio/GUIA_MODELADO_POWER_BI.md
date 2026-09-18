@@ -162,19 +162,43 @@ DIVIDE(
 
 ---
 
-## 💼 5. Cómo presentar este Proyecto en tu Portfolio y Entrevistas
+## ⏰ 5. FASE 8: Orquestación Desatendida con GitHub Actions (Viernes Noche)
+
+Para que el almacén de datos de BigQuery se mantenga sincronizado periódicamente sin intervención humana, el repositorio cuenta con un workflow en [`.github/workflows/weekly_elt.yml`](file:///c:/Users/alexj/Quintanamur-web/.github/workflows/weekly_elt.yml).
+
+### ¿Cuándo se ejecuta?
+- **Automático:** Cada **viernes a las 22:00 UTC (23:00 / 00:00 hora peninsular española)** mediante un cron programado.
+- **Bajo demanda:** En cualquier momento desde GitHub en la pestaña **Actions** ➔ **Weekly ELT Pipeline** ➔ Botón **"Run workflow"**.
+
+### Configuración de Secretos en GitHub (Paso Único)
+Para que el runner de GitHub Actions pueda conectarse a Neon y BigQuery sin exponer claves en el código público:
+
+1. En tu repositorio de GitHub, ve a **Settings** ➔ **Secrets and variables** ➔ **Actions**.
+2. Pulsa en **New repository secret** y añade los siguientes dos secretos:
+
+| Nombre del Secreto | Valor |
+| :--- | :--- |
+| `NEON_DATABASE_URL` | Tu cadena de conexión completa de Neon PostgreSQL (la misma que tienes en tu `.env`). |
+| `GCP_SA_KEY` | El contenido completo del archivo `gcp-key.json` (abre el archivo en un editor de texto, copia todo el JSON y pégalo). |
+
+3. *(Opcional)* En la pestaña **Variables** puedes configurar `GCP_PROJECT_ID` si tu proyecto en Google Cloud tiene un ID personalizado distinto de `quintanamur-analytics`.
+
+---
+
+## 💼 6. Cómo presentar este Proyecto en tu Portfolio y Entrevistas
 
 1. **Guarda el archivo `.pbix` en el repositorio:**  
    Guarda tu informe terminado como `bi/quintanamur_analytics.pbix`.
 2. **Exportar Capturas en Alta Resolución:**  
    Captura la pantalla del informe con datos activos y guárdala en `docs/portfolio/powerbi_dashboard_preview.png`.
 3. **El discurso técnico ganador para la entrevista:**
-   > *"Diseñé una plataforma de captación y analítica geoespacial para una empresa de maquinaria pesada. Implementé un flujo desacoplado con Astro y Cloudflare Workers en el frontend, base de datos transaccional en Neon Postgres con PostGIS, y un pipeline ELT en Python que procesa y transforma los datos hacia Google BigQuery.*  
-   > *En BigQuery modelé un Star Schema donde calculo el Lead Quality Score y el coste de transporte de góndola por kilómetro según la distancia GPS. Finalmente, conecté Power BI Desktop para que la gerencia visualice un mapa de calor de parcelas y tome decisiones estratégicas sobre despliegue de maquinaria fuera del radio de 60 km."*
+   > *"Diseñé una plataforma de captación y analítica geoespacial para una empresa de maquinaria pesada. Implementé un flujo desacoplado con Astro y Cloudflare Workers en el frontend, base de datos transaccional en Neon Postgres con PostGIS, y un pipeline ELT en Python orquestado de forma desatendida mediante GitHub Actions cada viernes por la noche.*  
+   > *En Google BigQuery modelé un Star Schema donde calculo el Lead Quality Score y el coste de transporte de góndola por kilómetro según la distancia GPS. Finalmente, conecté Power BI Desktop para que la gerencia visualice un mapa de calor de parcelas y tome decisiones estratégicas sobre despliegue de maquinaria fuera del radio de 60 km con coste cero de mantenimiento (FinOps)."*
 
 ---
 
-## ⚖️ 6. Mantenimiento y Costes: Cero Absoluto
+## ⚖️ 7. Mantenimiento y Costes: Cero Absoluto (FinOps)
 
-* **¿Hay costes mensuales?** **0,00 €.** BigQuery Sandbox y Power BI Desktop son completamente gratuitos.
-* **¿Se puede romper?** **No.** Al operar bajo el modelo *Import* y *One-Shot*, el modelo queda congelado en el `.pbix`. Puedes abrirlo, interactuar con los filtros y compartirlo en pantalla en cualquier entrevista sin depender de conexiones activas o servidores encendidos.
+* **¿Hay costes mensuales?** **0,00 €.** BigQuery Sandbox, GitHub Actions (consume ~3,5 min/mes de los 2.000 min gratis) y Power BI Desktop son completamente gratuitos.
+* **¿Se puede romper?** **No.** El pipeline usa idempotencia limpia (`WRITE_TRUNCATE` en réplica + regeneración controlada del *Star Schema*). Puedes abrir el informe, interactuar con los filtros y compartirlo en pantalla en cualquier entrevista sin depender de servidores de pago ni procesos frágiles.
+
