@@ -945,7 +945,7 @@ import { url } from "../utils/url";
               ? consentInput.checked
               : false,
             business_website: (
-              (document.getElementById("business_website") as HTMLInputElement)?.value || ""
+              (document.getElementById("business_website"))?.value || ""
             ).trim(),
             lead_source: "WEB_FORM",
             _timestamp: Date.now(),
