@@ -671,21 +671,21 @@ import { url } from "../utils/url";
       function showAndPlay(dir: "forward" | "reverse") {
         currentDirection = dir;
         if (dir === "forward") {
-          videoFwd.classList.remove("opacity-0");
-          videoFwd.classList.add("opacity-100");
-          videoRev.classList.remove("opacity-100");
-          videoRev.classList.add("opacity-0");
+          videoFwd!.classList.remove("opacity-0");
+          videoFwd!.classList.add("opacity-100");
+          videoRev!.classList.remove("opacity-100");
+          videoRev!.classList.add("opacity-0");
 
-          videoFwd.currentTime = 0;
-          videoFwd.play().catch(() => {});
+          videoFwd!.currentTime = 0;
+          videoFwd!.play().catch(() => {});
         } else {
-          videoRev.classList.remove("opacity-0");
-          videoRev.classList.add("opacity-100");
-          videoFwd.classList.remove("opacity-100");
-          videoFwd.classList.add("opacity-0");
+          videoRev!.classList.remove("opacity-0");
+          videoRev!.classList.add("opacity-100");
+          videoFwd!.classList.remove("opacity-100");
+          videoFwd!.classList.add("opacity-0");
 
-          videoRev.currentTime = 0;
-          videoRev.play().catch(() => {});
+          videoRev!.currentTime = 0;
+          videoRev!.play().catch(() => {});
         }
       }
 
@@ -727,7 +727,7 @@ import { url } from "../utils/url";
       // Al hacer scroll hacia arriba -> se ejecuta de nuevo desde el inicio directo (0:00)
       function handleScroll() {
         const currentScrollY = window.scrollY;
-        const heroHeight = hero.offsetHeight || 500;
+        const heroHeight = hero!.offsetHeight || 500;
 
         if (currentScrollY > 50 && currentScrollY > lastScrollY) {
           // Usuario hace scroll hacia abajo

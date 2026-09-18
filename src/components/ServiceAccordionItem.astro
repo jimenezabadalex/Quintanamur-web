@@ -9,7 +9,6 @@ interface Props {
 
 const { servicio, initialOpen = false } = Astro.props;
 const isAgricola = servicio.categoria === "agricola";
-const accentColor = isAgricola ? "primary" : "secondary";
 const btnClass = isAgricola ? "btn-agricola" : "btn-obra";
 ---
 
