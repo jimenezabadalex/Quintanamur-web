@@ -55,3 +55,18 @@ jobs:
         if: always()
         run: |
           rm -f gcp-key.json
+
+      - name: 🚨 CRIT-03 — Notificar fallo en pipeline a Telegram
+        if: failure()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          TIMESTAMP=$(TZ='Europe/Madrid' date '+%d/%m/%Y %H:%M:%S')
+          MESSAGE="⚠️ <b>[FALLO EN PIPELINE BIGQUERY]</b> ⚠️%0A━━━━━━━━━━━━━━━━━━━━━━━━━━%0A⚙️ <b>Workflow:</b> Weekly ELT Pipeline (Neon → BigQuery)%0A⏰ <b>Hora:</b> ${TIMESTAMP} (Europe/Madrid)%0A❌ <b>Estado:</b> El pipeline ha fallado antes de completarse.%0A━━━━━━━━━━━━━━━━━━━━━━━━━━%0A🔍 <b>DIAGNÓSTICO:</b>%0ARevisa el log completo de GitHub Actions para identificar la causa (credencial caducada, cuota de BigQuery, error en el script ELT, etc.)%0A━━━━━━━━━━━━━━━━━━━━━━━━━━%0A🔗 <b>Ver log y reejecutar en GitHub:</b>%0A${RUN_URL}"
+
+          curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+            -H "Content-Type: application/json" \
+            -d "{\"chat_id\":\"${TELEGRAM_CHAT_ID}\",\"text\":\"${MESSAGE}\",\"parse_mode\":\"HTML\",\"disable_web_page_preview\":false}" \
+            > /dev/null

@@ -1,8 +1,28 @@
 import type { APIRoute } from 'astro';
 import { neon } from '@neondatabase/serverless';
 import { env as cfEnv } from 'cloudflare:workers';
+import { sendCriticalAlert } from '../../utils/criticalAlert';
 
 export const prerender = false; // Ejecución dinámica en servidor
+
+// =============================================================================
+// Rate Limiter Perimetral Anti-Ráfaga (CRIT-04) — Ventana deslizante en memoria
+// Máximo 5 intentos fallidos por IP por minuto (solo cuenta fallos, no tráfico legítimo)
+// =============================================================================
+const failedAttemptsByIp: Map<string, { count: number; windowStart: number }> = new Map();
+const RATE_WINDOW_MS = 60_000;    // 1 minuto
+const MAX_FAILED_ATTEMPTS = 5;    // Máximo 5 fallos antes de alerta
+
+function recordFailedAttempt(ip: string): boolean {
+    const now = Date.now();
+    const entry = failedAttemptsByIp.get(ip);
+    if (!entry || now - entry.windowStart > RATE_WINDOW_MS) {
+        failedAttemptsByIp.set(ip, { count: 1, windowStart: now });
+        return false;
+    }
+    entry.count++;
+    return entry.count >= MAX_FAILED_ATTEMPTS;
+}
 
 // =============================================================================
 // 1. Tipos e Interfaces
@@ -145,6 +165,9 @@ async function sendTelegramNotification(payload: TelegramLeadPayload, env?: Tele
 // =============================================================================
 export const POST: APIRoute = async ({ request }) => {
 
+    // Extraer IP para Rate Limiter (Cloudflare pone la IP real en CF-Connecting-IP)
+    const clientIp = request.headers.get('CF-Connecting-IP') || request.headers.get('X-Forwarded-For') || 'unknown';
+
     let data: any;
     try {
         data = await request.json();
@@ -163,6 +186,17 @@ export const POST: APIRoute = async ({ request }) => {
         const honeypot = typeof data.business_website === 'string' ? data.business_website.trim() : '';
         if (honeypot.length > 0) {
             console.warn('[Security] Honeypot activado: bot interceptado y neutralizado silenciosamente.');
+            // Rate limiter: registrar intento fallido y alertar si se supera el umbral
+            const overLimit = recordFailedAttempt(clientIp);
+            if (overLimit) {
+                sendCriticalAlert({
+                    eventCode: 'CRIT-04',
+                    title: 'Ráfaga anómala de saturación neutralizada',
+                    detail: `Se han detectado más de ${MAX_FAILED_ATTEMPTS} intentos sospechosos en 1 minuto desde la misma procedencia.`,
+                    technicalInfo: `IP origen: ${clientIp.slice(0, -3).replace(/.{3}$/, 'xxx')}`,
+                    origin: 'POST /api/lead (Honeypot)'
+                }).catch(() => {});
+            }
             return new Response(
                 JSON.stringify({
                     success: true,
@@ -348,11 +382,41 @@ export const POST: APIRoute = async ({ request }) => {
 
     } catch (error: any) {
         console.error('Error al insertar lead en Neon:', error);
+
+        const errorMsg: string = error?.message || '';
+        const isDbError = (
+            errorMsg.includes('timeout') ||
+            errorMsg.includes('connect') ||
+            errorMsg.includes('ECONNREFUSED') ||
+            errorMsg.includes('ssl') ||
+            errorMsg.includes('Neon') ||
+            errorMsg.includes('NEON_DATABASE_URL')
+        );
+
+        if (isDbError) {
+            // 🚨 CRIT-01: Caída o timeout en Neon PostgreSQL
+            sendCriticalAlert({
+                eventCode: 'CRIT-01',
+                title: 'Caída o Timeout en Neon PostgreSQL',
+                detail: 'La base de datos no ha respondido correctamente. Los leads se están derivando al protocolo de rescate comercial (WhatsApp/Llamada).',
+                technicalInfo: errorMsg.slice(0, 200),
+                origin: 'POST /api/lead'
+            }).catch(() => {});
+        } else {
+            // 💥 CRIT-02: Error 500 inesperado en servidor
+            sendCriticalAlert({
+                eventCode: 'CRIT-02',
+                title: 'Error Crítico 500 en el Servidor Web',
+                detail: 'Se ha producido una excepción no controlada en el Worker de Cloudflare.',
+                technicalInfo: errorMsg.slice(0, 200),
+                origin: 'POST /api/lead'
+            }).catch(() => {});
+        }
+
         return new Response(
             JSON.stringify({
                 success: false,
-                error: error?.message || 'Error interno del servidor al procesar la solicitud.',
-                detail: String(error)
+                error: error?.message || 'Error interno del servidor al procesar la solicitud.'
             }),
             { status: 500, headers: { 'Content-Type': 'application/json' } }
         );
