@@ -5,6 +5,14 @@ import Footer from '../components/Footer.astro';
 import MobileBottomBar from '../components/MobileBottomBar.astro';
 import { url } from '../utils/url';
 
+// Fuentes locales Inter (sin petición bloqueante a Google Fonts)
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/inter/700.css';
+import '@fontsource/inter/800.css';
+import '@fontsource/inter/900.css';
+
 interface Props {
   title?: string;
   description?: string;
@@ -17,11 +25,14 @@ const {
   activePage = 'inicio'
 } = Astro.props;
 
+// URL canónica dinámica para cada página
+const canonicalURL = new URL(Astro.url.pathname, 'https://quintanamur.com').toString();
+
 const showMobileBar = activePage !== 'contacto';
 ---
 
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es-ES" class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -36,30 +47,86 @@ const showMobileBar = activePage !== 'contacto';
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content="Quintanamur S.L." />
+    <!-- URL Canónica (previene penalizaciones por contenido duplicado) -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph (WhatsApp, LinkedIn, Facebook) -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_ES" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content="https://quintanamur.com/images/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Quintanamur S.L. — Maquinaria agrícola y obra civil en Yecla, Murcia" />
+    <meta property="og:site_name" content="Quintanamur S.L." />
 
-    <!-- Google Fonts: Inter -->
+    <!-- Twitter / X Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://quintanamur.com/images/og-image.jpg" />
+    <meta name="twitter:image:alt" content="Quintanamur S.L. — Maquinaria agrícola y obra civil en Yecla" />
+
+    <!-- Google Fonts: Material Symbols (iconos UI) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Material Symbols -->
     <link
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
       rel="stylesheet"
     />
     <!-- Named slot for page-specific head injections (CSS, preloads, etc.) -->
     <slot name="head" />
+
+    <!-- Schema.org JSON-LD: LocalBusiness (Rich Snippets y Google Maps) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
+      "name": "Quintanamur S.L.",
+      "description": "Servicios de maquinaria agrícola pesada y obra civil: despedregado GPS, movimiento de tierras, excavaciones y trituración forestal en Yecla, Jumilla y comarca del Altiplano.",
+      "url": "https://quintanamur.com",
+      "telephone": "+34XXXXXXXXX",
+      "email": "centralquintanamur@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Yecla",
+        "addressRegion": "Murcia",
+        "postalCode": "30510",
+        "addressCountry": "ES"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 38.6137,
+        "longitude": -1.1136
+      },
+      "areaServed": {
+        "@type": "GeoCircle",
+        "geoMidpoint": { "@type": "GeoCoordinates", "latitude": 38.6137, "longitude": -1.1136 },
+        "geoRadius": "100000"
+      },
+      "sameAs": ["https://www.instagram.com/quintanamur_sl/"],
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "08:00",
+        "closes": "18:00"
+      }
+    }
+    </script>
   </head>
   <body class="bg-background text-on-background font-body-md text-body-md antialiased overflow-x-hidden min-h-[100dvh] flex flex-col">
+    <!-- Skip Navigation Link (WCAG 2.1 - Criterio 2.4.1: saltar navegación repetitiva) -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-primary focus:text-on-primary focus:px-4 focus:py-2 focus:rounded focus:font-semibold focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary-fixed"
+    >
+      Saltar al contenido principal
+    </a>
     <Navbar activePage={activePage} />
     
-    <main class:list={['flex-grow', showMobileBar && 'pb-20 md:pb-0']}>
+    <main id="main-content" class:list={['flex-grow', showMobileBar && 'pb-20 md:pb-0']}>
       <slot />
     </main>
 

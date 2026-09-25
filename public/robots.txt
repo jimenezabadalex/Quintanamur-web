@@ -1,0 +1,8 @@
+# Quintanamur S.L. — Robots.txt
+# https://quintanamur.com
+
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://quintanamur.com/sitemap-index.xml

@@ -23,7 +23,8 @@ import { url } from "../utils/url";
         autoplay
         muted
         playsinline
-        preload="auto"></video>
+        preload="auto"
+        {...{'fetchpriority': 'high'}}></video>
       <video
         id="home-video-reverse"
         class="absolute inset-0 w-full h-full hero-video-responsive transition-opacity duration-700 opacity-0"
@@ -113,7 +114,10 @@ import { url } from "../utils/url";
                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 alt="Tractor agrícola realizando labores de preparación y desfonde de suelo"
                 src={url("/images/home/servicios-agricolas.webp")}
+                width="1280"
+                height="720"
                 loading="lazy"
+                decoding="async"
               />
             </div>
             <h3 class="font-headline-md text-headline-md text-on-surface mb-3">
@@ -146,7 +150,10 @@ import { url } from "../utils/url";
                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 alt="Excavadora de cadenas ejecutando zanja y movimiento de tierras"
                 src={url("/images/home/servicios-obra-civil.webp")}
+                width="1280"
+                height="720"
                 loading="lazy"
+                decoding="async"
               />
             </div>
             <h3 class="font-headline-md text-headline-md text-on-surface mb-3">
