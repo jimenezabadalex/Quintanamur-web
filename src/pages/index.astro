@@ -23,16 +23,14 @@ import { url } from "../utils/url";
         autoplay
         muted
         playsinline
-        preload="auto"
-      ></video>
+        preload="auto"></video>
       <video
         id="home-video-reverse"
         class="absolute inset-0 w-full h-full hero-video-responsive transition-opacity duration-700 opacity-0"
         src={url("/images/home/hero-home-dust-reverse.mp4")}
         muted
         playsinline
-        preload="auto"
-      ></video>
+        preload="auto"></video>
 
       <!-- Gradient Overlay lateral de la izquierda: Tono polvo del vídeo en modo claro, oscuro en modo noche -->
       <div
@@ -61,7 +59,9 @@ import { url } from "../utils/url";
         <h1
           class="font-display-lg text-[32px] sm:text-[40px] md:text-display-lg lg:text-[60px] font-extrabold mb-6 sm:mb-8 hero-dust-h1 leading-[1.16] sm:leading-[1.18]"
         >
-          MAQUINARIA AL SERVICIO DE <span class="hero-word-campo">LA OBRA Y EL CAMPO</span>
+          MAQUINARIA AL SERVICIO DE <span class="hero-word-campo"
+            >LA OBRA Y EL CAMPO</span
+          >
         </h1>
         <p
           class="font-body-lg text-body-lg sm:text-[18px] md:text-[20px] hero-dust-p max-w-2xl leading-relaxed mb-8 sm:mb-10 font-medium"
@@ -117,7 +117,7 @@ import { url } from "../utils/url";
               />
             </div>
             <h3 class="font-headline-md text-headline-md text-on-surface mb-3">
-              Servicios Agrícolas de Precisión
+              Servicios Agrícolas
             </h3>
             <p class="text-on-surface-variant mb-6 leading-relaxed">
               Despedregado, desfonde profundo, arranque de viña vieja y
@@ -145,7 +145,7 @@ import { url } from "../utils/url";
               <img
                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 alt="Excavadora de cadenas ejecutando zanja y movimiento de tierras"
-                src={url("/images/home/card-obra-civil.webp")}
+                src={url("/images/home/servicios-obra-civil.webp")}
                 loading="lazy"
               />
             </div>
@@ -658,8 +658,12 @@ import { url } from "../utils/url";
 
   <script>
     function setupHomeHeroVideo() {
-      const videoFwd = document.getElementById("home-video-forward") as HTMLVideoElement | null;
-      const videoRev = document.getElementById("home-video-reverse") as HTMLVideoElement | null;
+      const videoFwd = document.getElementById(
+        "home-video-forward",
+      ) as HTMLVideoElement | null;
+      const videoRev = document.getElementById(
+        "home-video-reverse",
+      ) as HTMLVideoElement | null;
       const hero = document.getElementById("home-hero");
       if (!videoFwd || !videoRev || !hero) return;
 
@@ -710,7 +714,8 @@ import { url } from "../utils/url";
 
         pauseTimeout = window.setTimeout(() => {
           if (!isUserScrolledDown && !document.hidden) {
-            const nextDir = currentDirection === "forward" ? "reverse" : "forward";
+            const nextDir =
+              currentDirection === "forward" ? "reverse" : "forward";
             showAndPlay(nextDir);
           }
         }, 4000);
@@ -736,7 +741,10 @@ import { url } from "../utils/url";
             if (pauseTimeout) clearTimeout(pauseTimeout);
             pauseAll();
           }
-        } else if (currentScrollY <= 50 || (currentScrollY < lastScrollY && currentScrollY < heroHeight)) {
+        } else if (
+          currentScrollY <= 50 ||
+          (currentScrollY < lastScrollY && currentScrollY < heroHeight)
+        ) {
           // Usuario hace scroll hacia arriba y vuelve a la zona del hero
           if (isUserScrolledDown) {
             isUserScrolledDown = false;
@@ -767,7 +775,7 @@ import { url } from "../utils/url";
             }
           });
         },
-        { threshold: 0.15 }
+        { threshold: 0.15 },
       );
 
       observer.observe(hero);
